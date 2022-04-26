@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('libs/sbadmin/css/sb-admin-2.css')}}" rel="stylesheet">
+    <link href="{{asset('libs/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{asset('libs/datatables/select.bootstrap4.min.css')}}" rel="stylesheet">
 
     <link rel="icon" href="../../../img/icono.png">
 </head>
@@ -30,7 +32,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.partials.sidebar')
+        @include('layouts.docente.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -79,7 +81,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nombre del alumno</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{asset('img/undraw_profile.svg')}}">
                             </a>
@@ -99,7 +101,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                @include('layouts.partials.content')
+                @include('layouts.docente.content')
 
             </div>
             <!-- End of Main Content -->
@@ -133,7 +135,7 @@
                 <div class="modal-body">Presiona el botón 'Salir' para cerrar tu sesión actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.html">Salir</a>
+                    <a class="btn btn-primary" href="{{route('login')}}">Salir</a>
                 </div>
             </div>
         </div>
@@ -152,9 +154,12 @@
     <!-- Page level plugins -->
     <script src="{{asset('libs/chart.js/Chart.min.js')}}"></script>
 
+    <!-- Page level plugins -->
+    <script src="{{asset('libs//datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('libs//datatables/dataTables.bootstrap4.min.js')}}"></script>
+
     <!-- Page level custom scripts -->
-    <script src="{{asset('libs/sbadmin/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('libs/sbadmin/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="{{asset('libs//datatables/dataTables_script.js')}}"></script>
 
 </body>
 

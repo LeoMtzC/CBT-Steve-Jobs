@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.alumno.admin')
 
 @section('titulo', 'Datos del tutor')
 

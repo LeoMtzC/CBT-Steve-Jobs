@@ -91,3 +91,28 @@ Route::get('subir-MTP', function () {
 
 
 
+//Rutas de docentes:
+//Inicio 
+Route::get('panel-docente', function () {
+    return view('Docente.home.index');
+})->name('homeDocente');
+
+//REGISTRO:
+//Alumnos
+Route::get('registro-alumno', function () {
+    return view('Docente.registro.registroAlu');
+})->name('RegistroAlumno');
+//Grupos
+Route::get('registro-grupo', function () {
+    return view('Docente.registro.registroGrup');
+})->name('RegistroGrupo');
+
+//CONSULTA:
+//Alumnos
+Route::get('consulta-alumno', function () {
+    return view('Docente.consulta.consultaAlu');
+})->name('ConsultaAlumno');
+//Grupos
+Route::get('consulta-grupo', function () {
+    return view('Docente.consulta.consultaGrup');
+})->name('ConsultaGrupo');
