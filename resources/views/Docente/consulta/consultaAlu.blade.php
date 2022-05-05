@@ -63,7 +63,7 @@
 </div>
 
 <!-- Datos personales -->
-<div class="card shadow mb-4">
+<div class="card shadow mb-4" id="docVisualizer" hidden>
     <!-- Card Header - Accordion -->
     <a href="#collapseCardDatos" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardDatos">
@@ -81,11 +81,13 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="apPatAluConsul">Apellido paterno</label>
-                        <input type="text" class="form-control" id="apPatAluConsul" placeholder="Apellido Paterno" disabled>
+                        <input type="text" class="form-control" id="apPatAluConsul" placeholder="Apellido Paterno"
+                            disabled>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="apMatAluConsul">Apellido materno</label>
-                        <input type="text" class="form-control" id="apMatAluConsul" placeholder="Apellido Materno" disabled>
+                        <input type="text" class="form-control" id="apMatAluConsul" placeholder="Apellido Materno"
+                            disabled>
                     </div>
                 </div>
                 <div class="form-row">
@@ -116,35 +118,50 @@
                         <input type="phone" class="form-control" id="telAluConsul" placeholder="Teléfono" disabled>
                     </div>
                 </div>
-
-                <hr>
-                    
-                <div class="text-right">
-                    <button id="btnHist" href="#" class="btn btn-primary btn-icon-split" data-toggle="modal"
-                        data-target="#modalHistorial" disabled>
-                        <span class="icon text-white-50">
-                            <i class="fas fa-history"></i>
-                        </span>
-                        <span class="text">Ver Historial</span>
-                    </button>
-
-                    <button id="btnDatos" href="#" class="btn btn-success btn-icon-split" data-toggle="modal"
-                        data-target="#modalDatos" disabled>
-                        <span class="icon text-white-50">
-                            <i class="fas fa-address-card"></i>
-                        </span>
-                        <span class="text">Datos Generales</span>
-                    </button>
-
-                    <button id="btnDatosT" href="#" class="btn btn-info btn-icon-split" data-toggle="modal"
-                        data-target="#modalDatosTutor" disabled>
-                        <span class="icon text-white-50">
-                            <i class="fas fa-user-tie"></i>
-                        </span>
-                        <span class="text">Datos del tutor</span>
-                    </button>
-                </div>
             </form>
+
+            <div class="text-right">
+                <a id="btnHist" href="{{route('ConsultaHistAlu')}}" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-history"></i>
+                    </span>
+                    <span class="text">Ver Historial</span>
+                </a>
+
+                <button id="btnDatos" href="#" class="btn btn-success btn-icon-split" data-toggle="modal"
+                    data-target="#modalDatos">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-address-card"></i>
+                    </span>
+                    <span class="text">Datos Generales</span>
+                </button>
+
+                <button id="btnDatosT" href="#" class="btn btn-info btn-icon-split" data-toggle="modal"
+                    data-target="#modalDatosTutor">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-user-tie"></i>
+                    </span>
+                    <span class="text">Datos del tutor</span>
+                </button>
+            </div>
+
+            <hr>
+
+            <!-- Documentos visualizador -->
+            <h3 for="DocsAlumno">Documentos entregados</h3>
+            <select id="DocsAlumno" class="form-control">
+                <option selected>Seleccione una opción...</option>
+                <option>...</option>
+            </select>
+            <br>
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <img src="img/pdfPlaceholder.png" id="pdfPlaceHolder" alt="responsive image" width="100%"
+                        height="100%">
+                    <iframe id='frameDoc' src="https://katavalast.files.wordpress.com/2014/05/it-eso.pdf" hidden
+                        width="100%" height="100%"></iframe>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -199,7 +216,37 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Datos del tutor del alumno seleccionado.</div>
+            <div class="modal-body">
+                <form>
+                        <div class="form-group">
+                            <label for="nomTutCA">Nombre completo</label>
+                            <input type="text" readonly class="form-control" id="nomTutCA" placeholder="Nombre del tutor">
+                        </div>
+                        <div class="form-group">
+                            <label for="curpTutCA">CURP</label>
+                            <input type="text" readonly class="form-control" id="curpTutCA" placeholder="CURP">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailTutCA">Correo eléctronico</label>
+                            <input type="email" readonly class="form-control" id="emailTutCA" placeholder="Correo eléctrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="telTutCA">Teléfono fijo</label>
+                            <input type="tel" readonly class="form-control" id="telTutCA" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label for="celTutCA">Teléfono celular</label>
+                            <input type="tel" readonly class="form-control" id="celTutCA" placeholder="Celular">
+                        </div>
+                        <div class="form-group">
+                            <label for="parentTutCA">Parentezco</label>
+                            <select id="parentTutCA" readonly disabled class="form-control">
+                                <option selected>Madre...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                </form>
+            </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
             </div>
@@ -207,4 +254,9 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<!-- Custom scripts -->
+<script src="{{asset('libs//datatables/dataTables_logica.js')}}"></script>
 @endsection

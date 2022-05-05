@@ -147,19 +147,16 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{{asset('libs/jquery-easing/jquery.easing.min.js')}}"></script>
+    
 
-    <!-- Custom scripts for all pages-->
+    <!-- Scripts custom generales -->
     <script src="{{asset('libs/sbadmin/js/sb-admin-2.js')}}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{{asset('libs/chart.js/Chart.min.js')}}"></script>
-
-    <!-- Page level plugins -->
     <script src="{{asset('libs//datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('libs//datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('libs//datatables/dataTables_idioma.js')}}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{asset('libs//datatables/dataTables_script.js')}}"></script>
+    <!-- Scripts custom de cada página -->
+    @include('layouts.partials.scripts')
 
 </body>
 

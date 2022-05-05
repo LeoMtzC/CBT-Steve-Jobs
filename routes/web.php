@@ -116,3 +116,43 @@ Route::get('consulta-alumno', function () {
 Route::get('consulta-grupo', function () {
     return view('Docente.consulta.consultaGrup');
 })->name('ConsultaGrupo');
+//Historial completo x alumno
+Route::get('consulta-historial-alumno', function () {
+    return view('Docente.historial.alumno.histAluComp');
+})->name('ConsultaHistAlu');
+//Detalles Alumno
+Route::get('detalles-alumno', function () {
+    return view('Docente.detalles.detallesAlu');
+})->name('detallesAlu');
+//Historial P. Observación > Listado Grupos
+Route::get('practicas-observacion-grupos', function () {
+    return view('Docente.historial.practObs.listGrup');
+})->name('PractObs_Grupos');
+//Historial P.  Observación > Listado Alumnos
+Route::get('practicas-observacion-alumnos', function () {
+    return view('Docente.historial.practObs.listAlu');
+})->name('PractObs_Alumnos');
+//Historial P. Ejecución > Listado Grupos 
+Route::get('practicas-ejecucion-grupos', function () {
+    return view('Docente.historial.practEjec.listGrup');
+})->name('PractEjec_Grupos');
+//Historial P. Ejecución  > Listado Alumnos
+Route::get('practicas-ejecucion-alumnos', function () {
+    return view('Docente.historial.practEjec.listAlu');
+})->name('PractEjec_Alumnos');
+//Historial ServSocial  > Listado Grupos
+Route::get('servicio-social-grupos', function () {
+    return view('Docente.historial.servSoc.listGrup');
+})->name('ServSoc_Grupos');
+//Historial ServSocial  > Listado Alumnos
+Route::get('servicio-social-alumnos', function () {
+    return view('Docente.historial.servSoc.listAlu');
+})->name('ServSoc_Alumnos');
+//Historial Estadías  > Listado Grupos
+Route::get('estadias-grupos', function () {
+    return view('Docente.historial.estadias.listGrup');
+})->name('Estadias_Grupos');
+//Historial Estadías  > Listado Alumnos
+Route::get('estadias-alumnos', function () {
+    return view('Docente.historial.estadias.listAlu');
+})->name('Estadias_Alumnos');

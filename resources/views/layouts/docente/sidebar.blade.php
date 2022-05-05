@@ -68,7 +68,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="{{route('homeDocente')}}">
+    <a class="nav-link" href="{{route('PractObs_Grupos')}}">
         <i class="fas fa-file-alt"></i>
         <span>Prácticas de observación</span></a>
 </li>
@@ -78,7 +78,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="{{route('homeDocente')}}">
+    <a class="nav-link" href="{{route('PractEjec_Grupos')}}">
         <i class="fas fa-file-alt"></i>
         <span>Prácticas de ejecución</span></a>
 </li>
@@ -88,7 +88,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="{{route('homeDocente')}}">
+    <a class="nav-link" href="{{route('ServSoc_Grupos')}}">
         <i class="fas fa-file-alt"></i>
         <span>Servicio social</span></a>
 </li>
@@ -98,7 +98,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="{{route('homeDocente')}}">
+    <a class="nav-link" href="{{route('Estadias_Grupos')}}">
         <i class="fas fa-file-alt"></i>
         <span>Estadía</span></a>
 </li>

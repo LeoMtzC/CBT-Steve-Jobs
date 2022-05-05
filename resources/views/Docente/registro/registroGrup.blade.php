@@ -14,7 +14,7 @@
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="collapseCardDatos">
         <div class="card-body">
-            <form>
+            <form id="formRegGrup">
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="claveGrup">Clave</label>
@@ -75,10 +75,15 @@
                 <div class="modal-body">El formulario quedará en blanco ¿continuar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-success" id="limpiarButton"" type="button" data-dismiss="modal">Limpiar</button>
+                    <button class="btn btn-success" id="limpiarButtonGrup"" type="button" data-dismiss="modal">Limpiar</button>
                 </div>
             </div>
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <!-- Custom scripts -->
+    <script src="{{asset('libs//scripts/functionsDocente.js')}}"></script>
 @endsection

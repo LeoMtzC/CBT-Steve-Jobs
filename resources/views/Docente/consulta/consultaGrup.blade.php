@@ -54,21 +54,20 @@
             </table>
         </div>
         <br>
-        <div class="text-right">
+        <div id="btnsHistGrup" hidden class="text-right">
             <button id="btnModifGrup" href="#" class="btn btn-primary btn-icon-split" data-toggle="modal"
-                data-target="#modalModif" disabled>
+                data-target="#modalModif">
                 <span class="icon text-white-50">
                     <i class="fas fa-edit"></i>
                 </span>
                 <span class="text">Modificar</span>
             </button>
-            <button id="btnHistGrup" href="#" class="btn btn-info btn-icon-split" data-toggle="modal"
-                data-target="#modalHistorial" disabled>
+            <a id="btnHistGrup" href="{{route('ConsultaAlumno')}}" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-history"></i>
                 </span>
                 <span class="text">Ver Historial</span>
-            </button>
+            </a>
         </div>
     </div>
 </div>
@@ -79,14 +78,46 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modificar grupo</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Modificar.</div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group>
+                        <label for="claveGrupMod">Clave</label>
+                        <input type="text" class="form-control" id="claveGrupMod" placeholder="Clave">
+                    </div>
+                    <div class="form-group">
+                        <label for="gradoGrupMod">Grado</label>
+                        <input type="text" class="form-control" id="gradoGrupMod" placeholder="Grado">
+                    </div>
+                    <div class="form-group">
+                        <label for="aulaGrupMod">Aula</label>
+                        <input type="text" class="form-control" id="aulaGrupMod" placeholder="Aula">
+                    </div>
+                    <div class="form-group">
+                        <label for="carreraGrupMod">Carrera</label>
+                        <select id="carreraGrupMod" class="form-control">
+                            <option selected>Seleccione una opción...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="estadoGrupMod">Estado</label>
+                        <select id="estadoGrupMod" class="form-control">
+                            <option selected>Seleccione una opción...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -111,4 +142,10 @@
     </div>
 </div>
 
+@endsection
+
+
+@section('scripts')
+<!-- Custom scripts -->
+<script src="{{asset('libs//datatables/dataTables_logica.js')}}"></script>
 @endsection

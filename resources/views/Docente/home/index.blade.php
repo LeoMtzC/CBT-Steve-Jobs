@@ -1,6 +1,18 @@
 @extends('layouts.docente.admin')
 
-@section('titulo', 'Bienvenido')
+@section('titulo')
+    <?php
+    date_default_timezone_set('America/Mexico_City');
+    $Hour = date('G');
+    if ( $Hour >= 5 && $Hour <= 11 ) {
+        echo "Buenos días";
+    } else if ( $Hour >= 12 && $Hour <= 18 ) {
+        echo "Buenas tardes";
+    } else if ( $Hour >= 19 || $Hour <= 4 ) {
+        echo "Buenas noches";
+    }
+    ?>
+@endsection
 
 @section('contenido')
 
@@ -18,7 +30,6 @@
                                 date_default_timezone_set('America/Mexico_City');
                                 setlocale(LC_ALL,'spanish');
                                 echo utf8_encode(strftime("%A %d de %B del %Y"));
-                                //echo date('l jS \of F Y');
                             ?>
                         </div>
                     </div>
