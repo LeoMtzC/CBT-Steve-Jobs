@@ -20,7 +20,7 @@
                     <label class="custom-file-label" for="subirINE">Seleccionar Archivo</label>
                 </div>
                 <div class="mt-3">
-                <button type="submit" class="btn btn-primary"><i class="fas fa-file-upload"></i> Subir</button>
+                <button type="submit" class="btn btn-primary" id="btnSubirINE"><i class="fas fa-file-upload"></i> Subir</button>
                 </div>
             </form>
         </div>
@@ -42,10 +42,14 @@
                     <label class="custom-file-label" for="subirActNac">Seleccionar Archivo</label>
                 </div>
                 <div class="mt-3">
-                <button type="submit" class="btn btn-primary"><i class="fas fa-file-upload"></i> Subir</button>
+                <button type="submit" class="btn btn-primary" id="btnsubirActNac"><i class="fas fa-file-upload"></i> Subir</button>
                 </div>
             </form>
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{asset('libs//scripts/functionsAlumno.js')}}"></script>
 @endsection

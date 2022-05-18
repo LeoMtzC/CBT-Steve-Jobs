@@ -155,6 +155,9 @@
     <script src="{{asset('libs//datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('libs//datatables/dataTables_idioma.js')}}"></script>
 
+    <!-- Bootbox -->
+    <script src="{{asset('libs/sbadmin/js/bootbox.all.min.js')}}"></script>
+
     <!-- Scripts custom de cada página -->
     @include('layouts.partials.scripts')
 

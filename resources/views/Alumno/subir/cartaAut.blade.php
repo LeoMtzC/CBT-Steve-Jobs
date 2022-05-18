@@ -16,14 +16,18 @@
             <br>
             <form>
                 <div class="custom-file">
-                    <input type="file" accept="application/pdf" class="custom-file-input" id="subirActNac" lang="es">
-                    <label class="custom-file-label" for="subirActNac">Seleccionar Archivo</label>
+                    <input type="file" accept="application/pdf" class="custom-file-input" id="subirCartAut" lang="es">
+                    <label class="custom-file-label" for="subirCartAut">Seleccionar Archivo</label>
                 </div>
                 <div class="mt-3">
-                <button type="submit" class="btn btn-primary"><i class="fas fa-file-upload"></i> Subir</button>
+                <button type="submit" class="btn btn-primary" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Subir</button>
                 </div>
             </form>
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{asset('libs//scripts/functionsAlumno.js')}}"></script>
 @endsection
