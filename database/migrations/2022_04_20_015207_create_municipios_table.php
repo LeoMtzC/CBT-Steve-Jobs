@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('municipios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('íd_estado')
+            $table->foreignId('id_estado')
                     ->constrained('estados')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->string('nombre', 80);
+            $table->unsignedTinyInteger('estado');
             $table->timestamps();
         });
     }
