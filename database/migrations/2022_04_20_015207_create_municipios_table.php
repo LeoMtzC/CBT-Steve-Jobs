@@ -20,8 +20,6 @@ return new class extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->string('nombre', 80);
-            $table->unsignedTinyInteger('estado');
-            $table->timestamps();
         });
     }
 

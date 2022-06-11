@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Hist_ac_lab extends Model
+class HistorialAcLab extends Model
 {
     use HasFactory;
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('parentescos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 20);
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default(1);
             $table->timestamps();
         });
     }

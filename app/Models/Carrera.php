@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Carreras extends Model
+class Carrera extends Model
 {
     use HasFactory;
 

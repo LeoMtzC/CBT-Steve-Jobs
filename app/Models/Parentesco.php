@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Parentescos extends Model
+class Parentesco extends Model
 {
     use HasFactory;
 

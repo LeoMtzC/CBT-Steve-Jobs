@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Estados extends Model
+class Estado extends Model
 {
     use HasFactory;
 

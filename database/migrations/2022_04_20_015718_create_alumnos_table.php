@@ -36,21 +36,21 @@ return new class extends Migration
             $table->string('telefono', 10)->default('SR');
             $table->string('correo', 60)->default('SR');
             $table->foreignId('id_domicilio')
-                    ->constrained('domicilios')
                     ->nullable()
+                    ->constrained('domicilios')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->date('fecha_nac');
             $table->string('nss', 11)->default('SR');
             $table->char('seguro_med',1);
             $table->foreignId('id_tutor')
-                    ->constrained('datos_tutores')
                     ->nullable()
+                    ->constrained('datos_tutores')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->foreignId('id_docs')
-                    ->constrained('docs_alumnos')
                     ->nullable()
+                    ->constrained('docs_alumnos')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->unsignedTinyInteger('estado');

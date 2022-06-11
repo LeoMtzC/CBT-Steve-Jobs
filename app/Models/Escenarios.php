@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Escenario extends Model
+class Escenarios extends Model
 {
     use HasFactory;
 

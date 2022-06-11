@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre',80);
             $table->string('clave',10);
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default(1);
             $table->timestamps();
         });
     }

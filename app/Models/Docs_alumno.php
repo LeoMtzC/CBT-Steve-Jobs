@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Docs_alumnos extends Model
+class Docs_alumno extends Model
 {
     use HasFactory;
 

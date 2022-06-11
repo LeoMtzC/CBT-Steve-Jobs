@@ -20,7 +20,7 @@ return new class extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->string('clave', 8);
-            $table->string('grado', 10);
+            $table->string('semestre', 10);
             $table->string('aula', 8);
             $table->unsignedTinyInteger('estado');
             $table->timestamps();

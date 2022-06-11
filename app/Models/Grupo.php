@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Grupos extends Model
+class Grupo extends Model
 {
     use HasFactory;
 
