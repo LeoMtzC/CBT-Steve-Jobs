@@ -20,22 +20,22 @@ class AlumnoFactory extends Factory
      */
     public function definition()
     {
-        $idusr = User::distinct()->select('id')->inRandomOrder()->first();
+        $idusr = User::distinct()->select('id','matricula')->inRandomOrder()->first();
         $idcar = Carrera::select('id')->inRandomOrder()->first();
         $sem = $this->faker->numberBetween(1,6);
         $idgrupo = $this->getGrupo($sem, $idcar);
         return [
-            "matricula" => $this->faker->numerify('########'),
+            "matricula" => $idusr->matricula,
             "nombre" => $this->faker->firstName(),
             "apPat" => $this->faker->lastName(),
             "apMat" => $this->faker->lastName(),
-            "id_usuario" => $idusr,
+            "id_usuario" => $idusr->id,
             "id_carrera" => $idcar,
             "id_grupo" => $idgrupo,
             "semestre" => $sem,
             "curp" => $this->faker->bothify('????######??????##'),
             "telefono" => $this->faker->numerify('##########'),
-            "correo" => $this->faker->safeEmail(),
+            "correo" => $this->faker->unique()->safeEmail(),
             "id_domicilio" => null,
             "fecha_nac" => $this->faker->date(),
             "nss" => $this->faker->optional(30)->numerify('###########'),
