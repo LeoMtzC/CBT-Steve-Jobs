@@ -58,6 +58,10 @@ Route::get('generar-carta-autorizacion', function () {
 Route::get('generar-carta-presentacion', function () {
     return view('Alumno.generar.cartaPres');
 })->name('GCartaPres');
+//Carta de acepración
+Route::get('generar-carta-aceptacion', function () {
+    return view('Alumno.generar.cartaAcep');
+})->name('GCartaAcep');
 //Carta de termino
 Route::get('generar-carta-termino', function () {
     return view('Alumno.generar.cartaTer');
@@ -76,6 +80,14 @@ Route::get('generar-cartaAut', function () {
 Route::get('subir-carta-autorizacion', function () {
     return view('Alumno.subir.cartaAut');
 })->name('SCartaAut');
+//Carta de presentación
+Route::get('subir-carta-presentacion', function () {
+    return view('Alumno.subir.cartaPres');
+})->name('SCartaPres');
+//Carta de acepración
+Route::get('subir-carta-aceptacion', function () {
+    return view('Alumno.subir.cartaAcep');
+})->name('SCartaAcep');
 //Carta de termino
 Route::get('subir-carta-termino', function () {
     return view('Alumno.subir.cartaTer');

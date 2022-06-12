@@ -18,29 +18,29 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="claveGrup">Clave</label>
-                        <input type="text" class="form-control" id="claveGrup" placeholder="Clave">
+                        <input type="text" class="form-control" id="claveGrup" name="claveGrup" placeholder="Clave">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="gradoGrup">Grado</label>
-                        <input type="text" class="form-control" id="gradoGrup" placeholder="Grado">
+                        <label for="semesGrup">Semestre</label>
+                        <input type="text" class="form-control" id="semesGrup" name="semesGrup" placeholder="Semestre">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="aulaGrup">Aula</label>
-                        <input type="text" class="form-control" id="aulaGrup" placeholder="Aula">
+                        <input type="text" class="form-control" id="aulaGrup" name="aulaGrup" placeholder="Aula">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="carreraGrup">Carrera</label>
-                        <select id="carreraGrup" class="form-control">
-                            <option selected>Seleccione una opción...</option>
+                        <select id="carreraGrup" name="carreraGrup" class="form-control">
+                            <option value="" selected>Seleccione una opción...</option>
                             <option>...</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="estadoGrup">Estado</label>
-                        <select id="estadoGrup" class="form-control">
-                            <option selected>Seleccione una opción...</option>
+                        <select id="estadoGrup" name="estadoGrup" class="form-control">
+                            <option value="" selected>Seleccione una opción...</option>
                             <option>...</option>
                         </select>
                     </div>
@@ -53,7 +53,7 @@
                         </span>
                         <span class="text">Limpiar</span>
                     </a>
-                    <button type="submit" class="btn btn-success">Registrar</button>
+                    <button id="btnRegGrupo" type="submit" class="btn btn-success">Registrar</button>
                 </div>
             </form>
         </div>
@@ -84,6 +84,10 @@
 @endsection
 
 @section('scripts')
-    <!-- Custom scripts -->
+    <!-- Funciones -->
     <script src="{{asset('libs//scripts/functionsDocente.js')}}"></script>
+    <!-- Constantes -->
+    <script src="{{asset('libs//scripts/constantes.js')}}"></script>
+    <!-- Validaciones -->
+    <script src="{{asset('libs//scripts/validacionesDocente.js')}}"></script>
 @endsection

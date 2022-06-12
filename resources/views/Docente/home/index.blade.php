@@ -48,11 +48,16 @@
             <!-- Default Card Example -->
             <div class="card border-bottom-success shadow h-100 py-2">
                 <div class="card-body">
-                    <p>
-                        Contenido de home del docente.
+                    <p class="h5">
+                        Bienvenido/a, ha ingresado como administrador, por lo que desde esta página usted podrá registrar y consultar grupos o alumnos.
                     </p>
-                    <p>
-                        Más texto bla bla bla...
+                    <br>
+                    <p class="h5">
+                        Antes de registrar alumnos es necesario dar de alta los grupos, esto evitara problemas durante el proceso de registro.
+                    </p>
+                    <br>
+                    <p class="h5">
+                        Puede consultar las diferentes secciones de seguimiento para estar al tanto de los documentos y avances proporcionados por los alumnos.
                     </p>
                 </div>
             </div>

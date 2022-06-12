@@ -46,7 +46,8 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="usuer"
-                                                placeholder="Matrícula">
+                                                placeholder="Matrícula"
+                                                pattern="[0-9]+">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
@@ -56,10 +57,6 @@
                                             Entrar
                                         </a>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="{{route('recuperar-contra')}}">¿Olvidaste tu contraseña?</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

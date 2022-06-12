@@ -84,40 +84,40 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group>
-                        <label for="claveGrupMod">Clave</label>
-                        <input type="text" class="form-control" id="claveGrupMod" placeholder="Clave">
+                <form id="formModGrup">
+                    <div class="form-group">
+                        <label for="claveGrup">Clave</label>
+                        <input type="text" class="form-control" id="claveGrup" name="claveGrup" placeholder="Clave">
                     </div>
                     <div class="form-group">
-                        <label for="gradoGrupMod">Grado</label>
-                        <input type="text" class="form-control" id="gradoGrupMod" placeholder="Grado">
+                        <label for="semesGrup">Semestre</label>
+                        <input type="text" class="form-control" id="semesGrup" name="semesGrup" placeholder="Semestre">
                     </div>
                     <div class="form-group">
-                        <label for="aulaGrupMod">Aula</label>
-                        <input type="text" class="form-control" id="aulaGrupMod" placeholder="Aula">
+                        <label for="aulaGrup">Aula</label>
+                        <input type="text" class="form-control" id="aulaGrup" name="aulaGrup" placeholder="Aula">
                     </div>
                     <div class="form-group">
-                        <label for="carreraGrupMod">Carrera</label>
-                        <select id="carreraGrupMod" class="form-control">
-                            <option selected>Seleccione una opción...</option>
+                        <label for="carreraGrup">Carrera</label>
+                        <select id="carreraGrup" name="carreraGrup" class="form-control">
+                            <option selected value="">Seleccione una opción...</option>
                             <option>...</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="estadoGrupMod">Estado</label>
-                        <select id="estadoGrupMod" class="form-control">
-                            <option selected>Seleccione una opción...</option>
+                        <label for="estadoGrup">Estado</label>
+                        <select id="estadoGrup" name="estadoGrup" class="form-control">
+                            <option selected value="">Seleccione una opción...</option>
                             <option>...</option>
                         </select>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-success">Guardar cambios</button>
+                        <button type="submit" id="btnModGrupo" class="btn btn-success">Guardar cambios</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-secondary" id="cancelModGrup" type="button" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -146,6 +146,12 @@
 
 
 @section('scripts')
-<!-- Custom scripts -->
-<script src="{{asset('libs//datatables/dataTables_logica.js')}}"></script>
+    <!-- Script dataTables -->
+    <script src="{{asset('libs//datatables/dataTables_logica.js')}}"></script>
+    <!-- Funciones -->
+    <script src="{{asset('libs//scripts/functionsDocente.js')}}"></script>
+    <!-- Constantes -->
+    <script src="{{asset('libs//scripts/constantes.js')}}"></script>
+    <!-- Validaciones -->
+    <script src="{{asset('libs//scripts/validacionesDocente.js')}}"></script>
 @endsection

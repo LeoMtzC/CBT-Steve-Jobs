@@ -18,30 +18,30 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="nomAlu">Nombre</label>
-                        <input type="text" class="form-control" id="nomAlu" placeholder="Nombre">
+                        <input type="text" class="form-control" id="nomAlu" name="nomAlu" placeholder="Nombre">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="apPatAlu">Apellido paterno</label>
-                        <input type="text" class="form-control" id="apPatAlu" placeholder="Apellido Paterno">
+                        <input type="text" class="form-control" id="apPatAlu" name="apPatAlu" placeholder="Apellido Paterno">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="apMatAlu">Apellido materno</label>
-                        <input type="text" class="form-control" id="apMatAlu" placeholder="Apellido Materno">
+                        <input type="text" class="form-control" id="apMatAlu" name="apMatAlu" placeholder="Apellido Materno">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="matrAlu">Matrícula</label>
-                        <input type="text" class="form-control" id="matrAlu" placeholder="Matrícula">
+                        <input type="text" class="form-control" id="matrAlu" name="matrAlu" placeholder="Matrícula">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="semesAlu">Semestre</label>
-                        <input type="text" class="form-control" id="semesAlu" placeholder="Semestre">
+                        <input type="text" class="form-control" id="semesAlu" name="semesAlu" placeholder="Semestre">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="carreraAlu">Carrera</label>
-                        <select id="carreraAlu" class="form-control">
-                            <option selected>Seleccione una opción...</option>
+                        <select id="carreraAlu" name="carreraAlu" class="form-control">
+                            <option value="" selected>Seleccione una opción...</option>
                             <option>...</option>
                         </select>
                     </div>
@@ -49,8 +49,8 @@
                 <div class="form-row">
                 <div class="form-group col-md-4">
                         <label for="grupoAlu">Grupo</label>
-                        <select id="grupoAlu" class="form-control">
-                            <option selected>Seleccione una opción...</option>
+                        <select id="grupoAlu" name="grupoAlu" class="form-control">
+                            <option value="" selected>Seleccione una opción...</option>
                             <option>...</option>
                         </select>
                     </div>
@@ -62,7 +62,7 @@
                         </span>
                         <span class="text">Limpiar</span>
                     </a>
-                    <button type="submit" class="btn btn-success">Registrar</button>
+                    <button id="btnRegAlu" type="submit" class="btn btn-success">Registrar</button>
                 </div>
             </form>
         </div>
@@ -93,6 +93,10 @@
 @endsection
 
 @section('scripts')
-    <!-- Custom scripts -->
+    <!-- Funciones -->
     <script src="{{asset('libs//scripts/functionsDocente.js')}}"></script>
+    <!-- Constantes -->
+    <script src="{{asset('libs//scripts/constantes.js')}}"></script>
+    <!-- Validaciones -->
+    <script src="{{asset('libs//scripts/validacionesDocente.js')}}"></script>
 @endsection

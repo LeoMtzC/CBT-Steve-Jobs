@@ -65,6 +65,7 @@
             <h6 class="collapse-header">Generar documentos:</h6>
             <a class="collapse-item" href="{{route('GCartaAut')}}">Carta de autorización</a>
             <a class="collapse-item" href="{{route('GCartaPres')}}">Carta de presentación</a>
+            <a class="collapse-item" href="{{route('GCartaAcep')}}">Carta de aceptación</a>
             <a class="collapse-item" href="{{route('GCartaTer')}}">Carta de termino</a>
             <a class="collapse-item" href="{{route('GInforme')}}">Informe</a>
             <a class="collapse-item" href="{{route('GBitacora')}}">Bitácora</a>
@@ -91,6 +92,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Subir documentos:</h6>
             <a class="collapse-item" href="{{route('SCartaAut')}}">Carta de autorización</a>
+            <a class="collapse-item" href="{{route('SCartaPres')}}">Carta de presentación</a>
+            <a class="collapse-item" href="{{route('SCartaAcep')}}">Carta de aceptación</a>
             <a class="collapse-item" href="{{route('SCartaTer')}}">Carta de termino</a>
             <a class="collapse-item" href="{{route('SInforme')}}">Informe</a>
             <a class="collapse-item" href="{{route('SMTP')}}">MTP</a>

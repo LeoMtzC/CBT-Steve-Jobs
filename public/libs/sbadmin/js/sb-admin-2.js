@@ -14,7 +14,17 @@
   $(".custom-file-input").on("change", function() {
     var fileName = $(this).val().split("\\").pop();
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
+  });
+
+  //validación user
+  $("#usuer").on("keypress", function(evento)
+   {
+       $(this).attr('maxlength','10');
+       $(this).attr('minlength','10');
+       let caracter = String.fromCharCode(evento.which);
+       if(! /[0-9]/.test(caracter))
+           evento.preventDefault();
+   });
     
   // Close any open menu accordions when window is resized below 768px
   $(window).resize(function() {

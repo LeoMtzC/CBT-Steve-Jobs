@@ -39,70 +39,78 @@
     </div>
 </div>
 
-<!-- Datos del escenario real -->
+<!-- Carta de término -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-success">Datos del escenario</h6>
-    </div>
     <div class="card-body">
-        <form>
+        <h3>Carta de término</h3>
+        <p>A continuación puede editar los datos con los que la carta de término del alumno será generada</p>
+        <hr>
+        <form id="formCartaTer">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="nomERDetall">Nombre del establecimiento</label>
-                    <input type="text" class="form-control" id="nomERDetall" placeholder="Nombre del lugar">
+                    <input type="text" class="form-control" id="nomERDetall" name="nomERDetall"
+                        placeholder="Nombre del lugar">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="dirERDetall">Dirección</label>
-                    <input type="text" class="form-control" id="dirERDetall" placeholder="Dirección completa">
+                    <input type="text" class="form-control" id="dirERDetall" name="dirERDetall"
+                        placeholder="Dirección completa">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="telERDetall">Teléfono</label>
-                    <input type="text" class="form-control" id="telERDetall" placeholder="Teléfono">
+                    <input type="text" class="form-control" id="telERDetall" name="telERDetall" placeholder="Teléfono">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="respERDetall">Nombre del responsable</label>
-                    <input type="text" class="form-control" id="respERDetall" placeholder="Nombre">
+                    <input type="text" class="form-control" id="respERDetall" name="respERDetall" placeholder="Nombre">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="fechIniERDetall">Fecha de inicio</label>
-                    <input type="date" class="form-control" id="fechIniERDetall" placeholder="">
+                    <input type="date" class="form-control" id="fechIniERDetall" name="fechIniERDetall" placeholder="">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="fechTerERDetall">Fecha de termino</label>
-                    <input type="date" class="form-control" id="fechTerERDetall" placeholder="">
+                    <input type="date" class="form-control" id="fechTerERDetall" name="fechTerERDetall" placeholder="">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="horasERDetall">Horas</label>
-                    <input type="text" class="form-control" id="horasERDetall" placeholder="Horas">
+                    <input type="text" class="form-control" id="horasERDetall" name="horasERDetall" placeholder="Horas">
                 </div>
             </div>
             <div class="text-right">
                 <button type="submit" id="btnGenCT" class="btn btn-success">Generar C. Termino</button>
             </div>
-            <hr>
-            <div class="form-row align-bottom align-items-end">
-                <div class="form-group col-md-4">
-                    <label for="DocsERDetall">Documentos entregados</label>
-                    <select id="DocsERDetall" class="form-control">
-                        <option selected>Seleccione una opción...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <button type="button" class="btn btn-info">Consultar</button>
-                </div>
-            </div>
         </form>
+        <hr>
+        <div class="form-row align-bottom align-items-end">
+            <div class="form-group col-md-4">
+                <label for="DocsERDetall">Documentos entregados</label>
+                <select id="DocsERDetall" class="form-control">
+                    <option selected>Seleccione una opción...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <button type="button" class="btn btn-info">Consultar</button>
+            </div>
+        </div>
     </div>
 </div>
 
 @endsection
 
 @section('scripts')
-    <!-- Custom scripts -->
+    <!-- Script dataTables -->
     <script src="{{asset('libs//datatables/dataTables_logica.js')}}"></script>
+    <!-- Funciones -->
+    <script src="{{asset('libs//scripts/functionsDocente.js')}}"></script>
+    <!-- Constantes -->
+    <script src="{{asset('libs//scripts/constantes.js')}}"></script>
+    <!-- Validaciones -->
+    <script src="{{asset('libs//scripts/validacionesDocente.js')}}"></script>
 @endsection
