@@ -1,17 +1,17 @@
 @extends('layouts.alumno.admin')
 
-@section('titulo', 'Subir / Carta de autorización')
+@section('titulo', 'Subir / Carta de aceptación')
 
 @section('contenido')
 
-    <!-- Subir carta de autorización -->
+    <!-- Subir carta de aceptación -->
     <div class="card shadow mb-4">  
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Carta de autorización</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Carta de aceptación</h6>
         </div>
         <div class="card-body">
             <p>
-                Sube un archivo <b>PDF</b> de tu carta de autorización una vez que haya sido firmada y sellada por la institución y los responsables.
+                Sube un archivo <b>PDF</b> de tu carta de aceptación una vez que haya sido firmada y sellada por la institución y los responsables.
             </p>
             <br>
             <form>

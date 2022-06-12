@@ -1,21 +1,21 @@
 @extends('layouts.alumno.admin')
 
-@section('titulo', 'Generar / Informe')
+@section('titulo', 'Generar / Carta de aceptación')
 
 @section('contenido')
 
-    <!-- Generar informe -->
+    <!-- Generar carta de presentación -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Informe</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Carta de aceptación</h6>
         </div>
         <div class="card-body">
             <p>
-                El informe es un documento que...
+                La carta de aceptación es un documento importante...
             </p>
             <br>
             <p>
-                Una vez que generes tu informe recuerda que...
+                Una vez que generes tu carta de aceptación recuerda que...
             </p>
             <br>
             <p>
@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-primary" id="genInforme"><i class="fas fa-file-download"></i> Generar</button>
+                <button type="button" class="btn btn-primary" id="genCartaPres"><i class="fas fa-file-download"></i> Generar</button>
             </div>
         </div>
     </div>

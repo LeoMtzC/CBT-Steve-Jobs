@@ -30,7 +30,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.partials.sidebar')
+        @include('layouts.alumno.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -99,7 +99,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                @include('layouts.partials.content')
+                @include('layouts.alumno.content')
 
             </div>
             <!-- End of Main Content -->
@@ -133,7 +133,7 @@
                 <div class="modal-body">Presiona el botón 'Salir' para cerrar tu sesión actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.html">Salir</a>
+                    <a class="btn btn-primary" href="{{route('login')}}">Salir</a>
                 </div>
             </div>
         </div>
@@ -146,15 +146,14 @@
     <!-- Core plugin JavaScript-->
     <script src="{{asset('libs/jquery-easing/jquery.easing.min.js')}}"></script>
 
-    <!-- Custom scripts for all pages-->
+    <!-- Scripts custom generales -->
     <script src="{{asset('libs/sbadmin/js/sb-admin-2.js')}}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{asset('libs/chart.js/Chart.min.js')}}"></script>
+    <!-- Bootbox -->
+    <script src="{{asset('libs/sbadmin/js/bootbox.all.min.js')}}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{asset('libs/sbadmin/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('libs/sbadmin/js/demo/chart-pie-demo.js')}}"></script>
+    <!-- Scripts custom de cada página -->
+    @include('layouts.partials.scripts')
 
 </body>
 

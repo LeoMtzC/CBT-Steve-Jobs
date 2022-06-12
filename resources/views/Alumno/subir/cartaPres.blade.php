@@ -7,11 +7,11 @@
     <!-- Subir carta de autorización -->
     <div class="card shadow mb-4">  
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Carta de autorización</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Carta de presentación</h6>
         </div>
         <div class="card-body">
             <p>
-                Sube un archivo <b>PDF</b> de tu carta de autorización una vez que haya sido firmada y sellada por la institución y los responsables.
+                Sube un archivo <b>PDF</b> de tu carta de presentación una vez que haya sido firmada y sellada por la institución y los responsables.
             </p>
             <br>
             <form>
