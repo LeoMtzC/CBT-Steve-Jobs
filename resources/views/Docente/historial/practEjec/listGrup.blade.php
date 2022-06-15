@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-success">Prácticas de ejecución</h6>
+        <h6 class="m-0 font-weight-bold text-docente">Prácticas de ejecución</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive table-hover">
@@ -79,13 +79,13 @@
         </div>
         <br>
         <div id="btnsPEHistGrup" hidden class="text-right">
-            <a id="btnPEDetHistGrup" href="{{route('PractEjec_Alumnos')}}" class="btn btn-info btn-icon-split">
+            <a id="btnPEDetHistGrup" href="{{route('PractEjec_Alumnos')}}" class="btn btn-alumno btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-edit"></i>
                 </span>
                 <span class="text">Ver  detalles</span>
             </a>
-            <button id="btnPEHRepGrup" class="btn btn-success btn-icon-split">
+            <button id="btnPEHRepGrup" class="btn btn-docente btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-history"></i>
                 </span>

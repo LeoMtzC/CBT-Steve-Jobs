@@ -79,7 +79,7 @@ $(document).ready(function() {
         var ext = $( this ).val().split('.').pop();
         if ($(this).val() != "") {
           if(ext == "pdf"){
-            if($(this)[0].files[0].size > 1048576){
+            if($(this)[0].files[0].size > 1048576){ // 1 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
                 "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
@@ -107,7 +107,7 @@ $(document).ready(function() {
         var ext = $( this ).val().split('.').pop();
         if ($(this).val() != "") {
           if(ext == "pdf"){
-            if($(this)[0].files[0].size > 1048576){
+            if($(this)[0].files[0].size > 1048576){ //1 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
                 "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
@@ -135,7 +135,7 @@ $(document).ready(function() {
         var ext = $( this ).val().split('.').pop();
         if ($(this).val() != "") {
           if(ext == "pdf"){
-            if($(this)[0].files[0].size > 1048576){
+            if($(this)[0].files[0].size > 1048576){ //1 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
                 "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
@@ -151,19 +151,19 @@ $(document).ready(function() {
           }
         }
     });
-    //Validación - subir carta de termino
+    //Validación - subir constancia de termino
     $("#btnSubirCartTer").on("click",function(e) {
         e.preventDefault();
         if($("#subirCartTer").val() == ""){
             msgError("<b>Atención</b>",
-                    "La <i><b>carta de término</b></i> debe ser un archivo válido.");
+                    "La <i><b>constancia de término</b></i> debe ser un archivo válido.");
         }
     });
     $("#subirCartTer").on('change', function(){
         var ext = $( this ).val().split('.').pop();
         if ($(this).val() != "") {
           if(ext == "pdf"){
-            if($(this)[0].files[0].size > 1048576){
+            if($(this)[0].files[0].size > 1048576){ //1 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
                 "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
@@ -174,7 +174,7 @@ $(document).ready(function() {
           {
             $(this).val("");
             msgCallbackg("<b>Atención</b>",
-                "La <i><b>carta de termino</b></i> debe ser un archivo válido.",
+                "La <i><b>constancia de término</b></i> debe ser un archivo válido.",
                 $("#subirCartTer"));
           }
         }
@@ -191,10 +191,10 @@ $(document).ready(function() {
         var ext = $( this ).val().split('.').pop();
         if ($(this).val() != "") {
           if(ext == "pdf"){
-            if($(this)[0].files[0].size > 10485760){
+            if($(this)[0].files[0].size > 1048576){ //1 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
-                "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 10MB.",
+                "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
                 $("#subirInforme"));
             }
           }
@@ -219,10 +219,10 @@ $(document).ready(function() {
         var ext = $( this ).val().split('.').pop();
         if ($(this).val() != "") {
           if(ext == "pdf"){
-            if($(this)[0].files[0].size > 10485760){
+            if($(this)[0].files[0].size > 2097152){ //2 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
-                "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 10MB.",
+                "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 2MB.",
                 $("#subirMTP"));
             }
           }
@@ -266,7 +266,7 @@ $(document).ready(function() {
     });
    $("#telAlu").on("keypress", function(evento)
    {
-       $(this).attr('maxlength','13');
+       $(this).attr('maxlength','10');
        $(this).attr('minlength','10');
        let caracter = String.fromCharCode(evento.which);
        if(! /[0-9]/.test(caracter))
@@ -314,7 +314,7 @@ $(document).ready(function() {
    });
    $("#telER").on("keypress", function(evento)
    {
-       $(this).attr('maxlength','13');
+       $(this).attr('maxlength','10');
        $(this).attr('minlength','10');
        let caracter = String.fromCharCode(evento.which);
        if(! /[0-9]/.test(caracter))
@@ -328,6 +328,16 @@ $(document).ready(function() {
         if(! /[A-ZÁÉÍÓÚÜÑa-záéíóúüñ\s]/.test(caracter))
         evento.preventDefault();
    });
+   //Eventos para obtener la fecha de nacimiento a partir de la CURP
+   $("#curpAlu").focusout(function(){
+       $("#fechNacAlu").val(curp2date( $("#curpAlu").val()));
+    });
+    $("#curpAlu").focusin(function(){
+        $("#fechNacAlu").val(curp2date( $("#curpAlu").val()));
+    });
+    $("#curpAlu").keypress(function(){
+        $("#fechNacAlu").val(curp2date( $("#curpAlu").val()));
+    });
 });
 
 //--------------------------------------------------------------------------------------------------------------------------
@@ -374,4 +384,30 @@ function msgCallback(titulo, mensaje, elemento)
             elemento.siblings(".custom-file-label").addClass("selected").html("Seleccionar Archivo");
         }
     });
+}
+//Función para obtener la fecha a partir de la CURP del alumno
+function curp2date(curp) {
+    let actualAnio = ((new Date).getFullYear()).toString();
+    let valido = EXP_REG_CURP.test(curp);
+    if (valido){
+        let fechaNac = curp.substring(4, 10);
+        console.log(fechaNac);
+        let fechaResultante;
+        let anio = fechaNac.substring(0,2);
+        anio = parseInt(anio) + 2000;
+        anio = anio.toString();
+        console.log(anio);
+        let mes = fechaNac.substring(2,4);
+        console.log(mes);
+        let dia = fechaNac.substring(4,6);
+        console.log(dia);
+        if (parseInt(anio) >= actualAnio) {
+            anio = parseInt(anio) - 100;
+            anio = anio.toString();
+            console.log(anio);
+        }
+        fechaResultante = anio+"-"+mes+"-"+dia;
+        console.log(fechaResultante);
+        return fechaResultante;
+    }
 }

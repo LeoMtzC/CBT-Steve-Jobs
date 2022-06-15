@@ -7,15 +7,15 @@
     <!-- Generar carta de presentación -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Carta de autorización</h6>
+            <h6 class="m-0 font-weight-bold text-alumno">Carta de autorización</h6>
         </div>
         <div class="card-body">
             <p>
-                La carta de autorización es un documento que...
+                Para iniciar las prácticas profesionales del semestre, es importante contar con un permiso escrito por parte de tu tutor <i>en puño y letra</i>, por tal motivo te solicitamos imprimir este documento y <b>transcribirlo en una hoja en blanco con tinta negra</b> para posteriormente subirlo a la plataforma.
             </p>
             <br>
             <p>
-                Una vez que generes tu carta de autorización recuerda que...
+                <b>Nota: Recuerda que debe firmar el tutor que te inscribió al CBT, debiendo coincidir con el INE.</b>
             </p>
             <br>
             <p>

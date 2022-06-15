@@ -3,7 +3,7 @@ const EXP_REG_NOMBRE = /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ]{2,}(\s[a-záéíó
 const EXP_REG_MATRICULA = /^[0-9]{10}$/;
 const EXP_REG_SEMESTRE = /^[0-6]{1}$/;
 const EXP_REG_EDAD = /^[0-9]{2,3}$/;
-const EXP_REG_TEL = /^[0-9]{10,13}$/;
+const EXP_REG_TEL = /^[0-9]{10}$/;
 const EXP_REG_NSS = /^[0-9]{11}$/;
 const EXP_REG_EMAIL = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const EXP_REG_CURP = /^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{4}[A-Z0-9]{10}$/;
@@ -29,7 +29,7 @@ const MSJ_ERROR = [
     "Asegúrese de seleccionar una <b>Carrera</b>",
     "La <b>CURP</b> introducida no es válida, asegúrese de cumplir con el formato",
     "El <b>Correo electrónico</b> no tiene un formato válido",
-    "El <b>Número telefónico</b> no es válido. Debe contener entre 10 y 13 digitos",
+    "El <b>Número telefónico</b> no es válido. Debe contener únicamente 10 digitos",
     "La <b>Fecha de Nacimiento</b> no es válida o no cumple con el formato solicitado",
     "El <b>Número de seguro social</b> no es válido. Debe contener entre 11 digitos", //10
     "El <b>Seguro médico</b> introducido no es válido, solo letras",   

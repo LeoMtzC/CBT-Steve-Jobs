@@ -2927,6 +2927,44 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-alumno {
+  color: #fff;
+  background-color: #315380;
+  border-color: #2d4463;
+}
+
+.btn-alumno:hover {
+  color: #fff;
+  background-color: #445d7e;
+  border-color: #3a4d66;
+}
+
+.btn-alumno:focus, .btn-alumno.focus {
+  color: #fff;
+  background-color: #285083;
+  border-color: #223f66;
+  box-shadow: 0 0 0 0.2rem rgba(84, 196, 212, 0.5);
+}
+
+.btn-docente {
+  color: #fff;
+  background-color: #8F612D;
+  border-color: #7a5932;
+}
+
+.btn-docente:hover {
+  color: #fff;
+  background-color: #836744;
+  border-color: #8f6e46;
+}
+
+.btn-docente:focus, .btn-docente.focus {
+  color: #fff;
+  background-color: #8F612D;
+  border-color: #7a5932;
+  box-shadow: 0 0 0 0.2rem rgba(84, 196, 212, 0.5);
+}
+
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
@@ -9591,6 +9629,22 @@ button.bg-dark:focus {
   color: #fff !important;
 }
 
+.text-alumno {
+  color: #183459 !important;
+}
+
+a.text-alumno:hover, a.text-alumno:focus {
+  color: #305464 !important;
+}
+
+.text-docente {
+  color: #8F612D !important;
+}
+
+a.text-docente:hover, a.text-docente:focus {
+  color: #957C53 !important;
+}
+
 .text-primary {
   color: #4e73df !important;
 }
@@ -9947,6 +10001,18 @@ a:focus {
   background-size: cover;
 }
 
+.bg-gradient-alumno {
+  background-color: #183459;
+  background-image: linear-gradient(180deg, #305464 10%, #183459 100%);
+  background-size: cover;
+}
+
+.bg-gradient-docente {
+  background-color: #8F612D;
+  background-image: linear-gradient(180deg, #957C53 10%, #805012 100%);
+  background-size: cover;
+}
+
 .bg-gray-100 {
   background-color: #f8f9fc !important;
 }
@@ -10068,8 +10134,24 @@ a:focus {
   border-left: 0.25rem solid #36b9cc !important;
 }
 
+.border-left-alumno {
+  border-left: 0.25rem solid #183459 !important;
+}
+
+.border-left-docente {
+  border-left: 0.25rem solid #957C53 !important;
+}
+
 .border-bottom-info {
   border-bottom: 0.25rem solid #36b9cc !important;
+}
+
+.border-bottom-alumno {
+  border-bottom: 0.25rem solid #183459 !important;
+}
+
+.border-bottom-docente {
+  border-bottom: 0.25rem solid #957C53 !important;
 }
 
 .border-left-warning {
@@ -10449,7 +10531,7 @@ a:focus {
 }
 
 .sidebar .sidebar-brand {
-  height: 4.375rem;
+  height: 10rem;/* height: 4.375rem; */
   text-decoration: none;
   font-size: 1rem;
   font-weight: 800;

@@ -9,7 +9,7 @@
     <!-- Card Header - Accordion -->
     <a href="#collapseCardDatos" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardDatos">
-        <h6 class="m-0 font-weight-bold text-primary">Datos personales</h6>
+        <h6 class="m-0 font-weight-bold text-alumno">Datos personales</h6>
     </a>
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="collapseCardDatos">
@@ -69,7 +69,7 @@
                     <div class="form-group col-md-4">
                         <label for="fechNacAlu">Fecha de nacimiento</label>
                         <input type="date" class="form-control" id="fechNacAlu" placeholder="" name="fechNacAlu"
-                            required>
+                            required readonly>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="nssAlu">Numero de seguro social</label>
@@ -94,7 +94,7 @@
     <!-- Card Header - Accordion -->
     <a href="#collapseCardDomicilio" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardDomicilio">
-        <h6 class="m-0 font-weight-bold text-primary">Datos domiciliarios</h6>
+        <h6 class="m-0 font-weight-bold text-alumno">Datos domiciliarios</h6>
     </a>
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="collapseCardDomicilio">
@@ -123,8 +123,8 @@
                             name="calleAlu" required>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="coloniaAlu">Colonia</label>
-                        <input type="text" class="form-control" id="coloniaAlu" placeholder="Colonia"
+                        <label for="coloniaAlu">Colonia o localidad</label>
+                        <input type="text" class="form-control" id="coloniaAlu" placeholder="Colonia o localidad"
                             name="coloniaAlu" required>
                     </div>
                     <div class="form-group col-md-4">

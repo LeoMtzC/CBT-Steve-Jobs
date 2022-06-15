@@ -19,7 +19,7 @@
 <div class="row">
     <!-- Fecha -->
     <div class="col-xl-12 col-md-6 mb-4 justify-content-end d-flex">
-        <div class="card border-left-success shadow h-100 py-2">
+        <div class="card border-left-docente shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
@@ -46,17 +46,17 @@
     <div class="row">
         <div class="col-lg-5">
             <!-- Default Card Example -->
-            <div class="card border-bottom-success shadow h-100 py-2">
+            <div class="card border-bottom-docente shadow h-100 py-2">
                 <div class="card-body">
-                    <p class="h5">
+                    <p>
                         Bienvenido/a, ha ingresado como administrador, por lo que desde esta página usted podrá registrar y consultar grupos o alumnos.
                     </p>
                     <br>
-                    <p class="h5">
+                    <p>
                         Antes de registrar alumnos es necesario dar de alta los grupos, esto evitara problemas durante el proceso de registro.
                     </p>
                     <br>
-                    <p class="h5">
+                    <p>
                         Puede consultar las diferentes secciones de seguimiento para estar al tanto de los documentos y avances proporcionados por los alumnos.
                     </p>
                 </div>
@@ -65,7 +65,7 @@
 
         <div class="col-lg-7">
             <!-- Dropdown Card Example -->
-            <div class="card border-bottom-success shadow h-100 py-2">
+            <div class="card border-bottom-docente shadow h-100 py-2">
                 <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"

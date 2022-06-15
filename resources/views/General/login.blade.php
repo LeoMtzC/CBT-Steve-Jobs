@@ -23,7 +23,7 @@
     <link rel="icon" href="../../../img/icono.png">
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-alumno">
 
     <div class="container h-100">
 
@@ -53,7 +53,7 @@
                                             <input type="password" class="form-control form-control-user"
                                                 id="password" placeholder="Contraseña">
                                         </div>
-                                        <a href="{{route('homeAlumno')}}" class="btn btn-primary btn-user btn-block">
+                                        <a href="{{route('homeAlumno')}}" class="btn btn-docente btn-user btn-block">
                                             Entrar
                                         </a>
                                     </form>

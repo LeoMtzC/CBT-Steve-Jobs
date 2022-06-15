@@ -62,7 +62,7 @@ Route::get('generar-carta-presentacion', function () {
 Route::get('generar-carta-aceptacion', function () {
     return view('Alumno.generar.cartaAcep');
 })->name('GCartaAcep');
-//Carta de termino
+//Carta de termino *-*EN DESUSO*-*
 Route::get('generar-carta-termino', function () {
     return view('Alumno.generar.cartaTer');
 })->name('GCartaTer');
@@ -88,10 +88,10 @@ Route::get('subir-carta-presentacion', function () {
 Route::get('subir-carta-aceptacion', function () {
     return view('Alumno.subir.cartaAcep');
 })->name('SCartaAcep');
-//Carta de termino
-Route::get('subir-carta-termino', function () {
-    return view('Alumno.subir.cartaTer');
-})->name('SCartaTer');
+//Constancia de término
+Route::get('subir-constancia-termino', function () {
+    return view('Alumno.subir.consTer');
+})->name('SConstaTer');
 //Informe
 Route::get('subir-informe', function () {
     return view('Alumno.subir.informe');

@@ -1,12 +1,13 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-alumno sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('homeAlumno')}}">
-    <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fa fa-graduation-cap"></i>
+    <div class="sidebar-brand-icon">
+        <img class="img-fluid" style="width: 75%; height: auto;"
+                            src="img/halcones.png" alt="imagen docente">
     </div>
-    <div class="sidebar-brand-text mx-3">CBT<br><sup> Steve Jobs</sup></div>
+    <!-- <div class="sidebar-brand-text mx-3">CBT<br><sup> Steve Jobs</sup></div> -->
 </a>
 
 <!-- Divider -->
@@ -66,7 +67,7 @@
             <a class="collapse-item" href="{{route('GCartaAut')}}">Carta de autorización</a>
             <a class="collapse-item" href="{{route('GCartaPres')}}">Carta de presentación</a>
             <a class="collapse-item" href="{{route('GCartaAcep')}}">Carta de aceptación</a>
-            <a class="collapse-item" href="{{route('GCartaTer')}}">Carta de termino</a>
+            <!-- <a class="collapse-item" href="{{route('GCartaTer')}}">Carta de termino</a>  Se removió, solo el docente puede generar-->
             <a class="collapse-item" href="{{route('GInforme')}}">Informe</a>
             <a class="collapse-item" href="{{route('GBitacora')}}">Bitácora</a>
         </div>
@@ -94,7 +95,7 @@
             <a class="collapse-item" href="{{route('SCartaAut')}}">Carta de autorización</a>
             <a class="collapse-item" href="{{route('SCartaPres')}}">Carta de presentación</a>
             <a class="collapse-item" href="{{route('SCartaAcep')}}">Carta de aceptación</a>
-            <a class="collapse-item" href="{{route('SCartaTer')}}">Carta de termino</a>
+            <a class="collapse-item" href="{{route('SConstaTer')}}">Constancia de término</a>
             <a class="collapse-item" href="{{route('SInforme')}}">Informe</a>
             <a class="collapse-item" href="{{route('SMTP')}}">MTP</a>
         </div>
