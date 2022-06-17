@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" id="btnActualuarDatosTutor">Actualizar</button>
+                    <button type="submit" class="btn btn-alumno" id="btnActualuarDatosTutor">Actualizar</button>
                 </div>
             </form>
         </div>

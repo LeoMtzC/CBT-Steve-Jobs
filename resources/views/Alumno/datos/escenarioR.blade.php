@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" id="btnActualuarDatosEscReal">Actualizar</button>
+                    <button type="submit" class="btn btn-alumno" id="btnActualuarDatosEscReal">Actualizar</button>
                 </div>
             </form>
         </div>

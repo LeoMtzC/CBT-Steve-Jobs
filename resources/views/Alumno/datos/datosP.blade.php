@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" id="btnActualuarDatosPer">Actualizar</button>
+                    <button type="submit" class="btn btn-alumno" id="btnActualuarDatosPer">Actualizar</button>
                 </div>
             </form>
         </div>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" id="btnActualuarDatosDom">Actualizar</button>
+                    <button type="submit" class="btn btn-alumno" id="btnActualuarDatosDom">Actualizar</button>
                 </div>
             </form>
         </div>

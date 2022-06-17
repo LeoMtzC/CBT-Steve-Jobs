@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-primary" id="genCartaPres"><i class="fas fa-file-download"></i> Generar</button>
+                <button type="button" class="btn btn-alumno" id="genCartaPres"><i class="fas fa-file-download"></i> Generar</button>
             </div>
         </div>
     </div>

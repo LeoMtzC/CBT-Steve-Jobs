@@ -107,10 +107,36 @@ $(document).ready(function() {
         }
     });
 
-
-
-
-
+    //Validación - subir archivo excel
+    $("#btnSubirArcExc").on("click",function(e) {
+        e.preventDefault();
+        if($("#archivoExcel").val() == ""){
+            msgError("<b>Atención</b>",
+                    "Antes debe subir un archivo de tipo <i><b>Excel</b></i> válido <b>(<i>.xls</i> o <i>.xlsx</i>)</b>.");
+        }else{
+            msg("Ok", "Acciones correspondientes");
+        }
+    });
+    $("#archivoExcel").on('change', function(){
+        var ext = $( this ).val().split('.').pop();
+        if ($(this).val() != "") {
+          if(ext == "xls" || ext == "xlsx"){
+            if($(this)[0].files[0].size > 10485760){ // 10 MB
+                $(this).val("");
+                msgCallback("<b>Atención</b>",
+                "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 10MB.",
+                $("#archivoExcel"));
+            }
+          }
+          else
+          {
+            $(this).val("");
+            msgCallback("<b>Atención</b>",
+                    "El archivo <i><b>Excel</b></i> debe ser un archivo válido <b>(<i>.xls</i> o <i>.xlsx</i>)</b>.",
+                    $("#archivoExcel"));
+          }
+        }
+    });
 
 
     //--------------------------------------------------------------------------------------------------------------------------
@@ -126,8 +152,8 @@ $(document).ready(function() {
    });
    $("#matrAlu").on("keypress", function(evento)
    {
-       $(this).attr('maxlength','8');
-       $(this).attr('minlength','8');
+       $(this).attr('maxlength','10');
+       $(this).attr('minlength','10');
        let caracter = String.fromCharCode(evento.which);
        if(! /[0-9]/.test(caracter))
            evento.preventDefault();

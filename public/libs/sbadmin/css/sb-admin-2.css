@@ -2907,6 +2907,28 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(90, 92, 105, 0.5);
 }
 
+.btn-outline-docente {
+  color: #957C53;
+  border-color: #867353;
+}
+
+.btn-outline-docente:hover {
+  color: #000000;
+  background-color: #c5a673;
+  border-color: #f8f9fc;
+}
+
+.btn-outline-alumno {
+  color: #2a415f;
+  border-color: #183459;
+}
+
+.btn-outline-alumno:hover {
+  color: #fff8f8;
+  background-color: #39495e;
+  border-color: #f8f9fc;
+}
+
 .btn-link {
   font-weight: 400;
   color: #4e73df;
@@ -11364,4 +11386,49 @@ body.sidebar-toggled footer.sticky-footer {
 
 .custom-file-input ~ .custom-file-label::after {
     content: "Elegir";
+}
+
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  opacity: 0.7;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.preview {
+  color: #555;
+  width: 100%;
+  text-align: center;
+  height: 90px;
+  line-height: 40px;
+  letter-spacing: 8px;
+  border: 1px dashed #888;
+  font-family: "monospace";
+  position: relative;
+}
+
+.capcode { 
+  font-size: 46px; 
+  display: block; 
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; 
+  cursor: default;
+  letter-spacing: 1px;
+  color: #ccc;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.caperror{
+  color: red; 
+  font-size: 12px; 
+  display: inline-block; 
+  height: 5px;
+  font-weight: 400;
 }

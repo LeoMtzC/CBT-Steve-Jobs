@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-docente text-uppercase mb-1">
                             Hoy es</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <?php
@@ -66,10 +66,15 @@
         <div class="col-lg-7">
             <!-- Dropdown Card Example -->
             <div class="card border-bottom-docente shadow h-100 py-2">
-                <div class="card-body">
+                <div class="card-body" style="position: relative;">
                     <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                            src="img/undraw_organizing.svg" alt="imagen docente">
+                        <!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                            src="img/undraw_organizing.svg" alt="imagen docente"> -->
+                        <img class="img-fluid rounded" style="width: 100%; height: auto;"
+                            src="img/CBTSJ.png" alt="imagen docente">    
+                        <div class="text-block">
+                            <p><b>CBT</b><br>Steve Jobs, Joquicingo</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@
                     <label class="custom-file-label" for="subirInforme">Seleccionar Archivo</label>
                 </div>
                 <div class="mt-3">
-                <button type="submit" class="btn btn-primary" id="btnSubirInforme"><i class="fas fa-file-upload"></i> Subir</button>
+                <button type="submit" class="btn btn-alumno" id="btnSubirInforme"><i class="fas fa-file-upload"></i> Subir</button>
                 </div>
             </form>
         </div>

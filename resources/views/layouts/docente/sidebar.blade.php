@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-docente sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('homeAlumno')}}">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('homeDocente')}}">
     <div class="sidebar-brand-icon">
         <img class="img-fluid" style="width: 75%; height: auto;"
                             src="img/halcones.png" alt="imagen docente">

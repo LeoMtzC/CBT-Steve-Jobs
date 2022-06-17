@@ -8,7 +8,7 @@ function validaDatosAlu(datos) {
     colorInput(EXP_REG_NOMBRE.test(datos[1].value), $("#apPatAlu"), err, 1);
     colorInput(EXP_REG_NOMBRE.test(datos[2].value), $("#apMatAlu"), err, 2);
     colorInput(EXP_REG_MATRICULA.test(datos[3].value), $("#matrAlu"), err, 3);
-    colorInput(EXP_REG_SEMESTRE.test(datos[4].value), $("#semesAlu"), err, 4);
+    colorInput(datos[4].value !== "", $("#semesAlu"), err, 4);
     colorInput(datos[5].value !== "", $("#carreraAlu"), err, 5);
     colorInput(datos[6].value !== "", $("#grupoAlu"), err, 23);
     return err;
