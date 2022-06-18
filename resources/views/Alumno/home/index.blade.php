@@ -20,11 +20,11 @@
 <div class="row">
     <!-- Fecha -->
     <div class="col-xl-12 col-md-6 mb-4 justify-content-end d-flex">
-        <div class="card border-left-info shadow h-100 py-2">
+        <div class="card border-left-alumno shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-alumno text-uppercase mb-1">
                             Hoy es</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <?php
@@ -46,7 +46,7 @@
 <div class="content-row">
     <div class="row">
         <div class="col-lg-7">
-            <div class="card border-bottom-info shadow h-100 py-2">
+            <div class="card border-bottom-alumno shadow h-100 py-2">
                 <div class="card-body">
                     <p>
                         Recuerda mantener actualizados tus datos personales en la sección <b>'Mis datos'</b>.
@@ -68,7 +68,7 @@
                     </p>
                     <div class="row mt-3">
                         <div class="col-sm-12 text-center">
-                            <button type="button" class="btn btn-info btn-icon center-block"
+                            <button type="button" class="btn btn-alumno btn-icon center-block"
                                 onclick="window.location.href='https://play.google.com/store/apps/details?id=com.microsoft.office.officelens&hl=es_MX&gl=US'"
                                 style="
                                         width: 50px;
@@ -79,7 +79,7 @@
                                         line-height: 1.33;">
                                 <i class="fab fa-google-play"></i>
                             </button>
-                            <button type="button" class="btn btn-info btn-icon center-block"
+                            <button type="button" class="btn btn-alumno btn-icon center-block"
                                 onclick="window.location.href='https://apps.apple.com/us/app/microsoft-lens-pdf-scanner/id975925059?itsct=apps_box_link&itscg=30200'"
                                 style="
                                         width: 50px;
@@ -98,7 +98,7 @@
 
         <div class="col-lg-5 h-100">
             <!-- Dropdown Card Example -->
-            <div class="card border-bottom-info shadow h-100 py-2">
+            <div class="card border-bottom-alumno shadow h-100 py-2">
                 <div class="card-body">
                     <div>
                         <p>

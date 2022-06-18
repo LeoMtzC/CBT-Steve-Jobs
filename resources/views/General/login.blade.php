@@ -23,7 +23,7 @@
     <link rel="icon" href="../../../img/icono.png">
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-alumno">
 
     <div class="container h-100">
 
@@ -31,7 +31,7 @@
         <div class="row d-flex justify-content-md-center align-items-center vh-100">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
-                
+
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -42,20 +42,32 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Iniciar sesión</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" id="formLogin">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="usuer"
-                                                placeholder="Matrícula"
-                                                pattern="[0-9]+">
+                                            <input type="number" class="form-control form-control-user" id="user" name="user" required
+                                                placeholder="Matrícula" pattern="[0-9]+" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="password" placeholder="Contraseña">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" required
+                                                placeholder="Contraseña" />
                                         </div>
-                                        <a href="{{route('homeAlumno')}}" class="btn btn-primary btn-user btn-block">
-                                            Entrar
-                                        </a>
+                                        <div class="input-group mb-3">
+                                            <div id="captchaImagenCodigo" class="preview">
+                                                <canvas id="CapCode" class="capcode" style="width:100%; height:100%"></canvas>
+                                            </div>
+                                            <input type="text" class="form-control form-control-user" 
+                                                id="usuarioCaptcha" placeholder="Ingrese el código de seguridad"
+                                                aria-label="Captcha" aria-describedby="basic-addon2" required />  
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-alumno refresh" type="button" id="refreshCaptcha" onclick='crearCaptcha();'><i class="fas fa-redo "></i></button>
+                                            </div>
+                                        </div>
+                                        <span id="msjErrorCaptcha" class="caperror"></span>
+                                        <hr>
+                                        <button type="submit" id="btnLogin"
+                                            class="btn btn-docente btn-user btn-block">
+                                                Entrar
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -79,6 +91,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('libs/sbadmin/js/sb-admin-2.js')}}"></script>
+
+    <!-- Bootbox -->
+    <script src="{{asset('libs/sbadmin/js/bootbox.all.min.js')}}"></script>
+
+    <!-- Scripts para login-->
+    <script src="{{asset('libs//scripts/functionsLogin.js')}}"></script>
+    <script src="{{asset('libs//scripts/constantes.js')}}"></script>
 
 </body>
 

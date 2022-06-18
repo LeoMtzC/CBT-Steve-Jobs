@@ -107,10 +107,38 @@ $(document).ready(function() {
         }
     });
 
-
-
-
-
+    //Validación - subir archivo excel
+    $("#btnSubirArcExc").on("click",function(e) {
+        e.preventDefault();
+        if($("#archivoExcel").val() == ""){
+            msgError("<b>Atención</b>",
+                    "Antes debe subir un archivo de tipo <i><b>Excel</b></i> válido <b>(<i>.xls</i> o <i>.xlsx</i>)</b>.");
+        }else{
+            msg("Ok", "Acciones correspondientes");
+        }
+    });
+    $("#archivoExcel").on('change', function(){
+        //var ext = $( this ).val().split('.').pop();
+        var nombreArc = $( this ).val().split('\\').pop();
+        console.log(nombreArc);
+        if ($(this).val() != "") {
+          if(nombreArc == "FORMATO_REGISTRO_ALUMNOS.xls" || nombreArc == "FORMATO_REGISTRO_ALUMNOS.xlsx"){
+            if($(this)[0].files[0].size > 10485760){ // 10 MB
+                $(this).val("");
+                msgCallback("<b>Atención</b>",
+                "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 10MB.",
+                $("#archivoExcel"));
+            }
+          }
+          else
+          {
+            $(this).val("");
+            msgCallback("<b>Atención</b>",
+                    "El archivo <i><b>Excel</b></i> no coincide con el formato específicado para el registro.<br>Utilice el siguiente:<br><b>(<i>FORMATO_REGISTRO_ALUMNOS.xls</i> o <i>FORMATO_REGISTRO_ALUMNOS.xlsx</i>)</b>.",
+                    $("#archivoExcel"));
+          }
+        }
+    });
 
 
     //--------------------------------------------------------------------------------------------------------------------------
@@ -126,8 +154,8 @@ $(document).ready(function() {
    });
    $("#matrAlu").on("keypress", function(evento)
    {
-       $(this).attr('maxlength','8');
-       $(this).attr('minlength','8');
+       $(this).attr('maxlength','10');
+       $(this).attr('minlength','10');
        let caracter = String.fromCharCode(evento.which);
        if(! /[0-9]/.test(caracter))
            evento.preventDefault();

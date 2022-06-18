@@ -9,7 +9,7 @@
     <!-- Card Header - Accordion -->
     <a href="#collapseCardDatos" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardDatos">
-        <h6 class="m-0 font-weight-bold text-success">Datos generales</h6>
+        <h6 class="m-0 font-weight-bold text-docente">Datos generales</h6>
     </a>
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="collapseCardDatos">
@@ -36,13 +36,23 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="semesAlu">Semestre</label>
-                        <input type="text" class="form-control" id="semesAlu" name="semesAlu" placeholder="Semestre">
+                        <!-- <input type="text" class="form-control" id="semesAlu" name="semesAlu" placeholder="Semestre"> -->
+                        <select id="semesAlu" name="semesAlu" class="form-control">
+                            <option value="" selected>Seleccione una opción...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="carreraAlu">Carrera</label>
                         <select id="carreraAlu" name="carreraAlu" class="form-control">
                             <option value="" selected>Seleccione una opción...</option>
-                            <option>...</option>
+                            <option>Informática</option>
+                            <option>Expresión gráfica digital</option>
                         </select>
                     </div>
                 </div>
@@ -62,12 +72,33 @@
                         </span>
                         <span class="text">Limpiar</span>
                     </a>
-                    <button id="btnRegAlu" type="submit" class="btn btn-success">Registrar</button>
+                    <button id="btnRegAlu" type="submit" class="btn btn-docente">Registrar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<!-- Cargar archivo excel -->
+<div class="card shadow mb-4">  
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-docente">Registrar por medio de archivo excel</h6>
+        </div>
+        <div class="card-body">
+            <p>
+                A continuación usted puede utilizar un archivo <b>Excel</b> para registrar a los alumnos, asegúrese que el archivo cuente con los campos en el orden correcto.
+            </p>
+            <br>
+            <form>
+                <div class="custom-file">
+                    <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="custom-file-input" id="archivoExcel" lang="es">
+                    <label class="custom-file-label" for="archivoExcel">Seleccionar Archivo</label>
+                </div>
+                <div class="mt-3">
+                <button type="submit" class="btn btn-docente" id="btnSubirArcExc"><i class="fas fa-file-upload"></i> Subir</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 <!-- Limpiar Modal-->
@@ -84,7 +115,7 @@
                 <div class="modal-body">El formulario quedará en blanco ¿continuar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-success" id="limpiarButtonAlu"" type="button" data-dismiss="modal">Limpiar</button>
+                    <button class="btn btn-docente" id="limpiarButtonAlu"" type="button" data-dismiss="modal">Limpiar</button>
                 </div>
             </div>
         </div>

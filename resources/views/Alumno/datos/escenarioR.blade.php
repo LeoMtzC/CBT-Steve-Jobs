@@ -7,7 +7,7 @@
     <!-- Datos del escenario real -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Datos</h6>
+            <h6 class="m-0 font-weight-bold text-alumno">Datos</h6>
         </div>
         <div class="card-body">
             <form id="formDatosEscReal">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" id="btnActualuarDatosEscReal">Actualizar</button>
+                    <button type="submit" class="btn btn-alumno" id="btnActualuarDatosEscReal">Actualizar</button>
                 </div>
             </form>
         </div>

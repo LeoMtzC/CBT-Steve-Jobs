@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-success">Alumnos</h6>
+        <h6 class="m-0 font-weight-bold text-docente">Alumnos</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive table-hover">
@@ -67,7 +67,7 @@
     <!-- Card Header - Accordion -->
     <a href="#collapseCardDatos" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardDatos">
-        <h6 class="m-0 font-weight-bold text-success">Datos del alumno</h6>
+        <h6 class="m-0 font-weight-bold text-docente">Datos del alumno</h6>
     </a>
 
     <!-- Card Content - Collapse -->
@@ -128,7 +128,7 @@
                     <span class="text">Ver Historial</span>
                 </a>
 
-                <button id="btnDatos" href="#" class="btn btn-success btn-icon-split" data-toggle="modal"
+                <button id="btnDatos" href="#" class="btn btn-docente btn-icon-split" data-toggle="modal"
                     data-target="#modalDatos">
                     <span class="icon text-white-50">
                         <i class="fas fa-address-card"></i>
@@ -234,7 +234,7 @@
                         </select>
                     </div>
                     <div class="text-right">
-                        <button type="submit" id="btnModAlu" class="btn btn-success">Guardar cambios</button>
+                        <button type="submit" id="btnModAlu" class="btn btn-docente">Guardar cambios</button>
                     </div>
                 </form>
             </div>

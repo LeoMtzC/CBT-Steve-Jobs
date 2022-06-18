@@ -6,21 +6,18 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-success">Prácticas de observación</h6>
+        <h6 class="m-0 font-weight-bold text-docente">Prácticas de observación</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive table-hover">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Grupo</th>
                         <th>Carrera</th>
-                        <th>Aula</th>
                         <th>Semestre</th>
-                        <th>Autori 1</th>
-                        <th>1° Practica</th>
-                        <th>Autori 2</th>
-                        <th>2° Practica</th>
+                        <th>Permiso</th>
+                        <th>Guía de observación</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,9 +25,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="fas fa-exclamation-triangle"></i></i></td>
                     </tr>
@@ -38,9 +32,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -48,9 +39,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -58,9 +46,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -68,9 +53,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -79,13 +61,13 @@
         </div>
         <br>
         <div id="btnsPOHistGrup" hidden class="text-right">
-            <a id="btnPODetHistGrup" href="{{route('PractObs_Alumnos')}}" class="btn btn-info btn-icon-split">
+            <a id="btnPODetHistGrup" href="{{route('PractObs_Alumnos')}}" class="btn btn-alumno btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-edit"></i>
                 </span>
                 <span class="text">Ver  detalles</span>
             </a>
-            <button id="btnPOHRepGrup" class="btn btn-success btn-icon-split">
+            <button id="btnPOHRepGrup" class="btn btn-docente btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-history"></i>
                 </span>

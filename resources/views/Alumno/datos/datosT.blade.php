@@ -7,7 +7,7 @@
     <!-- Datos del tutor -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tutor</h6>
+            <h6 class="m-0 font-weight-bold text-alumno">Tutor</h6>
         </div>
         <div class="card-body">
             <form id="formDatosTutor">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary" id="btnActualuarDatosTutor">Actualizar</button>
+                    <button type="submit" class="btn btn-alumno" id="btnActualuarDatosTutor">Actualizar</button>
                 </div>
             </form>
         </div>

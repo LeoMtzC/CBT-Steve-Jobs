@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-success">Datos del alumno</h6>
+        <h6 class="m-0 font-weight-bold text-docente">Datos del alumno</h6>
     </div>
     <div class="card-body">
         <!-- Datos -->
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="text-right">
-                <button type="submit" id="btnGenCT" class="btn btn-success">Generar C. Termino</button>
+                <button type="submit" id="btnGenCT" class="btn btn-docente">Generar C. Termino</button>
             </div>
         </form>
         <hr>
@@ -96,7 +96,7 @@
                 </select>
             </div>
             <div class="form-group col-md-4">
-                <button type="button" class="btn btn-info">Consultar</button>
+                <button type="button" class="btn btn-alumno">Consultar</button>
             </div>
         </div>
     </div>

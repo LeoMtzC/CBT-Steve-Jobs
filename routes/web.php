@@ -50,6 +50,10 @@ Route::get('escenario-real', function () {
 })->name('EscenarioR');
 
 //GENERAR
+//Permiso
+Route::get('generar-permiso', function () {
+    return view('Alumno.generar.permiso');
+})->name('GPermiso');
 //Carta de autorización
 Route::get('generar-carta-autorizacion', function () {
     return view('Alumno.generar.cartaAut');
@@ -62,7 +66,7 @@ Route::get('generar-carta-presentacion', function () {
 Route::get('generar-carta-aceptacion', function () {
     return view('Alumno.generar.cartaAcep');
 })->name('GCartaAcep');
-//Carta de termino
+//Carta de termino *-*EN DESUSO*-*
 Route::get('generar-carta-termino', function () {
     return view('Alumno.generar.cartaTer');
 })->name('GCartaTer');
@@ -76,6 +80,14 @@ Route::get('generar-cartaAut', function () {
 })->name('GBitacora');
 
 //SUBIR
+//Permiso
+Route::get('subir-permiso', function () {
+    return view('Alumno.subir.permiso');
+})->name('SPermiso');
+//Guía de observación
+Route::get('subir-guia-observacion', function () {
+    return view('Alumno.subir.guiaObs');
+})->name('SGuiaObs');
 //Carta de autorización
 Route::get('subir-carta-autorizacion', function () {
     return view('Alumno.subir.cartaAut');
@@ -88,14 +100,18 @@ Route::get('subir-carta-presentacion', function () {
 Route::get('subir-carta-aceptacion', function () {
     return view('Alumno.subir.cartaAcep');
 })->name('SCartaAcep');
-//Carta de termino
-Route::get('subir-carta-termino', function () {
-    return view('Alumno.subir.cartaTer');
-})->name('SCartaTer');
+//Constancia de término
+Route::get('subir-constancia-termino', function () {
+    return view('Alumno.subir.consTer');
+})->name('SConstaTer');
 //Informe
 Route::get('subir-informe', function () {
     return view('Alumno.subir.informe');
 })->name('SInforme');
+//Bitácoras
+Route::get('subir-bitacoras', function () {
+    return view('Alumno.subir.bitacoras');
+})->name('SBitacoras');
 //MTP
 Route::get('subir-MTP', function () {
     return view('Alumno.subir.MTP');
