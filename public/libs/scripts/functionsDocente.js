@@ -118,9 +118,11 @@ $(document).ready(function() {
         }
     });
     $("#archivoExcel").on('change', function(){
-        var ext = $( this ).val().split('.').pop();
+        //var ext = $( this ).val().split('.').pop();
+        var nombreArc = $( this ).val().split('\\').pop();
+        console.log(nombreArc);
         if ($(this).val() != "") {
-          if(ext == "xls" || ext == "xlsx"){
+          if(nombreArc == "FORMATO_REGISTRO_ALUMNOS.xls" || nombreArc == "FORMATO_REGISTRO_ALUMNOS.xlsx"){
             if($(this)[0].files[0].size > 10485760){ // 10 MB
                 $(this).val("");
                 msgCallback("<b>Atención</b>",
@@ -132,7 +134,7 @@ $(document).ready(function() {
           {
             $(this).val("");
             msgCallback("<b>Atención</b>",
-                    "El archivo <i><b>Excel</b></i> debe ser un archivo válido <b>(<i>.xls</i> o <i>.xlsx</i>)</b>.",
+                    "El archivo <i><b>Excel</b></i> no coincide con el formato específicado para el registro.<br>Utilice el siguiente:<br><b>(<i>FORMATO_REGISTRO_ALUMNOS.xls</i> o <i>FORMATO_REGISTRO_ALUMNOS.xlsx</i>)</b>.",
                     $("#archivoExcel"));
           }
         }

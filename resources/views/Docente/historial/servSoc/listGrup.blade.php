@@ -11,16 +11,17 @@
     <div class="card-body">
         <div class="table-responsive table-hover">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+            <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Grupo</th>
                         <th>Carrera</th>
-                        <th>Aula</th>
                         <th>Semestre</th>
-                        <th>Autori 1</th>
-                        <th>1° Practica</th>
-                        <th>Autori 2</th>
-                        <th>2° Practica</th>
+                        <th>Carta de autorización</th>
+                        <th>Carta de presentación</th>
+                        <th>Carta de aceptación</th>
+                        <th>Constancia de término</th>
+                        <th>Informe</th>
+                        <th>Bitácoras</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
+                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
@@ -43,15 +45,6 @@
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
@@ -63,12 +56,25 @@
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>

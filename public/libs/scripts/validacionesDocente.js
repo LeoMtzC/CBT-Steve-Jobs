@@ -50,7 +50,6 @@ function colorInput(valido, elem, arr, n) {
         arr.push(n);
     }
 }
-
 function removeColor(form){
     $(form).each(function(){
         $(this).removeClass('is-invalid');

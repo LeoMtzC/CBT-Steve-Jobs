@@ -13,14 +13,11 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Grupo</th>
                         <th>Carrera</th>
-                        <th>Aula</th>
                         <th>Semestre</th>
-                        <th>Autori 1</th>
-                        <th>1° Practica</th>
-                        <th>Autori 2</th>
-                        <th>2° Practica</th>
+                        <th>Permiso</th>
+                        <th>Guía de observación</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,9 +25,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="fas fa-exclamation-triangle"></i></i></td>
                     </tr>
@@ -38,9 +32,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -48,9 +39,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -58,9 +46,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
@@ -68,9 +53,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>

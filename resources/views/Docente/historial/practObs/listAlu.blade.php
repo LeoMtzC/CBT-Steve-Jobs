@@ -29,56 +29,50 @@
         <hr>
         <div class="table-responsive table-hover">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+            <thead>
                     <tr>
-                        <th>Matrícula</th>
-                        <th>Nombre completo</th>
-                        <th>Presentación</th>
-                        <th>Aceptación</th>
-                        <th>Termino</th>
-                        <th>Liberación</th>
+                    <th>Grupo</th>
+                        <th>Carrera</th>
+                        <th>Semestre</th>
+                        <th>Permiso</th>
+                        <th>Guía de observación</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
+                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="fas fa-clock"></i></td>
-                        <td><i class="fas fa-exclamation-triangle"></i></td>
+                        <td><i class="fas fa-exclamation-triangle"></i></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                    </tr>
-                    <tr>
                         <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
+                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
+                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="fas fa-clock"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
                     </tr>
                 </tbody>
             </table>
