@@ -14,13 +14,13 @@ class DocumentosSeeder extends Seeder
      */
     public function run()
     {
-        $doc = new Documento();
-        $doc->nombre = "Permiso";
-        $doc->descripcion = "Autorización del tutor para llevar a cabo dicha actividad";
-        $doc->semestrereq = 1;
-        $doc->horasreq = 0;
-        $doc->estado = 1;
-        $doc->save();
+        $doc3 = new Documento();
+        $doc3->nombre = "Carta de Autorización";
+        $doc3->descripcion = "Autoriza al estudiante a continuar su proceso";
+        $doc3->semestrereq = 5;
+        $doc3->horasreq = 0;
+        $doc3->estado = 1;
+        $doc3->save();
 
         $doc1 = new Documento();
         $doc1->nombre = "Carta de Presentación";
@@ -38,24 +38,16 @@ class DocumentosSeeder extends Seeder
         $doc2->estado = 1;
         $doc2->save();
         
-        $doc3 = new Documento();
-        $doc3->nombre = "Carta de Autorización";
-        $doc3->descripcion = "Autoriza al estudiante a continuar su proceso";
-        $doc3->semestrereq = 5;
-        $doc3->horasreq = 0;
-        $doc3->estado = 1;
-        $doc3->save();
-        
         $doc4 = new Documento();
-        $doc4->nombre = "Carta de Termino Practicas de Ejecución";
-        $doc4->descripcion = "Certifica haber concluido 30 horas de prácticas de ejecución";
+        $doc4->nombre = "Constancia de Término Practicas de Ejecución";
+        $doc4->descripcion = "Certifica haber concluido 100 horas de prácticas de ejecución";
         $doc4->semestrereq = 3;
-        $doc4->horasreq = 30;
+        $doc4->horasreq = 100;
         $doc4->estado = 1;
         $doc4->save();
         
         $doc5 = new Documento();
-        $doc5->nombre = "Carta de Termino Servicio Social";
+        $doc5->nombre = "Constancia de Término Servicio Social";
         $doc5->descripcion = "Certifica la finalización del Servicio Social";
         $doc5->semestrereq = 5;
         $doc5->horasreq = 480;
@@ -63,7 +55,7 @@ class DocumentosSeeder extends Seeder
         $doc5->save();
 
         $doc6 = new Documento();
-        $doc6->nombre = "Carta de Termino Estadías";
+        $doc6->nombre = "Constancia de Término Estadías";
         $doc6->descripcion = "Certifica la finalización de las estadías";
         $doc6->semestrereq = 6;
         $doc6->horasreq = 150;

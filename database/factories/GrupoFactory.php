@@ -19,8 +19,9 @@ class GrupoFactory extends Factory
         return [
             'id_carrera' => Carrera::inRandomOrder()->first(),
             'clave' => $this->faker->asciify('********'),
+            'grupo' => $this->faker->bothify('####****'),
             'semestre' => $this->faker->numberBetween(1,6),
-            'aula' => $this->faker->numberBetween(1,12),
+            'generacion' => $this->faker->year(),
             'estado' => 1,
         ];
     }
