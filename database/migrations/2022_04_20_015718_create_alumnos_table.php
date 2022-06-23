@@ -35,6 +35,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('semestre');
             $table->year('generacion');
             $table->string('curp', 18)->default('SR');
+            $table->char('sexo',1);
             $table->string('telefono', 10)->default('SR');
             $table->string('correo', 60)->default('SR');
             $table->foreignId('id_domicilio')
