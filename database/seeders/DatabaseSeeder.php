@@ -37,11 +37,11 @@ class DatabaseSeeder extends Seeder
         Docs_alumno::factory(10)->create();
         Datos_tutor::factory(10)->create();
         Escenarios::factory(10)->create();
-        User::factory(10)
+        /*User::factory(10)
             ->has(
                 Alumno::factory()
                     ->has(HistorialAcLab::factory()->count(2)->create();)
                     ->count(1)
-                )->create();
+                )->create();*/
     }
 }
