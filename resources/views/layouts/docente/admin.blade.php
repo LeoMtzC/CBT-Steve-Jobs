@@ -27,7 +27,7 @@
 </head>
 
 <body id="page-top">
-
+    @auth
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -81,7 +81,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <b>Docente: </b> {{auth()->user()->nombre}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{asset('img/undraw_profile.svg')}}">
                             </a>
@@ -135,7 +135,7 @@
                 <div class="modal-body">Presiona el botón 'Salir' para cerrar tu sesión actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="{{route('login')}}">Salir</a>
+                    <a class="btn btn-primary" href="/logout">Salir</a>
                 </div>
             </div>
         </div>
@@ -160,6 +160,12 @@
 
     <!-- Scripts custom de cada página -->
     @include('layouts.partials.scripts')
+
+    @endauth
+
+    @guest
+        <p>Te perdiste güachín?</p>
+    @endguest
 
 </body>
 

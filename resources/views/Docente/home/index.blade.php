@@ -5,13 +5,16 @@
     date_default_timezone_set('America/Mexico_City');
     $Hour = date('G');
     if ( $Hour >= 5 && $Hour <= 11 ) {
-        echo "Buenos días";
+        echo "Buenos días ";
     } else if ( $Hour >= 12 && $Hour <= 18 ) {
-        echo "Buenas tardes";
+        echo "Buenas tardes ";
     } else if ( $Hour >= 19 || $Hour <= 4 ) {
-        echo "Buenas noches";
+        echo "Buenas noches ";
     }
     ?>
+    @auth
+        {{auth()->user()->nombre}}
+    @endauth
 @endsection
 
 @section('contenido')
