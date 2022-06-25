@@ -20,7 +20,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#user").on("keypress", function(evento)
+    $("#matricula").on("keypress", function(evento)
    {
        $(this).attr('maxlength','10');
        $(this).attr('minlength','10');
@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 // Se revisa que los campos de usuario y contraseña no estén vacíos
 function revisarCampos(){
-    if ($("#user").val() === "") {
+    if ($("#matricula").val() === "") {
         $('#msjErrorUser').text('Usuario no ingresado.').show();
     } else if($("#password").val() === "") {
         $('#msjErrorPassword').text('La contraseña no puede estár vacía.').show();
@@ -114,7 +114,8 @@ function revisarCaptcha() {
       $('#usuarioCaptcha').val('').attr('place-holder','Ingrese el código de seguridad - minúsculas y mayúsculas');
       crearCaptcha();
       $('#msjErrorCaptcha').fadeOut(100);
-      msg("Ok","Aquí acción de login");
+      //msg("Ok","Aquí acción de login");
+      $('#formLogin').off('submit').submit();
     }
   }  
 }
@@ -149,8 +150,8 @@ function msgError(titulo, mensaje)
 function validaDatosLogin(datos) {
     let err = [];
 
-    colorInput(EXP_REG_MATRICULA.test(datos[0].value), $("#user"), err, 3);
-    colorInput(datos[1].value !== "", $("#password"), err, 30);
+    colorInput(EXP_REG_MATRICULA.test(datos[1].value), $("#matricula"), err, 3);
+    colorInput(datos[2].value !== "", $("#password"), err, 30);
     return err;
 }
 //Método que permite colorear los imputs dependiendo de su estatus (correcto o incorrecto)

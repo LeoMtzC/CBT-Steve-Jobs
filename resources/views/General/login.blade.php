@@ -42,9 +42,11 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Iniciar sesión</h1>
                                     </div>
-                                    <form class="user" id="formLogin">
+                                    <form action="/login" method="POST" class="user" id="formLogin">
+                                    @csrf
+                                    @include('layouts.partials.messages')
                                         <div class="form-group">
-                                            <input type="number" class="form-control form-control-user" id="user" name="user" required
+                                            <input type="text" class="form-control form-control-user" id="matricula" name="email" required focused
                                                 placeholder="Matrícula" pattern="[0-9]+" />
                                         </div>
                                         <div class="form-group">

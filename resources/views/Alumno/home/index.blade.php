@@ -13,6 +13,9 @@
         echo "Buenas noches";
     }
     ?>
+    @auth
+        {{auth()->user()->nombre}}
+    @endauth
 @endsection
 
 @section('contenido')
