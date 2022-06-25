@@ -5,11 +5,15 @@ $(document).ready(function() {
 
     $("#btnLogin").click(function (e) {
         e.preventDefault();
+        $('#btnLogin').prop('disabled', true);
+        $('#btnLogin').html(`<i class="fas fa-spinner fa-spin"></i>`);
         let datos = $("#formLogin").serializeArray();
         let err = validaDatosLogin(datos);
         if (err.length === 0) {
             revisarCaptcha();
         } else {
+            $('#btnLogin').html(`Entrar`);
+            $('#btnLogin').prop('disabled', false);
             let mensaje = "<b><i>Estimado usuario, no pudo iniciar sesión debido a lo siguiente:</b></i><br><br>" +
                     "<ul>";
             $.each(err, function (idx, ele) {
@@ -101,11 +105,15 @@ function revisarCaptcha() {
     //msgError("Atención", "Por favor, ingrese el código de seguridad mostrado");
     $('#msjErrorCaptcha').text('Por favor ingrese el código de seguridad mostrado.').show();
     $('#usuarioCaptcha').focus();
+    $('#btnLogin').html(`Entrar`);
+    $('#btnLogin').prop('disabled', false);
   } else {
     if(result == false) { 
       esPermitido = false;
       $('#msjErrorCaptcha').text('Código incorrecto, intente nuevamente.').show();
       //msgError("Atención", "Código incorrecto, intente de nuevo");
+      $('#btnLogin').html(`Entrar`);
+      $('#btnLogin').prop('disabled', false);
       crearCaptcha();
       $('#usuarioCaptcha').focus().select();
     }

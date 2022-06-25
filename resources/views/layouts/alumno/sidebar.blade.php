@@ -46,8 +46,11 @@
     </div>
 </li>
 
-@include('layouts.alumno.sidebarOpc1') <!-- Semestre 1 -->
-@include('layouts.alumno.sidebarOpc2') <!-- Semestre 2,3,4,5,6-->
+@if ($semestreAlumno == 1)
+    @include('layouts.alumno.sidebarOpc1') <!-- Semestre 1 -->
+@else
+    @include('layouts.alumno.sidebarOpc2') <!-- Semestre 2,3,4,5,6-->
+@endif
 
 
 
