@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AlumnoController extends Controller
 {
@@ -68,6 +70,15 @@ class AlumnoController extends Controller
         ->first()->semestre;
         
         return view('Alumno.generar.bitacora', ['semestreAlumno' => $semestre]);
+    }
+
+    public function descargarArchivo($archivo, $nombre)
+    {
+        $filePath = public_path("pdf/$archivo");
+        $headers = ['Content-Type: application/pdf'];
+        $fileName = $nombre;
+
+        return response()->download($filePath, $fileName, $headers);
     }
 
     public function showGCartaAcep()
@@ -236,7 +247,7 @@ class AlumnoController extends Controller
         })
         ->first()->semestre;
         
-        return view('Alumno.subir.bitacora', ['semestreAlumno' => $semestre]);
+        return view('Alumno.subir.bitacoras', ['semestreAlumno' => $semestre]);
     }
 
     public function showSMTP()
