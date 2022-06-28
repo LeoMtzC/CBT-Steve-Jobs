@@ -15,8 +15,8 @@ class DocumentosSeeder extends Seeder
     public function run()
     {
         $doc3 = new Documento();//1
-        $doc3->nombre = "Carta de Autorización de Prácticas de Observación";
-        $doc3->descripcion = "Autoriza al estudiante a continuar su proceso";
+        $doc3->nombre = "Permiso";
+        $doc3->descripcion = "Autoriza al estudiante a realizar las prácticas de observacion";
         $doc3->semestrereq = 1;
         $doc3->horasreq = 0;
         $doc3->estado = 1;
@@ -33,7 +33,7 @@ class DocumentosSeeder extends Seeder
         $doc10 = new Documento();
         $doc10->nombre = "Carta de Autorización de Prácticas de Ejecución";
         $doc10->descripcion = "Autoriza al estudiante a continuar su proceso";
-        $doc10->semestrereq = 3;
+        $doc10->semestrereq = 2;
         $doc10->horasreq = 0;
         $doc10->estado = 1;
         $doc10->save();
@@ -57,7 +57,7 @@ class DocumentosSeeder extends Seeder
         $doc1 = new Documento();
         $doc1->nombre = "Carta de Presentación Prácticas de Ejecución";
         $doc1->descripcion = "Emitida por la institución al escenario real";
-        $doc1->semestrereq = 3;
+        $doc1->semestrereq = 2;
         $doc1->horasreq = 0;
         $doc1->estado = 1;
         $doc1->save();
@@ -81,7 +81,7 @@ class DocumentosSeeder extends Seeder
         $doc2 = new Documento();
         $doc2->nombre = "Carta de Aceptación Prácticas de Ejecución";
         $doc2->descripcion = "El escenario informa que ha aceptado al alumno";
-        $doc2->semestrereq = 3;
+        $doc2->semestrereq = 2;
         $doc2->horasreq = 0;
         $doc2->estado = 1;
         $doc2->save();
@@ -105,7 +105,7 @@ class DocumentosSeeder extends Seeder
         $doc4 = new Documento();
         $doc4->nombre = "Constancia de Término Prácticas de Ejecución";
         $doc4->descripcion = "Certifica haber concluido 100 horas de prácticas de ejecución";
-        $doc4->semestrereq = 3;
+        $doc4->semestrereq = 2;
         $doc4->horasreq = 150;
         $doc4->estado = 1;
         $doc4->save();
@@ -127,28 +127,60 @@ class DocumentosSeeder extends Seeder
         $doc6->save();
 
         $doc7 = new Documento();//15
-        $doc7->nombre = "Informe";
-        $doc7->descripcion = "Informe de estadías o servicio social";
-        $doc7->semestrereq = 3;
+        $doc7->nombre = "Informe de prácticas de ejecución";
+        $doc7->descripcion = "Informe de prácticas de ejecución";
+        $doc7->semestrereq = 2;
         $doc7->horasreq = 0;
         $doc7->estado = 1;
         $doc7->save();
-
-        $doc8 = new Documento();
-        $doc8->nombre = "Bitácora";
-        $doc8->descripcion = "Bitácora de estadías o servicio social";
-        $doc8->semestrereq = 3;
+        
+        $doc8 = new Documento();//15
+        $doc8->nombre = "Informe de Servicio Social";
+        $doc8->descripcion = "Informe de servicio social";
+        $doc8->semestrereq = 5;
         $doc8->horasreq = 0;
         $doc8->estado = 1;
         $doc8->save();
-
-        $doc9 = new Documento();
-        $doc9->nombre = "Memoria de Trabajo Profesional";
-        $doc9->descripcion = "Memoria de trabajo";
+        
+        $doc9 = new Documento();//15
+        $doc9->nombre = "Informe de estadías";
+        $doc9->descripcion = "Informe de estadías";
         $doc9->semestrereq = 6;
         $doc9->horasreq = 0;
         $doc9->estado = 1;
         $doc9->save();
+
+        $doc10 = new Documento();
+        $doc10->nombre = "Bitácora de prácticas de ejecución";
+        $doc10->descripcion = "Bitácora de prácticas de ejecución";
+        $doc10->semestrereq = 2;
+        $doc10->horasreq = 0;
+        $doc10->estado = 1;
+        $doc10->save();
+        
+        $doc11 = new Documento();
+        $doc11->nombre = "Bitácora de Servicio Social";
+        $doc11->descripcion = "Bitácora de servicio social";
+        $doc11->semestrereq = 5;
+        $doc11->horasreq = 0;
+        $doc11->estado = 1;
+        $doc11->save();
+        
+        $doc12 = new Documento();
+        $doc12->nombre = "Bitácora de Estadías";
+        $doc12->descripcion = "Bitácora de estadías";
+        $doc12->semestrereq = 6;
+        $doc12->horasreq = 0;
+        $doc12->estado = 1;
+        $doc12->save();
+
+        $doc13 = new Documento();
+        $doc13->nombre = "Memoria de Trabajo Profesional";
+        $doc13->descripcion = "Memoria de trabajo";
+        $doc13->semestrereq = 6;
+        $doc13->horasreq = 0;
+        $doc13->estado = 1;
+        $doc13->save();
 
     }
 }
