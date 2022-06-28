@@ -63,12 +63,11 @@ Route::middleware(['auth', 'alumno'])->group(function () {
     Route::get('/generar-carta-termino', [AlumnoController::class,'showGCartaTer'])->name('GCartaTer');
     //Informe
     Route::get('/generar-informe', [AlumnoController::class,'showGInforme'])->name('GInforme');
-    //Descargar informe
-    Route::get('/descargar-informe/{archivo}/{nombre}', [AlumnoController::class,'descargarArchivo'])->name('DInforme');
     //Bitacora
     Route::get('/generar-bitacora', [AlumnoController::class,'showGBitacora'])->name('GBitacora');
-    //Descargar bitacora
-    Route::get('/descargar-bitacora/{archivo}/{nombre}', [AlumnoController::class,'descargarArchivo'])->name('DBitacora');
+
+    //Descargar archivos
+    Route::get('/descargar-bitacora/{archivo}/{nombre}', [AlumnoController::class,'descargarArchivo'])->name('Descargar');
 
     //SUBIR
     //Permiso
