@@ -2,15 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Alumno;
-use App\Models\Datos_tutor;
-use App\Models\Domicilio;
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Grupo;
-use App\Models\Docs_alumno;
-use App\Models\Escenarios;
-use App\Models\HistorialAcLab;
 
 class DatabaseSeeder extends Seeder
 {
