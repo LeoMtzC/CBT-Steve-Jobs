@@ -13,6 +13,12 @@ class Alumno extends Model
 
     protected $table = 'alumnos';
 
+    protected $cast = [
+        'fecha_nac' => 'date:d/m/Y',
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function matricula(): Attribute
     {
         return new Attribute(

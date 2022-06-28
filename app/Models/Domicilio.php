@@ -13,6 +13,11 @@ class Domicilio extends Model
 
     protected $table = 'domicilios';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function calle(): Attribute
     {
         return new Attribute(

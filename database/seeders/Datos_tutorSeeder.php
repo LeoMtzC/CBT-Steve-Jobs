@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Datos_tutor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Generator;
+use Illuminate\Container\Container;
 
 class Datos_tutorSeeder extends Seeder
 {
@@ -13,8 +15,19 @@ class Datos_tutorSeeder extends Seeder
      *
      * @return void
      */
+    protected $faker;
+
+    public function __construct(){
+        $this->faker = $this->withFaker();
+    }
+
+    protected function withFaker(){
+        return Container::getInstance()->make(Generator::class);
+    }
+
     public function run()
     {
+
         $dat = new Datos_tutor();
         $dat->nombre=$this->faker->firstName();
         $dat->apPat=$this->faker->lastName();

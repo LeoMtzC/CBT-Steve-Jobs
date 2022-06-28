@@ -13,6 +13,11 @@ class Docs_alumno extends Model
 
     protected $table = 'docs_alumnos';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function ine(): Attribute
     {
         return new Attribute(

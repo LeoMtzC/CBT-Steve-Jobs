@@ -30,7 +30,15 @@ class DatabaseSeeder extends Seeder
             CarrerasSeeder::class,
             EstadosSeeder::class,
             MunicipiosSeeder::class,
+            
+            UserSeeder::class,
+            DomiciliosSeeder::class,
+            Datos_tutorSeeder::class,
+            DocAlumnosSeeder::class,
+            GrupoSeeder::class,
+            AlumnoSeeder::class,
         ]);
+        /*
         Grupo::factory(10)->create();
         Domicilio::factory(10)->create();
         //Alumno::factory(10)->create();

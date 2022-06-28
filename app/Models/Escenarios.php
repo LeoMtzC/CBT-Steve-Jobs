@@ -13,6 +13,11 @@ class Escenarios extends Model
 
     protected $table = 'escenarios';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function nombreEsc(): Attribute
     {
         return new Attribute(

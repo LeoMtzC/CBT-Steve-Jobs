@@ -13,6 +13,11 @@ class Grupo extends Model
 
     protected $table = 'grupos';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function clave(): Attribute
     {
         return new Attribute(
