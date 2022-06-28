@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-alumno" id="genBitacora"><i class="fas fa-file-download"></i> Generar</button>
+                <a href="{{ route('Descargar', ['archivo' => 'FORMATO_BITACORA.pdf', 'nombre' => 'Formato bitácoras.pdf'])}}" type="button" class="btn btn-alumno" id="genBitacora"><i class="fas fa-file-download"></i> Generar</a>
             </div>
         </div>
     </div>

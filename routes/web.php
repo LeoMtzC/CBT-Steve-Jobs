@@ -66,6 +66,9 @@ Route::middleware(['auth', 'alumno'])->group(function () {
     //Bitacora
     Route::get('/generar-bitacora', [AlumnoController::class,'showGBitacora'])->name('GBitacora');
 
+    //Descargar archivos
+    Route::get('/descargar-bitacora/{archivo}/{nombre}', [AlumnoController::class,'descargarArchivo'])->name('Descargar');
+
     //SUBIR
     //Permiso
     Route::get('/subir-permiso', [AlumnoController::class,'showSPermiso'])->name('SPermiso');
