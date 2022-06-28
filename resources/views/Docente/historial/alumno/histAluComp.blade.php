@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-docente">Datos del alumno</h6>
+        <h6 class="m-0 font-weight-bold text-success">Datos del alumno</h6>
     </div>
     <div class="card-body">
         <!-- Datos -->
@@ -99,7 +99,7 @@
         </div>
         <hr>
         <div id="btnsDetallesAlu" hidden class="text-right">
-            <a id="btnDetallesAlu" href="{{route('detallesAlu')}}" class="btn btn-alumno btn-icon-split">
+            <a id="btnDetallesAlu" href="{{route('detallesAlu')}}" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-info-circle"></i>
                 </span>

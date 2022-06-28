@@ -7,7 +7,7 @@
     <!-- Subir carta de aceptación -->
     <div class="card shadow mb-4">  
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-alumno">Carta de aceptación</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Carta de aceptación</h6>
         </div>
         <div class="card-body">
             <p>
@@ -20,7 +20,7 @@
                     <label class="custom-file-label" for="subirCartAut">Seleccionar Archivo</label>
                 </div>
                 <div class="mt-3">
-                <button type="submit" class="btn btn-alumno" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Subir</button>
+                <button type="submit" class="btn btn-primary" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Subir</button>
                 </div>
             </form>
         </div>

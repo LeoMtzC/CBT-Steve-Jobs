@@ -7,7 +7,7 @@
     <!-- Generar carta de termino -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-alumno">Carta de termino</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Carta de termino</h6>
         </div>
         <div class="card-body">
             <p>
@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-alumno" id="genCartaTer"><i class="fas fa-file-download"></i> Generar</button>
+                <button type="button" class="btn btn-primary" id="genCartaTer"><i class="fas fa-file-download"></i> Generar</button>
             </div>
         </div>
     </div>

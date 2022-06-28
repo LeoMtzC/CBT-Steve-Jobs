@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-docente">Prácticas de observación</h6>
+        <h6 class="m-0 font-weight-bold text-success">Prácticas de observación</h6>
     </div>
     <div class="card-body">
 
@@ -29,63 +29,69 @@
         <hr>
         <div class="table-responsive table-hover">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
+                <thead>
                     <tr>
-                    <th>Grupo</th>
-                        <th>Carrera</th>
-                        <th>Semestre</th>
-                        <th>Permiso</th>
-                        <th>Guía de observación</th>
+                        <th>Matrícula</th>
+                        <th>Nombre completo</th>
+                        <th>Presentación</th>
+                        <th>Aceptación</th>
+                        <th>Termino</th>
+                        <th>Liberación</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="fas fa-exclamation-triangle"></i></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="fas fa-clock"></i></td>
+                        <td><i class="fas fa-exclamation-triangle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
-                        <td>dato</td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>dato</td>
                         <td>dato</td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="fas fa-clock"></i></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <br>
         <div id="btnsPOHistAlu" hidden class="text-right">
-            <a id="btnPODetHistAlu" href="#" class="btn btn-alumno btn-icon-split">
+            <a id="btnPODetHistAlu" href="#" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-edit"></i>
                 </span>
                 <span class="text">Ver detalles</span>
             </a>
-            <button id="btnPORepAlu" class="btn btn-docente btn-icon-split">
+            <button id="btnPORepAlu" class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-history"></i>
                 </span>

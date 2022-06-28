@@ -6,7 +6,7 @@ use App\Models\Rol;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'nombre' => $this->faker->firstName(),
             "matricula" => random_int(1000000000, 9999999999),
             'id_rol' => Rol::inRandomOrder()->first(),
-            'password' => Hash::make('123456'), // password
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'estado' => Arr::random([1,2,3])
         ];

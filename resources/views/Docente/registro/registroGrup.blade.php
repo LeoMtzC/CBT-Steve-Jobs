@@ -9,7 +9,7 @@
     <!-- Card Header - Accordion -->
     <a href="#collapseCardDatos" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardDatos">
-        <h6 class="m-0 font-weight-bold text-docente">Datos de grupo</h6>
+        <h6 class="m-0 font-weight-bold text-success">Datos de grupo</h6>
     </a>
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="collapseCardDatos">
@@ -53,7 +53,7 @@
                         </span>
                         <span class="text">Limpiar</span>
                     </a>
-                    <button id="btnRegGrupo" type="submit" class="btn btn-docente">Registrar</button>
+                    <button id="btnRegGrupo" type="submit" class="btn btn-success">Registrar</button>
                 </div>
             </form>
         </div>
@@ -75,7 +75,7 @@
                 <div class="modal-body">El formulario quedará en blanco ¿continuar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-docente" id="limpiarButtonGrup"" type="button" data-dismiss="modal">Limpiar</button>
+                    <button class="btn btn-success" id="limpiarButtonGrup"" type="button" data-dismiss="modal">Limpiar</button>
                 </div>
             </div>
         </div>

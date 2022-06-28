@@ -7,7 +7,7 @@
     <!-- Generar informe -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-alumno">Informe</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Informe</h6>
         </div>
         <div class="card-body">
             <p>
@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-alumno" id="genInforme"><i class="fas fa-file-download"></i> Generar</button>
+                <button type="button" class="btn btn-primary" id="genInforme"><i class="fas fa-file-download"></i> Generar</button>
             </div>
         </div>
     </div>

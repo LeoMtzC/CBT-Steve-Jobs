@@ -7,15 +7,15 @@
     <!-- Generar carta de presentación -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-alumno">Carta de autorización</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Carta de autorización</h6>
         </div>
         <div class="card-body">
             <p>
-                Para iniciar las prácticas profesionales del semestre, es importante contar con un permiso escrito por parte de tu tutor <i>en puño y letra</i>, por tal motivo te solicitamos imprimir este documento y <b>transcribirlo en una hoja en blanco con tinta negra</b> para posteriormente subirlo a la plataforma.
+                La carta de autorización es un documento que...
             </p>
             <br>
             <p>
-                <b>Nota: Recuerda que debe firmar el tutor que te inscribió al CBT, debiendo coincidir con el INE.</b>
+                Una vez que generes tu carta de autorización recuerda que...
             </p>
             <br>
             <p>
@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-alumno" id="genCartaAut"><i class="fas fa-file-download"></i> Generar</button>
+                <button type="button" class="btn btn-primary" id="genCartaAut"><i class="fas fa-file-download"></i> Generar</button>
             </div>
         </div>
     </div>

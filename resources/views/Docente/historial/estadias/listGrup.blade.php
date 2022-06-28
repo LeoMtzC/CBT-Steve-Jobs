@@ -6,22 +6,21 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-docente">Estadías</h6>
+        <h6 class="m-0 font-weight-bold text-success">Estadías</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive table-hover">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
+                <thead>
                     <tr>
-                        <th>Grupo</th>
+                        <th>Clave</th>
                         <th>Carrera</th>
+                        <th>Aula</th>
                         <th>Semestre</th>
-                        <th>Carta de autorización</th>
-                        <th>Carta de presentación</th>
-                        <th>Carta de aceptación</th>
-                        <th>Constancia de término</th>
-                        <th>Informe</th>
-                        <th>Bitácoras</th>
+                        <th>Autori 1</th>
+                        <th>1° Practica</th>
+                        <th>Autori 2</th>
+                        <th>2° Practica</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +29,6 @@
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
@@ -45,6 +43,15 @@
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td>dato</td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
+                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
@@ -56,25 +63,12 @@
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
                     </tr>
                     <tr>
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
                         <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                        <td><i class="far fa-check-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td>dato</td>
-                        <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
                         <td><i class="far fa-check-circle"></i></td>
@@ -85,13 +79,13 @@
         </div>
         <br>
         <div id="btnsEPHistGrup" hidden class="text-right">
-            <a id="btnEPDetHistGrup" href="{{route('Estadias_Alumnos')}}" class="btn btn-alumno btn-icon-split">
+            <a id="btnEPDetHistGrup" href="{{route('Estadias_Alumnos')}}" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-edit"></i>
                 </span>
                 <span class="text">Ver  detalles</span>
             </a>
-            <button id="btnEPHRepGrup" class="btn btn-docente btn-icon-split">
+            <button id="btnEPHRepGrup" class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-history"></i>
                 </span>
