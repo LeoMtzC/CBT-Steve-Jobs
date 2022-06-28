@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             CarrerasSeeder::class,
             EstadosSeeder::class,
             MunicipiosSeeder::class,
-            
+            EscenariosSeeder::class,
             UserSeeder::class,
             DomiciliosSeeder::class,
             Datos_tutorSeeder::class,
@@ -38,18 +38,5 @@ class DatabaseSeeder extends Seeder
             GrupoSeeder::class,
             AlumnoSeeder::class,
         ]);
-        /*
-        Grupo::factory(10)->create();
-        Domicilio::factory(10)->create();
-        //Alumno::factory(10)->create();
-        Docs_alumno::factory(10)->create();
-        Datos_tutor::factory(10)->create();
-        Escenarios::factory(10)->create();
-        /*User::factory(10)
-            ->has(
-                Alumno::factory()
-                    ->has(HistorialAcLab::factory()->count(2)->create();)
-                    ->count(1)
-                )->create();*/
     }
 }
