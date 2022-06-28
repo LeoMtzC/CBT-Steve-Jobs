@@ -15,8 +15,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -27,8 +27,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -39,8 +39,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -51,8 +51,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -64,8 +64,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -85,8 +85,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -97,8 +97,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -109,8 +109,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -121,8 +121,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -133,8 +133,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -145,8 +145,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -158,8 +158,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -170,8 +170,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -182,8 +182,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -194,8 +194,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -206,8 +206,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -218,8 +218,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -230,8 +230,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -242,8 +242,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
@@ -254,8 +254,8 @@ class AlumnoController extends Controller
     {
         //Query para obtener el semestre del alumno logeado
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         
