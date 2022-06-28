@@ -12,6 +12,11 @@ class Rol extends Model
 
     protected $table = 'roles';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function nombre(): Attribute
     {
         return new Attribute(

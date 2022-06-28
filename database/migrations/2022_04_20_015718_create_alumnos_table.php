@@ -15,44 +15,47 @@ return new class extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
-            $table->string('matricula', 10);
+            $table->string('matricula', 10)->default('SR');
             $table->string('nombre', 90);
             $table->string('apPat', 90);
             $table->string('apMat', 90);
             $table->foreignId('id_usuario')
-                    ->constrained('users')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->nullable()
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('id_carrera')
-                    ->constrained('carreras')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained('carreras')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('id_grupo')
-                    ->constrained('grupos')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained('grupos')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedTinyInteger('semestre');
+            $table->year('generacion');
             $table->string('curp', 18)->default('SR');
+            $table->char('sexo',1);
             $table->string('telefono', 10)->default('SR');
             $table->string('correo', 60)->default('SR');
             $table->foreignId('id_domicilio')
-                    ->nullable()
-                    ->constrained('domicilios')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->nullable()
+                ->constrained('domicilios')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->date('fecha_nac');
             $table->string('nss', 11)->default('SR');
-            $table->char('seguro_med',1);
+            $table->char('seguro_med', 1);
             $table->foreignId('id_tutor')
-                    ->nullable()
-                    ->constrained('datos_tutores')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->nullable()
+                ->constrained('datos_tutores')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('id_docs')
-                    ->nullable()
-                    ->constrained('docs_alumnos')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->nullable()
+                ->constrained('docs_alumnos')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedTinyInteger('estado');
             $table->timestamps();
         });

@@ -30,14 +30,13 @@ class DatabaseSeeder extends Seeder
             CarrerasSeeder::class,
             EstadosSeeder::class,
             MunicipiosSeeder::class,
+            EscenariosSeeder::class,
+            UserSeeder::class,
+            DomiciliosSeeder::class,
+            Datos_tutorSeeder::class,
+            DocAlumnosSeeder::class,
+            GrupoSeeder::class,
+            AlumnoSeeder::class,
         ]);
-        User::factory(10)->create();
-        Grupo::factory(10)->create();
-        Domicilio::factory(10)->create();
-        Alumno::factory(10)->create();
-        Docs_alumno::factory(10)->create();
-        Datos_tutor::factory(10)->create();
-        Escenarios::factory(10)->create();
-        HistorialAcLab::factory(10)->create();
     }
 }

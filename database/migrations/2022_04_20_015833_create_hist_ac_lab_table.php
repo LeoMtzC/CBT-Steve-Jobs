@@ -25,10 +25,12 @@ return new class extends Migration
                     ->onDelete('cascade');
             $table->string('url',255); //url del documento
             $table->foreignId('id_escenario')
+                    ->nullable()
                     ->constrained('escenarios')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->unsignedSmallInteger('horascumpl');
+            $table->unsignedSmallInteger('horascumpl')
+                    ->default(0);
             $table->date('fecha_ini');
             $table->date('fecha_term');
             $table->date('fecha_exp');

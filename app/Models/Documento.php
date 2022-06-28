@@ -13,6 +13,11 @@ class Documento extends Model
 
     protected $table = 'documentos';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function nombre(): Attribute
     {
         return new Attribute(

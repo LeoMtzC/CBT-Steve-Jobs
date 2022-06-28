@@ -13,6 +13,11 @@ class Datos_tutor extends Model
 
     protected $table = 'datos_tutores';
 
+    protected $cast = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     protected function nombre(): Attribute
     {
         return new Attribute(

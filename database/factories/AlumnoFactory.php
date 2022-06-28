@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Alumno;
 use App\Models\User;
 use App\Models\Carrera;
 use App\Models\Grupo;
@@ -20,19 +20,26 @@ class AlumnoFactory extends Factory
      */
     public function definition()
     {
-        $idusr = User::distinct()->select('id','matricula')->inRandomOrder()->first();
+
+        /*
+        $idusr = $this->setUser();
+        if ($idusr === null || $this->checkUser($idusr['id'])) {
+            $idusr = $this->setUser();
+        }*/
+        //$idusr = User::distinct()->select('id','matricula')->inRandomOrder()->first();
         $idcar = Carrera::select('id')->inRandomOrder()->first();
         $sem = $this->faker->numberBetween(1,6);
         $idgrupo = $this->getGrupo($sem, $idcar);
         return [
-            "matricula" => $idusr->matricula,
+            "matricula" => 'SR',
             "nombre" => $this->faker->firstName(),
             "apPat" => $this->faker->lastName(),
             "apMat" => $this->faker->lastName(),
-            "id_usuario" => $idusr->id,
+            "id_usuario" => null,
             "id_carrera" => $idcar,
             "id_grupo" => $idgrupo,
             "semestre" => $sem,
+            "generacion" => $this->faker->year(),
             "curp" => $this->faker->bothify('????######??????##'),
             "telefono" => $this->faker->numerify('##########'),
             "correo" => $this->faker->unique()->safeEmail(),
@@ -51,9 +58,26 @@ class AlumnoFactory extends Factory
             ->where([['semestre','=',$sem],['id_carrera','=',$idcar->id]])
             ->inRandomOrder()->first();
         if (is_null($grup)){
-            $grup = 1;//$this->getGrupo($sem, $idcar);
+            $grup = 1;
         }
         return $grup;
     }
+/*
+    private function setUser(){
+        $idtmp = User::select('id','matricula')
+                ->distinct()
+                ->inRandomOrder()
+                ->whereNotIn('id', function($query){
+                    $query->select('id_usuario')->from('alumnos')->get();
+                })->first();
+        return $idtmp;
+    }
+
+    private function checkUser($id){
+        $c = Alumno::select('id_usuario')->where('id_usuario',$id)->count();
+        print_r($c);
+        return $c > 1 ? false : true;
+    }
+*/
 
 }
