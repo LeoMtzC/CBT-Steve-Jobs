@@ -1,12 +1,13 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-docente sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('homeDocente')}}">
-    <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fa fa-graduation-cap"></i>
+    <div class="sidebar-brand-icon">
+        <img class="img-fluid" style="width: 75%; height: auto;"
+                            src="img/halcones.png" alt="imagen docente">
     </div>
-    <div class="sidebar-brand-text mx-3">CBT<br><sup> Steve Jobs</sup></div>
+    <!-- <div class="sidebar-brand-text mx-3">CBT<br><sup> Steve Jobs</sup></div> -->
 </a>
 
 <!-- Divider -->

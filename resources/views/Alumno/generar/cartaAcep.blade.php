@@ -7,7 +7,7 @@
     <!-- Generar carta de presentación -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Carta de aceptación</h6>
+            <h6 class="m-0 font-weight-bold text-alumno">Carta de aceptación</h6>
         </div>
         <div class="card-body">
             <p>
@@ -23,7 +23,7 @@
             </p>
             <br>
             <div class="text-left">
-                <button type="button" class="btn btn-primary" id="genCartaPres"><i class="fas fa-file-download"></i> Generar</button>
+                <button type="button" class="btn btn-alumno" id="genCartaPres"><i class="fas fa-file-download"></i> Generar</button>
             </div>
         </div>
     </div>
