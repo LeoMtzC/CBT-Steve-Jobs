@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('libs/sbadmin/css/sb-admin-2.css')}}" rel="stylesheet">
+    <link href="{{asset('libs/sbadmin/css/selectize.min.css')}}" rel="stylesheet">
+    <link href="{{asset('libs/sbadmin/css/selectize-bootstrap4.min.css')}}" rel="stylesheet">
 
     <link rel="icon" href="../../../img/icono.png">
 </head>
@@ -151,6 +153,9 @@
 
     <!-- Bootbox -->
     <script src="{{asset('libs/sbadmin/js/bootbox.all.min.js')}}"></script>
+
+    <!-- Selectize -->
+    <script src="{{asset('libs/sbadmin/js/selectize.min.js')}}"></script>
 
     <!-- Scripts custom de cada página -->
     @include('layouts.partials.scripts')

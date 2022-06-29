@@ -51,6 +51,11 @@ return new class extends Migration
                 ->constrained('datos_tutores')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('id_escenario')
+                ->nullable()
+                ->constrained('escenarios')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('id_docs')
                 ->nullable()
                 ->constrained('docs_alumnos')
