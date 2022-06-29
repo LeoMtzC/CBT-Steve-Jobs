@@ -46,7 +46,7 @@
                                     @csrf
                                     @include('layouts.partials.messages')
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="matricula" name="email" required focused
+                                            <input type="text" class="form-control form-control-user" id="matricula" name="email" autocomplete="username" required focused
                                                 placeholder="Matrícula" pattern="[0-9]+" />
                                         </div>
                                         <div class="form-group">

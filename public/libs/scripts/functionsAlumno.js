@@ -5,7 +5,11 @@ $(document).ready(function() {
         let datos = $("#formDatosPerAlu").serializeArray();
         let err = validaDatosPer(datos);
         if (err.length === 0) {
-            msg("ok", "ok");
+            //msg("ok", "ok");
+            $('#formDatosPerAlu').off('submit').submit();
+            //let datosActualizar = [{name:'curp' ,value:datos[6].value}, {name:'correo' ,value:datos[7].value}, {name:'telefono' ,value:datos[8].value},
+            //                        {name:'fecha_nac' ,value:datos[9].value}, {name:'nss' ,value:datos[10].value}, {name:'seguro_med' ,value:datos[11].value}];
+            //console.log(datosActualizar);
         } else {
             let mensaje = "<b><i>Estimado alumno, sus datos personales no fueron actualizados debido a lo siguiente:</b></i><br><br>" +
                 "<ul>";
@@ -16,13 +20,16 @@ $(document).ready(function() {
             msgError("Atención", mensaje);
         }
     });
+    //select de municipios
+    $('#municipioAlu, #estadoAlu').selectize();
     //Validación formulario de datos domiciliarios
     $("#btnActualuarDatosDom").click(function (e) {
         e.preventDefault();
         let datos = $("#formDatosDomAlu").serializeArray();
         let err = validaDatosDom(datos);
         if (err.length === 0) {
-            msg("ok", "ok");
+            //msg("ok", "ok");
+            $('#formDatosDomAlu').off('submit').submit();
         } else {
             let mensaje = "<b><i>Estimado alumno, sus datos domiciliarios no fueron actualizados debido a lo siguiente:</b></i><br><br>" +
                 "<ul>";
@@ -39,7 +46,8 @@ $(document).ready(function() {
         let datos = $("#formDatosTutor").serializeArray();
         let err = validaDatosTutor(datos);
         if (err.length === 0) {
-            msg("ok", "ok");
+            //msg("ok", "ok");
+            $('#formDatosTutor').off('submit').submit();
         } else {
             let mensaje = "<b><i>Estimado alumno, los datos de su tutor no fueron actualizados debido a lo siguiente:</b></i><br><br>" +
                 "<ul>";
@@ -56,7 +64,8 @@ $(document).ready(function() {
         let datos = $("#formDatosEscReal").serializeArray();
         let err = validaDatosEscR(datos);
         if (err.length === 0) {
-            msg("ok", "ok");
+            //msg("ok", "ok");
+            $('#formDatosEscReal').off('submit').submit();
         } else {
             let mensaje = "<b><i>Estimado alumno, los datos del escenario real no fueron actualizados debido a lo siguiente:</b></i><br><br>" +
                 "<ul>";
@@ -351,7 +360,7 @@ $(document).ready(function() {
         if (! /[0-9]/.test(caracter))
             evento.preventDefault();
     });
-    $("#segMedAlu").on("input", function (evento) {
+    /*$("#segMedAlu").on("input", function (evento) {
         $(this).attr('maxlength', '18');
         $(this).attr('minlength', '18');
         let posCursor = this.selectionStart;
@@ -359,7 +368,7 @@ $(document).ready(function() {
         $(this).val(texto.toUpperCase());
         this.selectionStart = posCursor;
         this.selectionEnd = posCursor;
-    });
+    });*/
     //FORMATEO de campos datos domiciliarios
     $("#calleAlu, #coloniaAlu").on("keypress", function (evento) {
         $(this).attr('maxlength', '35');

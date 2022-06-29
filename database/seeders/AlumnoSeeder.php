@@ -45,6 +45,7 @@ class AlumnoSeeder extends Seeder
         $al->nss = $this->faker->numerify('###########');
         $al->seguro_med = 's';
         $al->id_tutor = 1;
+        $al->id_escenario = 1;
         $al->id_docs = 1;
         $al->estado = 1;
         $al->save();
@@ -68,6 +69,7 @@ class AlumnoSeeder extends Seeder
         $al1->nss = $this->faker->numerify('###########');
         $al1->seguro_med = 's';
         $al1->id_tutor = 2;
+        $al1->id_escenario = 2;
         $al1->id_docs = 2;
         $al1->estado = 1;
         $al1->save();
@@ -91,6 +93,7 @@ class AlumnoSeeder extends Seeder
         $al2->nss = $this->faker->numerify('###########');
         $al2->seguro_med = 's';
         $al2->id_tutor = 3;
+        $al2->id_escenario = 3;
         $al2->id_docs = 3;
         $al2->estado = 1;
         $al2->save();
@@ -114,6 +117,7 @@ class AlumnoSeeder extends Seeder
         $al3->nss = $this->faker->numerify('###########');
         $al3->seguro_med = 's';
         $al3->id_tutor = 4;
+        $al3->id_escenario = 4;
         $al3->id_docs = 4;
         $al3->estado = 1;
         $al3->save();
@@ -137,6 +141,7 @@ class AlumnoSeeder extends Seeder
         $al4->nss = $this->faker->numerify('###########');
         $al4->seguro_med = 's';
         $al4->id_tutor = 5;
+        $al4->id_escenario = 5;
         $al4->id_docs = 5;
         $al4->estado = 1;
         $al4->save();

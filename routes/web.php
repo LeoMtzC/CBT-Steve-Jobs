@@ -68,6 +68,17 @@ Route::middleware(['auth', 'alumno'])->group(function () {
 
     //Descargar archivos
     Route::get('/descargar-bitacora/{archivo}/{nombre}', [AlumnoController::class,'descargarArchivo'])->name('Descargar');
+    
+    //Actualizar datos personales
+    Route::post('/datos-alumno', [AlumnoController::class,'actualizarDatosPersonales']);
+     //Actualizar datos domiciliarios
+     Route::post('/datos-alumno-domicilio', [AlumnoController::class,'actualizarDatosDomicilio']);
+
+     //Actualizar datos del tutor
+    Route::post('/datos-tutor', [AlumnoController::class,'actualizarDatosTutor']);
+
+    //Actualizar datos del escenario real
+    Route::post('/escenario-real', [AlumnoController::class,'actualizarDatosEscenario']);
 
     //SUBIR
     //Permiso

@@ -35,6 +35,8 @@ class EscenariosSeeder extends Seeder
         $esc->apPatResp = $this->faker->lastName();
         $esc->apMatResp = $this->faker->lastName();
         $esc->telefono = $this->faker->numerify('##########');
+        $esc->fecha_ini = '2000-06-17';
+        $esc->fecha_term = '2000-08-17';
         $esc->estado = 1;
         $esc->save();
         
@@ -45,6 +47,8 @@ class EscenariosSeeder extends Seeder
         $esc1->apPatResp = $this->faker->lastName();
         $esc1->apMatResp = $this->faker->lastName();
         $esc1->telefono = $this->faker->numerify('##########');
+        $esc1->fecha_ini = '2000-06-17';
+        $esc1->fecha_term = '2000-08-17';
         $esc1->estado = 1;
         $esc1->save();
 
@@ -55,6 +59,8 @@ class EscenariosSeeder extends Seeder
         $esc2->apPatResp = $this->faker->lastName();
         $esc2->apMatResp = $this->faker->lastName();
         $esc2->telefono = $this->faker->numerify('##########');
+        $esc2->fecha_ini = '2000-06-17';
+        $esc2->fecha_term = '2000-08-17';
         $esc2->estado = 1;
         $esc2->save();
 
@@ -65,6 +71,8 @@ class EscenariosSeeder extends Seeder
         $esc3->apPatResp = $this->faker->lastName();
         $esc3->apMatResp = $this->faker->lastName();
         $esc3->telefono = $this->faker->numerify('##########');
+        $esc3->fecha_ini = '2000-06-17';
+        $esc3->fecha_term = '2000-08-17';
         $esc3->estado = 1;
         $esc3->save();
 
@@ -75,6 +83,8 @@ class EscenariosSeeder extends Seeder
         $esc4->apPatResp = $this->faker->lastName();
         $esc4->apMatResp = $this->faker->lastName();
         $esc4->telefono = $this->faker->numerify('##########');
+        $esc4->fecha_ini  = '2000-06-17';
+        $esc4->fecha_term =  '2000-08-17';
         $esc4->estado = 1;
         $esc4->save();
     }

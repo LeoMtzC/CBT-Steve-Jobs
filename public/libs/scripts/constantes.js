@@ -7,7 +7,7 @@ const EXP_REG_TEL = /^[0-9]{10}$/;
 const EXP_REG_NSS = /^[0-9]{11}$/;
 const EXP_REG_EMAIL = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const EXP_REG_CURP = /^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{4}[A-Z0-9]{10}$/;
-const EXP_REG_CALLECOL = /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ0-9]{2,}(\s[a-záéíóúüñA-ZÁÉÍÓÚÑ0-9]{1,})*$/;
+const EXP_REG_CALLECOL = /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ0-9\,]{2,}(\s[a-záéíóúüñA-ZÁÉÍÓÚÑ0-9\,]{1,})*$/;
 const EXP_REG_DIRCOMP = /^[#.0-9a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s,-]+$/;
 const EXP_REG_CP = /^[0-9]{5}$/;
 const EXP_REG_NUMEX = /^[0-9]{1,4}$/;
@@ -32,7 +32,7 @@ const MSJ_ERROR = [
     "El <b>Número telefónico</b> no es válido. Debe contener únicamente 10 digitos",
     "La <b>Fecha de Nacimiento</b> no es válida o no cumple con el formato solicitado",
     "El <b>Número de seguro social</b> no es válido. Debe contener entre 11 digitos", //10
-    "El <b>Seguro médico</b> introducido no es válido, solo letras",   
+    "El status de tu <b>Seguro médico</b> no es válido, selecciona una opción",   
 
 
     "El <b>Estado</b> seleccionado no es válido",   
@@ -44,8 +44,8 @@ const MSJ_ERROR = [
     
     "El <b>Parentesco</b> seleccionado no es válido", 
 
-    "El <b>Nombre del escenario</b> cuenta con carácteres no válidos",
-    "La <b>Dirección del escenario</b> cuenta con carácteres no válidos", //20
+    "El <b>Nombre del escenario</b> está vacío o cuenta con carácteres no válidos",
+    "La <b>Dirección del escenario</b> está vacía o cuenta con carácteres no válidos", //20
     "La <b>Fecha de inicio</b> no es válida o no cumple con el formato solicitado",
     "La <b>Fecha de termino</b> no es válida o no cumple con el formato solicitado",
 
