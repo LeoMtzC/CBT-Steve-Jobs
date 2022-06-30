@@ -119,6 +119,7 @@
         <div class="card-body">
             <form action="/datos-alumno-domicilio" method="POST" id="formDatosDomAlu">
                 @csrf
+                @if($datosDomicilio->first())
                 <input type="hidden" class="form-control" id="idDomicilio" name="idDomicilio"
                     value="{{ $datosDomicilio[0] -> id }}">
                 <div class="form-row">
@@ -172,6 +173,59 @@
                             value="{{ $datosDomicilio[0] -> no_int }}">
                     </div>
                 </div>
+                @else
+                <input type="hidden" class="form-control" id="idDomicilio" name="idDomicilio"
+                    value="">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="estadoAlu">Estado</label>
+                        <select id="estadoAlu" class="form-control" name="estadoAlu" required>
+                            <option value='' selected>Selecciona una opción</option>
+                            @foreach ($estados as $estado)
+                            <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="municipioAlu">Municipio</label>
+                        <select id="municipioAlu" class="form-control" name="municipioAlu" required>
+                            <option value='' selected>Selecciona una opción</option>
+                            @foreach ($municipios as $municipio)
+                            <option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="calleAlu">Calle</label>
+                        <input type="text" class="form-control" id="calleAlu" placeholder="Calle" name="calleAlu"
+                            value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="coloniaAlu">Colonia o localidad</label>
+                        <input type="text" class="form-control" id="coloniaAlu" placeholder="Colonia o localidad"
+                            name="coloniaAlu" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="cpAlu">Código postal</label>
+                        <input type="text" class="form-control" id="cpAlu" placeholder="C.P." name="cpAlu"
+                            value="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="numExAlu">Número exterior</label>
+                        <input type="text" class="form-control" id="numExAlu" placeholder="No. Ext." name="numExAlu"
+                            value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="numInAlu">Número interior</label>
+                        <input type="text" class="form-control" id="numInAlu" placeholder="Opcional." name="numInAlu"
+                            value="">
+                    </div>
+                </div>
+                @endif
                 <div class="text-right">
                     <button type="submit" class="btn btn-alumno" id="btnActualuarDatosDom">Actualizar</button>
                 </div>
