@@ -14,6 +14,7 @@
         <div class="card-body">
             <form action="/datos-tutor" method="POST" id="formDatosTutor">
                 @csrf
+                @if($datosTutor->first())
                 <input type="hidden" class="form-control" id="idTutor" name="idTutor"
                     value="{{ $datosTutor[0] -> id }}">
                 <div class="form-row">
@@ -67,6 +68,60 @@
                         </select>
                     </div>
                 </div>
+                @else
+                <input type="hidden" class="form-control" id="idTutor" name="idTutor"
+                    value="">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="nomTut">Nombre</label>
+                        <input type="text" class="form-control" id="nomTut" placeholder="Nombre del tutor"
+                            name="nomTut" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="apPatTut">Apellido paterno</label>
+                        <input type="text" class="form-control" id="apPatTut" placeholder="Apellido Paterno"
+                            name="apPatTut" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="apMatTut">Apellido materno</label>
+                        <input type="text" class="form-control" id="apMatTut" placeholder="Apellido Materno"
+                            name="apMatTut" value="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="curpTut">CURP</label>
+                        <input type="text" class="form-control" id="curpTut" placeholder="CURP"
+                            name="curpTut" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="emailTut">Correo eléctronico</label>
+                        <input type="email" class="form-control" id="emailTut" placeholder="Correo eléctrónico"
+                            name="emailTut" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="telTut">Teléfono fijo</label>
+                        <input type="tel" class="form-control" id="telTut" placeholder="Teléfono"
+                            name="telTut" value="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                        <label for="celTut">Teléfono celular</label>
+                        <input type="tel" class="form-control" id="celTut" placeholder="Celular"
+                            name="celTut" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="parentTut">Parentesco</label>
+                        <select id="parentTut" class="form-control" name="parentTut" required>
+                            <option selected value=''>Selecciona una opción...</option>
+                            @foreach ($parentescos as $parentesco)
+                            <option value="{{$parentesco->id}}">{{$parentesco->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @endif
                 <div class="text-right">
                     <button type="submit" class="btn btn-alumno" id="btnActualuarDatosTutor">Actualizar</button>
                 </div>

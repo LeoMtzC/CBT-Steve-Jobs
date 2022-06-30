@@ -36,9 +36,14 @@ class AlumnoController extends Controller
         }
 
         //Query para obtener los datos domiciliarios del alumno
-        $datosDomicilio = DB::table('alumnos')->join('domicilios', function($join){
-            $join->on('alumnos.id_domicilio','=','domicilios.id')
-            ->where('alumnos.id_domicilio','=',Auth::user()->id);
+        $datosDomicilio = DB::table('domicilios')->join('alumnos', function($join){
+            $join->on('domicilios.id','=','alumnos.id_domicilio')
+            ->where('domicilios.id','=',
+            DB::table('alumnos')->join('users', function($join){
+                $join->on('alumnos.id_usuario','=','users.id')
+                ->where('alumnos.id_usuario','=',Auth::user()->id);
+            })->first()->id_domicilio
+        );// Se utiliza un subquery para obtener el id_domicilio del usuario logeado
         })
         ->get();
 
@@ -69,7 +74,12 @@ class AlumnoController extends Controller
         //Query para obtener los datos del tutor del alumno logeado
         $datosTutor = DB::table('alumnos')->join('datos_tutores', function($join){
             $join->on('alumnos.id_tutor','=','datos_tutores.id')
-            ->where('alumnos.id_tutor','=',Auth::user()->id);
+            ->where('alumnos.id_tutor','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_tutor
+            ); // Se utiliza un subquery para obtener el id_tutor del usuario logeado
         })
         ->get();
 
@@ -96,7 +106,12 @@ class AlumnoController extends Controller
         //Query para obtener los datos del escenario del alumno logeado
         $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
             $join->on('alumnos.id_escenario','=','escenarios.id')
-            ->where('alumnos.id_escenario','=',Auth::user()->id);
+            ->where('alumnos.id_escenario','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_escenario
+            );// Se utiliza un subquery para obtener el id_escenario del usuario logeado
         })
         ->get();
       
@@ -328,7 +343,7 @@ class AlumnoController extends Controller
     public function actualizarDatosPersonales(Request $request)
     {
         DB::table('alumnos')
-            ->where('id_usuario', Auth::user()->id)
+            //->where('id_usuario', Auth::user()->id)
             ->updateOrInsert(
                 ['nombre' => $request->nomAlu, 'matricula' => $request->matrAlu,],
                 [ 'curp' => $request->curpAlu,
@@ -337,6 +352,7 @@ class AlumnoController extends Controller
                   'fecha_nac' => $request->fechNacAlu,
                   'nss' => $request->nssAlu,
                   'seguro_med' => $request->segMedAlu,
+                  'estado' => 1
                 ]
         );
         return redirect()->back()->with('success','Datos actualizados correctamente');
@@ -345,59 +361,130 @@ class AlumnoController extends Controller
     //Función para actualizar datos domiciliarios alumno
     public function actualizarDatosDomicilio(Request $request)
     {
-        DB::table('domicilios')
-            ->where('id', $request->idDomicilio)
-            ->updateOrInsert(
-                ['id' => $request->idDomicilio, 'colonia' => $request->coloniaAlu,],
-                [ 'id_estado' => $request->estadoAlu,
-                  'id_muni' => $request->municipioAlu,
-                  'calle' => $request->calleAlu,
-                  'colonia' => $request->coloniaAlu,
-                  'cp' => $request->cpAlu,
-                  'no_ext' => $request->numExAlu,
-                  'no_int' => $request->numInAlu,
-                ]
+        //Si es una actualización se obtiene el ID
+        if($request->idDomicilio){
+            DB::table('domicilios')
+                ->where('id', $request->idDomicilio)
+                ->update(
+                    [
+                        'id_estado' => $request->estadoAlu,
+                        'id_muni' => $request->municipioAlu,
+                        'calle' => $request->calleAlu,
+                        'colonia' => $request->coloniaAlu,
+                        'cp' => $request->cpAlu,
+                        'no_ext' => $request->numExAlu,
+                        'no_int' => $request->numInAlu,
+                    ]
+                );
+            return redirect()->back()->with('success','Datos actualizados correctamente');
+        }
+        //Si es una creación se obtiene el autoincrement ID del insert
+        $id = DB::table('domicilios')->insertGetId([
+            'id_estado' => $request->estadoAlu,
+            'id_muni' => $request->municipioAlu,
+            'calle' => $request->calleAlu,
+            'colonia' => $request->coloniaAlu,
+            'cp' => $request->cpAlu,
+            'no_ext' => $request->numExAlu,
+            'no_int' => $request->numInAlu,
+            'estado' => 1,
+        ]);
+        //Se actualiza la tabla alumnos con el id del insert
+        DB::table('alumnos')
+        ->where('id_usuario', Auth::user()->id)
+        ->update(
+            [
+                'id_domicilio' => $id,
+            ]
         );
-        return redirect()->back()->with('success','Datos actualizados correctamente');
+        return redirect()->back()->with('success','Datos guardados correctamente');
     }
 
     //Función para actualizar datos domiciliarios alumno
     public function actualizarDatosTutor(Request $request)
     {
-        DB::table('datos_tutores')
+        //Si es una actualización se obtiene el ID
+        if($request->idTutor){
+            DB::table('datos_tutores')
             ->where('id', $request->idTutor)
-            ->updateOrInsert(
-                ['id' => $request->idTutor, 'curp' => $request->curpTut,],
-                [ 'nombre' => $request->nomTut,
-                  'apPat' => $request->apPatTut,
-                  'apMat' => $request->apMatTut,
-                  'correo' => $request->emailTut,
-                  'curp' => $request->curpTut,
-                  'telf_movil' => $request->celTut,
-                  'telf_fijo' => $request->telTut,
-                  'id_parentesco' => $request->parentTut,
+            ->update(
+                [
+                    'nombre' => $request->nomTut,
+                    'apPat' => $request->apPatTut,
+                    'apMat' => $request->apMatTut,
+                    'correo' => $request->emailTut,
+                    'curp' => $request->curpTut,
+                    'telf_movil' => $request->celTut,
+                    'telf_fijo' => $request->telTut,
+                    'id_parentesco' => $request->parentTut
                 ]
+            );
+            return redirect()->back()->with('success','Datos actualizados correctamente');
+        }
+        //Si es una creación se obtiene el autoincrement ID del insert
+        $id = DB::table('datos_tutores')->insertGetId([
+            'nombre' => $request->nomTut,
+            'apPat' => $request->apPatTut,
+            'apMat' => $request->apMatTut,
+            'correo' => $request->emailTut,
+            'curp' => $request->curpTut,
+            'telf_movil' => $request->celTut,
+            'telf_fijo' => $request->telTut,
+            'id_parentesco' => $request->parentTut,
+            'estado' => 1,
+        ]);
+        //Se actualiza la tabla alumnos con el id del insert
+        DB::table('alumnos')
+        ->where('id_usuario', Auth::user()->id)
+        ->update(
+            [
+                'id_tutor' => $id,
+            ]
         );
-        return redirect()->back()->with('success','Datos actualizados correctamente');
+        return redirect()->back()->with('success','Datos guardados correctamente');        
     }
 
     //Función para actualizar datos del escenario real del alumno
     public function actualizarDatosEscenario(Request $request)
     {
-        DB::table('escenarios')
+        //Si es una actualización se obtiene el ID
+        if($request->idER){
+            DB::table('escenarios')
             ->where('id', $request->idER)
-            ->updateOrInsert(
-                ['id' => $request->idER, 'nombreResp' => $request->respER,],
-                [ 'nombreEsc' => $request->nomER,
-                  'direccion' => $request->dirER,
-                  'telefono' => $request->telER,
-                  'nombreResp' => $request->respER,
-                  'apPatResp' => $request->apPatER,
-                  'apMatResp' => $request->apMatER,
-                  'fecha_ini' => $request->fechIniER,
-                  'fecha_term' => $request->fechTerER
+            ->update(
+                [
+                    'nombreEsc' => $request->nomER,
+                    'direccion' => $request->dirER,
+                    'telefono' => $request->telER,
+                    'nombreResp' => $request->respER,
+                    'apPatResp' => $request->apPatER,
+                    'apMatResp' => $request->apMatER,
+                    'fecha_ini' => $request->fechIniER,
+                    'fecha_term' => $request->fechTerER
                 ]
+            );
+            return redirect()->back()->with('success','Datos actualizados correctamente');
+        }
+        //Si es una creación se obtiene el autoincrement ID del insert
+        $id = DB::table('escenarios')->insertGetId([
+            'nombreEsc' => $request->nomER,
+            'direccion' => $request->dirER,
+            'telefono' => $request->telER,
+            'nombreResp' => $request->respER,
+            'apPatResp' => $request->apPatER,
+            'apMatResp' => $request->apMatER,
+            'fecha_ini' => $request->fechIniER,
+            'fecha_term' => $request->fechTerER,
+            'estado' => 1
+        ]);
+        //Se actualiza la tabla alumnos con el id del insert
+        DB::table('alumnos')
+        ->where('id_usuario', Auth::user()->id)
+        ->update(
+            [
+                'id_escenario' => $id,
+            ]
         );
-        return redirect()->back()->with('success','Datos actualizados correctamente');
+        return redirect()->back()->with('success','Datos guardados correctamente');        
     }
 }
