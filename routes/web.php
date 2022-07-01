@@ -55,6 +55,8 @@ Route::middleware(['auth', 'alumno'])->group(function () {
     Route::get('/generar-permiso', [AlumnoController::class,'showGPermiso'])->name('GPermiso');
     //Carta de autorización
     Route::get('/generar-carta-autorizacion', [AlumnoController::class,'showGCartaAut'])->name('GCartaAut');
+        //Practicas de ejecución
+        Route::get('/generar-carta-autorizacion-PE', [AlumnoController::class,'GenerarCartaAut'])->name('GCartaAutPE')->middleware('PracEj');
     //Carta de presentación
     Route::get('/generar-carta-presentacion', [AlumnoController::class,'showGCartaPres'])->name('GCartaPres');
     //Carta de acepración
@@ -79,6 +81,7 @@ Route::middleware(['auth', 'alumno'])->group(function () {
 
     //Actualizar datos del escenario real
     Route::post('/escenario-real', [AlumnoController::class,'actualizarDatosEscenario']);
+
 
     //SUBIR
     //Permiso

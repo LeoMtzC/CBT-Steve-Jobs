@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class AlumnoController extends Controller
 {
@@ -482,5 +484,155 @@ class AlumnoController extends Controller
             ]
         );
         return redirect()->back()->with('success','Datos guardados correctamente');        
+    }
+
+    public function GenerarCartaAut()
+    {
+        //Query para obtener el semestre del alumno logeado
+        $numSemestre = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->first()->semestre;
+
+        switch($numSemestre){
+            case 2 :
+                $semestre = 'segundo';
+            break;
+            case 3 :
+                $semestre = 'tercer';
+            break;
+            case 4 :
+                $semestre = 'cuarto';
+            break;
+        }
+
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+        $mes    = $fecha->monthName;
+        $anio   = $fecha->year;
+        $dia    = $fecha->dayName;
+        $diaNumero = $fecha->day;
+        $fechaActual = $dia." ".$diaNumero." de ".$mes." de ".$anio;
+        //$fechaActual = Carbon::now()->locale('es_MX')->isoFormat('d \d\e MMMM \d\e\l Y');
+
+        //Query para obtener los datos del tutor del alumno logeado
+        $datosTutor = DB::table('alumnos')->join('datos_tutores', function($join){
+            $join->on('alumnos.id_tutor','=','datos_tutores.id')
+            ->where('alumnos.id_tutor','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_tutor
+            ); // Se utiliza un subquery para obtener el id_tutor del usuario logeado
+        })
+        ->get();
+
+        //Si no hay datos de tutor, cortamos el flujo y regresamos un mensaje de error
+        if(!$datosTutor->first()){
+            return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu tutor?');
+        }
+
+        //Query para obtener los datos del grupo del alumno logeado
+        $datosGrupo = DB::table('alumnos')->join('grupos', function($join){
+            $join->on('alumnos.id_grupo','=','grupos.id')
+            ->where('alumnos.id_grupo','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_grupo
+            ); // Se utiliza un subquery para obtener el id_grupo del usuario logeado
+        })
+        ->get();
+
+        //Query para obtener los datos del grupo del alumno logeado
+        $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
+            $join->on('alumnos.id_escenario','=','escenarios.id')
+            ->where('alumnos.id_escenario','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_escenario
+            ); // Se utiliza un subquery para obtener el id_grupo del usuario logeado
+        })
+        ->get();
+
+        //Si no hay datos de escenario, cortamos el flujo y regresamos un mensaje de error
+        if(!$datosEscenario->first()){
+            return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu escenario real?');
+        }
+
+        //formato fecha inicial del escenario
+        $fechaIni = $datosEscenario[0]->fecha_ini;
+        $fechaIni = str_replace("/", "-", $fechaIni); 
+        $newfechaIni = date("d-m-Y", strtotime($fechaIni)); 
+        $fechaInicial = strftime("%d de %B", strtotime($newfechaIni));
+
+        //formato fecha de termino del escenario
+        $fechaTerm = $datosEscenario[0]->fecha_term;
+        $fechaTerm = str_replace("/", "-", $fechaTerm); 
+        $newfechaTerm = date("d-m-Y", strtotime($fechaTerm)); 
+        $fechaTermino = strftime("%d de %B de %Y", strtotime($newfechaTerm));
+
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+        //determinando el ciclo escolar
+        $anioActual = Carbon::now()->year;
+        $anioActualmenosUno = Carbon::now()->subYear()->year();
+        //Si la fecha actual está entre la fecha 1 de Enero y
+        //1 de Junio de cualquier año, entonces el ciclo escolar es
+        //el (año actual menos 1 año) - (año actual), si no se cumple
+        //esta condición, entonces el ciclo escolar es
+        //(año actual) - (año actual)
+        $startDate = \Carbon\Carbon::createFromFormat('m-d','01-01');
+        $endDate = \Carbon\Carbon::createFromFormat('m-d','06-01');
+        $check = \Carbon\Carbon::now()->between($startDate,$endDate);
+        if($check){
+            $cicloEscolar = (string)"$anioActualmenosUno - $anioActual";
+        }else{
+            $cicloEscolar = (string)"$anioActual - $anioActual";
+        }
+
+        //Asignación de carreras de acuerdo al ID de carrera
+        if($datosAlumno[0] -> id_carrera == 1 ){
+            $carrera =  "Técnico en Informática";
+        }else{
+            $carrera =  "Técnico en Expresión Gráfica Digital";
+        }
+
+        $pdf = PDF::loadView('formatos.carta_aut_PE', [
+            'semestreAlumno' => $semestre,
+            'fechaActual' => $fechaActual,
+            'datosTutor' => $datosTutor,
+            'datosGrupo' => $datosGrupo,
+            'datosEscenario' => $datosEscenario,
+            'datosAlumno' => $datosAlumno,
+            'carrera' => $carrera,
+            'fechaInicial' => $fechaInicial,
+            'fechaTermino' => $fechaTermino,
+            'cicloEscolar' => $cicloEscolar,
+        ]);
+        //return $pdf->stream();
+        return $pdf->download($datosAlumno[0]->matricula.' | Carta de autorización | Practicas de ejecución.pdf');
+
+        /*return view('formatos.carta_aut_PE', [
+            'semestreAlumno' => $semestre,
+            'fechaActual' => $fechaActual,
+            'datosTutor' => $datosTutor,
+            'datosGrupo' => $datosGrupo,
+            'datosEscenario' => $datosEscenario,
+            'datosAlumno' => $datosAlumno,
+            'carrera' => $carrera,
+            'fechaInicial' => $fechaInicial,
+            'fechaTermino' => $fechaTermino,
+            'cicloEscolar' => $cicloEscolar,
+        ]);*/
     }
 }
