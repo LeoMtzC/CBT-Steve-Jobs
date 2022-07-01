@@ -34,7 +34,7 @@ return new class extends Migration
             $table->date('fecha_ini');
             $table->date('fecha_term');
             $table->date('fecha_exp');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('telefono', 10);
             $table->date('fecha_ini');
             $table->date('fecha_term');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

@@ -61,7 +61,7 @@ return new class extends Migration
                 ->constrained('docs_alumnos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

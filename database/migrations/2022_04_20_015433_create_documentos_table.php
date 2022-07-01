@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('descripcion', 80);
             $table->unsignedTinyInteger('semestrereq');
             $table->unsignedSmallInteger('horasreq');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

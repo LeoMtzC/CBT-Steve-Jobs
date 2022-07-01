@@ -351,8 +351,7 @@ class AlumnoController extends Controller
                   'telefono' => $request->telAlu,
                   'fecha_nac' => $request->fechNacAlu,
                   'nss' => $request->nssAlu,
-                  'seguro_med' => $request->segMedAlu,
-                  'estado' => 1
+                  'seguro_med' => $request->segMedAlu
                 ]
         );
         return redirect()->back()->with('success','Datos actualizados correctamente');
@@ -386,8 +385,7 @@ class AlumnoController extends Controller
             'colonia' => $request->coloniaAlu,
             'cp' => $request->cpAlu,
             'no_ext' => $request->numExAlu,
-            'no_int' => $request->numInAlu,
-            'estado' => 1,
+            'no_int' => $request->numInAlu
         ]);
         //Se actualiza la tabla alumnos con el id del insert
         DB::table('alumnos')
@@ -430,8 +428,7 @@ class AlumnoController extends Controller
             'curp' => $request->curpTut,
             'telf_movil' => $request->celTut,
             'telf_fijo' => $request->telTut,
-            'id_parentesco' => $request->parentTut,
-            'estado' => 1,
+            'id_parentesco' => $request->parentTut
         ]);
         //Se actualiza la tabla alumnos con el id del insert
         DB::table('alumnos')
@@ -474,8 +471,7 @@ class AlumnoController extends Controller
             'apPatResp' => $request->apPatER,
             'apMatResp' => $request->apMatER,
             'fecha_ini' => $request->fechIniER,
-            'fecha_term' => $request->fechTerER,
-            'estado' => 1
+            'fecha_term' => $request->fechTerER
         ]);
         //Se actualiza la tabla alumnos con el id del insert
         DB::table('alumnos')

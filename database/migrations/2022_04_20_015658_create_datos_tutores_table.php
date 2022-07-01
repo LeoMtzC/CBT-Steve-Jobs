@@ -26,7 +26,7 @@ return new class extends Migration
                 ->constrained('parentescos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

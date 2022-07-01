@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('grupo', 8);
             $table->string('semestre', 10);
             $table->year('generacion');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }
