@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use Illuminate\Support\Facades\File;
 
 class AlumnoController extends Controller
 {
@@ -133,8 +134,22 @@ class AlumnoController extends Controller
             ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
+
+        //Query para obtener los datos de los archivos del alumno logeado
+        $datosArchivos = DB::table('alumnos')->join('docs_alumnos', function($join){
+            $join->on('alumnos.id_docs','=','docs_alumnos.id')
+            ->where('alumnos.id_docs','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_docs
+            ); // Se utiliza un subquery para obtener el id_docs del usuario logeado
+        })
+        ->get();
+
+
         
-        return view('Alumno.datos.subirD', ['semestreAlumno' => $semestre]);
+        return view('Alumno.datos.subirD', ['semestreAlumno' => $semestre, 'datosArchivos' => $datosArchivos]);
     }
 
     //GENERAR
@@ -670,7 +685,7 @@ class AlumnoController extends Controller
             'fechaTermino' => $fechaTermino,
             'cicloEscolar' => $cicloEscolar,
         ]);
-        //return $pdf->stream();
+        //c
         return $pdf->download($datosAlumno[0]->matricula.' | Carta de autorización | Practicas de ejecución.pdf');
 
         /*return view('formatos.carta_aut_PE', [
@@ -1059,4 +1074,188 @@ class AlumnoController extends Controller
             return redirect()->back()->with('error',$e);
         }
     }
+
+    public function subirINE(Request $request){
+        
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+
+        $archivo = $request->all();
+
+        error_log($request);
+
+        if ($request->hasFile('subirINE')) {
+            $nombre ='INE_TUTOR_'.$datosAlumno[0]->matricula.'.'.'pdf';
+            $ruta = $request->file('subirINE')
+                ->storeAs('DOCUMENTOS_ALUMNOS/'.$datosAlumno[0]->matricula, $nombre);
+        }
+
+        //Si es una actualización se obtiene el ID
+        if($request->idINE){
+            DB::table('docs_alumnos')
+                ->where('id', $request->idINE)
+                ->update(
+                    [
+                        'ine' => $ruta
+                    ]
+                );
+            return redirect()->back()->with('success','INE del tutor actualizada correctamente');
+        }
+        //Si es una creación se obtiene el autoincrement ID del insert
+        $id = DB::table('docs_alumnos')->insertGetId([
+            'ine' => $ruta
+        ]);
+        //Se actualiza la tabla alumnos con el id del insert
+        DB::table('alumnos')
+        ->where('id_usuario', Auth::user()->id)
+        ->update(
+            [
+                'id_docs' => $id,
+            ]
+        );
+        return redirect()->back()->with('success','INE del tutor guardada correctamente');
+    }
+
+    public function subirActa(Request $request){
+        
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+
+        $archivo = $request->all();
+
+        error_log($request);
+
+        if ($request->hasFile('subirActNac')) {
+            $nombre ='ACTA_NAC_'.$datosAlumno[0]->matricula.'.'.'pdf';
+            $ruta = $request->file('subirActNac')
+                ->storeAs('DOCUMENTOS_ALUMNOS/'.$datosAlumno[0]->matricula, $nombre);
+        }
+
+        //Si es una actualización se obtiene el ID
+        if($request->idActaNac){
+            DB::table('docs_alumnos')
+                ->where('id', $request->idActaNac)
+                ->update(
+                    [
+                        'acta_nac' => $ruta
+                    ]
+                );
+            return redirect()->back()->with('success','Acta de nacimiento actualizada correctamente');
+        }
+        //Si es una creación se obtiene el autoincrement ID del insert
+        $id = DB::table('docs_alumnos')->insertGetId([
+            'acta_nac' => $ruta
+        ]);
+        //Se actualiza la tabla alumnos con el id del insert
+        DB::table('alumnos')
+        ->where('id_usuario', Auth::user()->id)
+        ->update(
+            [
+                'id_docs' => $id,
+            ]
+        );
+        return redirect()->back()->with('success','Acta de nacimiento guardada correctamente');
+    }
+
+    /*
+    public function store(Request $request){
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+        if($request->hasFile("subirINE")){
+            $archivo = $request->file("subirINE");
+            $nombre = 'INE_'.$datosAlumno[0]->matricula.'.'.$archivo->guessExtension();
+            $ruta = public_path('INE\\'.$nombre);
+            
+            $existe = File::exists($ruta);
+
+            if($existe){
+                File::delete($ruta);
+                if($archivo->guessExtension()=='pdf'){
+                    copy($archivo, $ruta);
+                    //Si es una actualización se obtiene el ID
+                    if($request->idINE){
+                        DB::table('docs_alumnos')
+                            ->where('id', $request->idINE)
+                            ->update(
+                                [
+                                    'ine' => $ruta
+                                ]
+                            );
+                        return redirect()->back()->with('success','INE del tutor actualizada correctamente');
+                    }
+                }
+            }else{
+                if($archivo->guessExtension()=='pdf'){
+                    copy($archivo, $ruta);
+                    $id = DB::table('docs_alumnos')->insertGetId([
+                        'ine' => $ruta
+                    ]);
+                    //Se actualiza la tabla alumnos con el id del insert
+                    DB::table('alumnos')
+                    ->where('id_usuario', Auth::user()->id)
+                    ->update(
+                        [
+                            'id_docs' => $id,
+                        ]
+                    );
+                    return redirect()->back()->with('success','INE del tutor guardada correctamente');
+                }                
+            }
+
+
+            
+            
+            /*
+            if (! File::exists($ruta)) {
+                File::makeDirectory($ruta,0777,true);
+                if($archivo->guessExtension()=='pdf'){      //Si el archivo no existe, se crea
+                    //Si es una creación se obtiene el autoincrement ID del insert
+                    $id = DB::table('docs_alumnos')->insertGetId([
+                        'ine' => $ruta
+                    ]);
+                    //Se actualiza la tabla alumnos con el id del insert
+                    DB::table('alumnos')
+                    ->where('id_usuario', Auth::user()->id)
+                    ->update(
+                        [
+                            'id_docs' => $id,
+                        ]
+                    );
+                    return redirect()->back()->with('success','INE del tutor guardada correctamente');
+                }
+            }elseif (File::exists($ruta)) {         //Si el archivo si existe, se elimina y se crea nuevamente (actualiza)
+                File::delete($ruta);
+                File::makeDirectory($ruta);
+                copy($archivo, $ruta);
+                //Si es una actualización se obtiene el ID
+                if($request->idINE){
+                    DB::table('docs_alumnos')
+                        ->where('id', $request->idDomicilio)
+                        ->update(
+                            [
+                                'ine' => $ruta
+                            ]
+                        );
+                    return redirect()->back()->with('success','INE del tutor actualizada correctamente');
+                }
+            }
+        }else{
+            return redirect()->back()->with('error','Algo salió mal');
+        }
+    }*/
 }

@@ -132,8 +132,8 @@ $(document).ready(function() {
     });
     //Validación - subir INE
     $("#btnSubirINE").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirINE").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "La copia de tu <i><b>INE</b></i> debe ser un archivo válido.");
         }
@@ -159,8 +159,8 @@ $(document).ready(function() {
     });
     //Validación - subir acta de nacimiento
     $("#btnsubirActNac").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirActNac").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "La copia de tu <i><b>Acta de nacimiento</b></i> debe ser un archivo válido.");
         }

@@ -47,6 +47,12 @@ Route::middleware(['auth', 'alumno'])->group(function () {
     Route::get('/datos-tutor', [AlumnoController::class,'showDatosT'])->name('DatosTAlumno');
     //Subir documentos personales
     Route::get('/subir-docs', [AlumnoController::class,'showSubirDocs'])->name('subirDocsAlu');
+        //Subir INE de tutor
+        Route::post('/subir-ine', [AlumnoController::class,'subirINE']);
+        //Subir Acta de nacimiento
+        Route::post('/subir-acta', [AlumnoController::class,'subirActa']);
+        //Ver documentos
+        Route::get('/storage/{ruta}', [AlumnoController::class,'verPDF'])->name('VerPDF');
     //Datos del escenario real
     Route::get('/escenario-real', [AlumnoController::class,'showEscenarioR'])->name('EscenarioR');
 
