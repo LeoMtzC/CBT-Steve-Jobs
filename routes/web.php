@@ -57,18 +57,38 @@ Route::middleware(['auth', 'alumno'])->group(function () {
     Route::get('/generar-carta-autorizacion', [AlumnoController::class,'showGCartaAut'])->name('GCartaAut');
         //Practicas de ejecución
         Route::get('/generar-carta-autorizacion-PE', [AlumnoController::class,'GenerarCartaAut'])->name('GCartaAutPE')->middleware('PracEj');
+        //Servicio social
+        Route::get('/generar-carta-autorizacion-SS', [AlumnoController::class,'GenerarCartaAut'])->name('GCartaAutSS')->middleware('ServSoc');
+        //Estadías
+        Route::get('/generar-carta-autorizacion-EP', [AlumnoController::class,'GenerarCartaAut'])->name('GCartaAutEP')->middleware('Estadias');
     //Carta de presentación
     Route::get('/generar-carta-presentacion', [AlumnoController::class,'showGCartaPres'])->name('GCartaPres');
+        //Practicas de ejecución
+        Route::get('/generar-carta-presentacion-PE', [AlumnoController::class,'GenerarCartaPres'])->name('GCartaPresPE')->middleware('PracEj');
+        //Servicio social
+        Route::get('/generar-carta-presentacion-SS', [AlumnoController::class,'GenerarCartaPres'])->name('GCartaPresSS')->middleware('ServSoc');
+        //Estadías
+        Route::get('/generar-carta-presentacion-EP', [AlumnoController::class,'GenerarCartaPres'])->name('GCartaPresEP')->middleware('Estadias');
     //Carta de acepración
     Route::get('/generar-carta-aceptacion', [AlumnoController::class,'showGCartaAcep'])->name('GCartaAcep');
+        //Practicas de ejecución
+        Route::get('/generar-carta-aceptacion-PE', [AlumnoController::class,'GenerarCartaAcep'])->name('GCartaAcepPE')->middleware('PracEj');
+        //Servicio social
+        Route::get('/generar-carta-aceptacion-SS', [AlumnoController::class,'GenerarCartaAcep'])->name('GCartaAcepSS')->middleware('ServSoc');
+        //Estadías
+        Route::get('/generar-carta-aceptacion-EP', [AlumnoController::class,'GenerarCartaAcep'])->name('GCartaAcepEP')->middleware('Estadias');
     //Carta de termino *-*EN DESUSO*-*
     Route::get('/generar-carta-termino', [AlumnoController::class,'showGCartaTer'])->name('GCartaTer');
     //Informe
     Route::get('/generar-informe', [AlumnoController::class,'showGInforme'])->name('GInforme');
+        //Generar todos los informes
+        Route::get('/generar-informes', [AlumnoController::class,'GenerarInforme'])->name('GInformeTodo');
     //Bitacora
     Route::get('/generar-bitacora', [AlumnoController::class,'showGBitacora'])->name('GBitacora');
+        //Generar todos las bitácoras    
+        Route::get('/generar-bitacoras', [AlumnoController::class,'GenerarBitacoras'])->name('GBitacoraTodos');
 
-    //Descargar archivos
+    //Descargar archivos ( utilizado para bitácoras e informe)
     Route::get('/descargar-bitacora/{archivo}/{nombre}', [AlumnoController::class,'descargarArchivo'])->name('Descargar');
     
     //Actualizar datos personales

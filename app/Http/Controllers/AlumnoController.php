@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumno;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -458,6 +459,7 @@ class AlumnoController extends Controller
                     'nombreResp' => $request->respER,
                     'apPatResp' => $request->apPatER,
                     'apMatResp' => $request->apMatER,
+                    'cargoResp' => $request->cargoER,
                     'fecha_ini' => $request->fechIniER,
                     'fecha_term' => $request->fechTerER
                 ]
@@ -472,6 +474,7 @@ class AlumnoController extends Controller
             'nombreResp' => $request->respER,
             'apPatResp' => $request->apPatER,
             'apMatResp' => $request->apMatER,
+            'cargoResp' => $request->cargoER,
             'fecha_ini' => $request->fechIniER,
             'fecha_term' => $request->fechTerER
         ]);
@@ -504,6 +507,12 @@ class AlumnoController extends Controller
             break;
             case 4 :
                 $semestre = 'cuarto';
+            break;
+            case 5 :
+                $semestre = 'quinto';
+            break;
+            case 6 :
+                $semestre = 'sexto';
             break;
         }
 
@@ -547,7 +556,7 @@ class AlumnoController extends Controller
         })
         ->get();
 
-        //Query para obtener los datos del grupo del alumno logeado
+        //Query para obtener los datos del escenario del alumno logeado
         $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
             $join->on('alumnos.id_escenario','=','escenarios.id')
             ->where('alumnos.id_escenario','=',
@@ -568,7 +577,7 @@ class AlumnoController extends Controller
         $fechaIni = $datosEscenario[0]->fecha_ini;
         $fechaIni = str_replace("/", "-", $fechaIni); 
         $newfechaIni = date("d-m-Y", strtotime($fechaIni)); 
-        $fechaInicial = strftime("%d de %B", strtotime($newfechaIni));
+        $fechaInicial = strftime("%d de %B de %Y", strtotime($newfechaIni));
 
         //formato fecha de termino del escenario
         $fechaTerm = $datosEscenario[0]->fecha_term;
@@ -607,9 +616,51 @@ class AlumnoController extends Controller
             $carrera =  "Técnico en Expresión Gráfica Digital";
         }
 
-        $pdf = PDF::loadView('formatos.carta_aut_PE', [
+        switch($numSemestre){
+            case 2 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_AUT/FORMATO_CARTA_AUT_PE.docx"));
+            break;
+            case 3 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_AUT/FORMATO_CARTA_AUT_PE.docx"));
+            break;
+            case 4 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_AUT/FORMATO_CARTA_AUT_PE.docx"));
+            break;
+            case 5 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_AUT/FORMATO_CARTA_AUT_SS.docx"));
+            break;
+            case 6 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_AUT/FORMATO_CARTA_AUT_EP.docx"));
+            break;
+        }
+
+        $plantilla->setValue('fechaActual', $fechaActual);
+        $plantilla->setValue('nombreTutor', $datosTutor[0]->nombre);
+        $plantilla->setValue('apPatTutor', $datosTutor[0]->apPat);
+        $plantilla->setValue('apMatTutor', $datosTutor[0]->apMat);
+        $plantilla->setValue('nombreAlumno', $datosAlumno[0]->nombre);
+        $plantilla->setValue('apPatAlumno', $datosAlumno[0]->apPat);
+        $plantilla->setValue('apMatAlumno', $datosAlumno[0]->apMat);
+        $plantilla->setValue('semestreAlumno', $semestre);
+        $plantilla->setValue('carreraAlumno', $carrera);
+        $plantilla->setValue('grupoAlumno', $datosGrupo[0]->grupo);
+        $plantilla->setValue('cicloEscolar', $cicloEscolar);
+        $plantilla->setValue('fechaInicial', $fechaInicial);
+        $plantilla->setValue('fechaTermino', $fechaTermino);
+
+        try{
+            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+            $plantilla->saveAs($tempFile);
+            $header = ["Content-Type: application/octet-stream",];
+            return response()->download($tempFile, $datosAlumno[0]->matricula.' | Carta de autorización.docx', $header)->deleteFileAfterSend($shouldDelete = true);
+        }catch (Exception $e){
+            //handle exception
+            return redirect()->back()->with('error',$e);
+        }
+
+        /*$pdf = PDF::loadView('formatos.carta_aut_PE', [
             'semestreAlumno' => $semestre,
-            'fechaActual' => $fechaActual,
+            'nombreTutor' => $fechaActual,
             'datosTutor' => $datosTutor,
             'datosGrupo' => $datosGrupo,
             'datosEscenario' => $datosEscenario,
@@ -634,5 +685,378 @@ class AlumnoController extends Controller
             'fechaTermino' => $fechaTermino,
             'cicloEscolar' => $cicloEscolar,
         ]);*/
+    }
+
+    public function GenerarCartaPres()
+    {
+        //Query para obtener el semestre del alumno logeado
+        $numSemestre = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->first()->semestre;
+
+        switch($numSemestre){
+            case 2 :
+                $semestre = 'segundo';
+            break;
+            case 3 :
+                $semestre = 'tercer';
+            break;
+            case 4 :
+                $semestre = 'cuarto';
+            break;
+            case 5 :
+                $semestre = 'quinto';
+            break;
+            case 6 :
+                $semestre = 'sexto';
+            break;
+        }
+
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+        $mes    = $fecha->monthName;
+        $anio   = $fecha->year;
+        $dia    = $fecha->dayName;
+        $diaNumero = $fecha->day;
+        $fechaActual = $diaNumero." de ".$mes." de ".$anio;
+        //$fechaActual = Carbon::now()->locale('es_MX')->isoFormat('d \d\e MMMM \d\e\l Y');
+
+        //Query para obtener los datos del escenario del alumno logeado
+        $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
+            $join->on('alumnos.id_escenario','=','escenarios.id')
+            ->where('alumnos.id_escenario','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_escenario
+            ); // Se utiliza un subquery para obtener el id_grupo del usuario logeado
+        })
+        ->get();
+
+        //Si no hay datos de escenario, cortamos el flujo y regresamos un mensaje de error
+        if(!$datosEscenario->first()){
+            return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu escenario real?');
+        }
+
+        //formato fecha inicial del escenario
+        $fechaIni = $datosEscenario[0]->fecha_ini;
+        $fechaIni = str_replace("/", "-", $fechaIni); 
+        $newfechaIni = date("d-m-Y", strtotime($fechaIni)); 
+        $fechaInicial = strftime("%d de %B de %Y", strtotime($newfechaIni));
+
+        //formato fecha de termino del escenario
+        $fechaTerm = $datosEscenario[0]->fecha_term;
+        $fechaTerm = str_replace("/", "-", $fechaTerm); 
+        $newfechaTerm = date("d-m-Y", strtotime($fechaTerm)); 
+        $fechaTermino = strftime("%d de %B de %Y", strtotime($newfechaTerm));
+
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+        //Asignación de carreras de acuerdo al ID de carrera
+        if($datosAlumno[0] -> id_carrera == 1 ){
+            $carrera =  "Técnico en Informática";
+        }else{
+            $carrera =  "Técnico en Expresión Gráfica Digital";
+        }
+
+        switch($numSemestre){
+            case 2 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_PRES/FORMATO_CARTA_PRES_PE.docx"));
+            break;
+            case 3 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_PRES/FORMATO_CARTA_PRES_PE.docx"));
+            break;
+            case 4 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_PRES/FORMATO_CARTA_PRES_PE.docx"));
+            break;
+            case 5 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_PRES/FORMATO_CARTA_PRES_SS.docx"));
+            break;
+            case 6 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_PRES/FORMATO_CARTA_PRES_EP.docx"));
+            break;
+        }
+
+        $plantilla->setValue('fechaActual', $fechaActual);
+        $plantilla->setValue('nombreResponsable', mb_strtoupper($datosEscenario[0]->nombreResp));
+        $plantilla->setValue('apPatResponsable', mb_strtoupper($datosEscenario[0]->apPatResp));
+        $plantilla->setValue('apMatResponsable', mb_strtoupper($datosEscenario[0]->apMatResp));
+        $plantilla->setValue('cargoResponsable', mb_strtoupper($datosEscenario[0]->cargoResp));
+        $plantilla->setValue('nombreEscenario', mb_strtoupper($datosEscenario[0]->nombreEsc));
+        $plantilla->setValue('apPatAlumno', mb_strtoupper($datosAlumno[0]->apPat));
+        $plantilla->setValue('apMatAlumno', mb_strtoupper($datosAlumno[0]->apMat));
+        $plantilla->setValue('nombreAlumno', mb_strtoupper($datosAlumno[0]->nombre));
+        $plantilla->setValue('semestreAlumno', $semestre);
+        $plantilla->setValue('carreraAlumno', $carrera);
+        $plantilla->setValue('fechaInicial', $fechaInicial);
+        $plantilla->setValue('fechaTermino', $fechaTermino);
+
+        try{
+            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+            $plantilla->saveAs($tempFile);
+            $header = ["Content-Type: application/octet-stream",];
+            return response()->download($tempFile, $datosAlumno[0]->matricula.' | Carta de presentación.docx', $header)->deleteFileAfterSend($shouldDelete = true);
+        }catch (Exception $e){
+            //handle exception
+            return redirect()->back()->with('error',$e);
+        }
+    }
+
+    public function GenerarCartaAcep()
+    {
+        //Query para obtener el semestre del alumno logeado
+        $numSemestre = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->first()->semestre;
+
+        switch($numSemestre){
+            case 2 :
+                $semestre = 'segundo';
+            break;
+            case 3 :
+                $semestre = 'tercer';
+            break;
+            case 4 :
+                $semestre = 'cuarto';
+            break;
+            case 5 :
+                $semestre = 'quinto';
+            break;
+            case 6 :
+                $semestre = 'sexto';
+            break;
+        }
+
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+        $mes    = $fecha->monthName;
+        $anio   = $fecha->year;
+        $dia    = $fecha->dayName;
+        $diaNumero = $fecha->day;
+        $fechaActual = $diaNumero." de ".$mes." de ".$anio;
+        //$fechaActual = Carbon::now()->locale('es_MX')->isoFormat('d \d\e MMMM \d\e\l Y');
+
+        //Query para obtener los datos del escenario del alumno logeado
+        $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
+            $join->on('alumnos.id_escenario','=','escenarios.id')
+            ->where('alumnos.id_escenario','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_escenario
+            ); // Se utiliza un subquery para obtener el id_grupo del usuario logeado
+        })
+        ->get();
+
+        //Si no hay datos de escenario, cortamos el flujo y regresamos un mensaje de error
+        if(!$datosEscenario->first()){
+            return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu escenario real?');
+        }
+
+        //formato fecha inicial del escenario
+        $fechaIni = $datosEscenario[0]->fecha_ini;
+        $fechaIni = str_replace("/", "-", $fechaIni); 
+        $newfechaIni = date("d-m-Y", strtotime($fechaIni)); 
+        $fechaInicial = strftime("%d de %B de %Y", strtotime($newfechaIni));
+
+        //formato fecha de termino del escenario
+        $fechaTerm = $datosEscenario[0]->fecha_term;
+        $fechaTerm = str_replace("/", "-", $fechaTerm); 
+        $newfechaTerm = date("d-m-Y", strtotime($fechaTerm)); 
+        $fechaTermino = strftime("%d de %B de %Y", strtotime($newfechaTerm));
+
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+        //Asignación de carreras de acuerdo al ID de carrera
+        if($datosAlumno[0] -> id_carrera == 1 ){
+            $carrera =  "Técnico en Informática";
+        }else{
+            $carrera =  "Técnico en Expresión Gráfica Digital";
+        }
+
+        switch($numSemestre){
+            case 2 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_ACEP/FORMATO_CARTA_ACEP_PE.docx"));
+            break;
+            case 3 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_ACEP/FORMATO_CARTA_ACEP_PE.docx"));
+            break;
+            case 4 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_ACEP/FORMATO_CARTA_ACEP_PE.docx"));
+            break;
+            case 5 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_ACEP/FORMATO_CARTA_ACEP_SS.docx"));
+            break;
+            case 6 :
+                $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/CARTA_ACEP/FORMATO_CARTA_ACEP_EP.docx"));
+            break;
+        }
+
+        $plantilla->setValue('fechaActual', $fechaActual);
+        $plantilla->setValue('nombreResponsable', mb_strtoupper($datosEscenario[0]->nombreResp));
+        $plantilla->setValue('apPatResponsable', mb_strtoupper($datosEscenario[0]->apPatResp));
+        $plantilla->setValue('apMatResponsable', mb_strtoupper($datosEscenario[0]->apMatResp));
+        $plantilla->setValue('cargoResponsable', mb_strtoupper($datosEscenario[0]->cargoResp));
+        $plantilla->setValue('nombreEscenario', mb_strtoupper($datosEscenario[0]->nombreEsc));
+        $plantilla->setValue('apPatAlumno', mb_strtoupper($datosAlumno[0]->apPat));
+        $plantilla->setValue('apMatAlumno', mb_strtoupper($datosAlumno[0]->apMat));
+        $plantilla->setValue('nombreAlumno', mb_strtoupper($datosAlumno[0]->nombre));
+        $plantilla->setValue('semestreAlumno', $semestre);
+        $plantilla->setValue('carreraAlumno', $carrera);
+        $plantilla->setValue('fechaInicial', $fechaInicial);
+        $plantilla->setValue('fechaTermino', $fechaTermino);
+
+        try{
+            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+            $plantilla->saveAs($tempFile);
+            $header = ["Content-Type: application/octet-stream",];
+            return response()->download($tempFile, $datosAlumno[0]->matricula.' | Carta de aceptación.docx', $header)->deleteFileAfterSend($shouldDelete = true);
+        }catch (Exception $e){
+            //handle exception
+            return redirect()->back()->with('error',$e);
+        }
+    }
+
+    public function GenerarInforme()
+    {
+        //Query para obtener el semestre del alumno logeado
+        $numSemestre = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->first()->semestre;
+
+        $practicas = 'PRÁCTICAS DE EJECUCIÓN DE COMPETENCIAS';
+
+        switch($numSemestre){
+            case 5 :
+                $practicas = 'SERVICIO SOCIAL';
+            break;
+            case 6 :
+                $practicas = 'PRÁCTICAS PROFESIONALES ESTADÍAS';
+            break;
+        }
+
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+        $mes    = $fecha->monthName;
+        $anio   = $fecha->year;
+        $dia    = $fecha->dayName;
+        $diaNumero = $fecha->day;
+        $fechaActual = $diaNumero." de ".$mes." de ".$anio;
+        //$fechaActual = Carbon::now()->locale('es_MX')->isoFormat('d \d\e MMMM \d\e\l Y');
+
+        //Query para obtener los datos del escenario del alumno logeado
+        $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
+            $join->on('alumnos.id_escenario','=','escenarios.id')
+            ->where('alumnos.id_escenario','=',
+                DB::table('alumnos')->join('users', function($join){
+                    $join->on('alumnos.id_usuario','=','users.id')
+                    ->where('alumnos.id_usuario','=',Auth::user()->id);
+                })->first()->id_escenario
+            ); // Se utiliza un subquery para obtener el id_grupo del usuario logeado
+        })
+        ->get();
+
+        //Si no hay datos de escenario, cortamos el flujo y regresamos un mensaje de error
+        if(!$datosEscenario->first()){
+            return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu escenario real?');
+        }
+
+        //formato fecha inicial del escenario
+        $fechaIni = $datosEscenario[0]->fecha_ini;
+        $fechaIni = str_replace("/", "-", $fechaIni); 
+        $newfechaIni = date("d-m-Y", strtotime($fechaIni)); 
+        $fechaInicial = strftime("%d de %B de %Y", strtotime($newfechaIni));
+
+        //formato fecha de termino del escenario
+        $fechaTerm = $datosEscenario[0]->fecha_term;
+        $fechaTerm = str_replace("/", "-", $fechaTerm); 
+        $newfechaTerm = date("d-m-Y", strtotime($fechaTerm)); 
+        $fechaTermino = strftime("%d de %B de %Y", strtotime($newfechaTerm));
+
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+        $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/INFORME/FORMATO_INFORME.docx"));
+
+        $plantilla->setValue('apPatAlumno', mb_strtoupper($datosAlumno[0]->apPat));
+        $plantilla->setValue('apMatAlumno', mb_strtoupper($datosAlumno[0]->apMat));
+        $plantilla->setValue('nombreAlumno', mb_strtoupper($datosAlumno[0]->nombre));
+
+        try{
+            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+            $plantilla->saveAs($tempFile);
+            $header = ["Content-Type: application/octet-stream",];
+            return response()->download($tempFile, $datosAlumno[0]->matricula.' | Informe.docx', $header)->deleteFileAfterSend($shouldDelete = true);
+        }catch (Exception $e){
+            //handle exception
+            return redirect()->back()->with('error',$e);
+        }
+    }
+
+    public function GenerarBitacoras()
+    {
+        //Query para obtener el semestre del alumno logeado
+        $numSemestre = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->first()->semestre;
+
+        //Query para obtener todos los datos del alumno
+        $datosAlumno = DB::table('alumnos')->join('users', function($join){
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
+        })
+        ->get();
+
+        //Asignación de carreras de acuerdo al ID de carrera
+        if($datosAlumno[0] -> id_carrera == 1 ){
+            $carrera = 'Técnico en Informática';
+        }else{
+            $carrera = 'Técnico en Expresión Gráfica Digital';
+        }
+
+        $plantilla = new \PhpOffice\PhpWord\TemplateProcessor(public_path("templates/BITACORAS/FORMATO_BITACORA.docx"));
+
+        $plantilla->setValue('apPatAlumno', mb_strtoupper($datosAlumno[0]->apPat));
+        $plantilla->setValue('apMatAlumno', mb_strtoupper($datosAlumno[0]->apMat));
+        $plantilla->setValue('nombreAlumno', mb_strtoupper($datosAlumno[0]->nombre));
+        $plantilla->setValue('carreraAlumno', mb_strtoupper($carrera));
+
+        try{
+            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+            $plantilla->saveAs($tempFile);
+            $header = ["Content-Type: application/octet-stream",];
+            return response()->download($tempFile, $datosAlumno[0]->matricula.' | Informe.docx', $header)->deleteFileAfterSend($shouldDelete = true);
+        }catch (Exception $e){
+            //handle exception
+            return redirect()->back()->with('error',$e);
+        }
     }
 }

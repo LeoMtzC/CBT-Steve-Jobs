@@ -53,6 +53,11 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
+                        <label for="cargoER">Cargo</label>
+                        <input type="text" class="form-control" id="cargoER" placeholder="Cargo del responsable"
+                            name="cargoER" value="{{ $datosEscenario[0] -> cargoResp }}" required>
+                    </div>
+                    <div class="form-group col-md-4">
                         <label for="fechIniER">Fecha de inicio</label>
                         <input type="date" class="form-control" id="fechIniER" placeholder=""
                             name="fechIniER" value="{{ $datosEscenario[0] -> fecha_ini }}" required>
@@ -101,6 +106,11 @@
                     </div>
                 </div>
                 <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="cargoER">Cargo</label>
+                        <input type="text" class="form-control" id="cargoER" placeholder="Cargo del responsable"
+                            name="cargoER" value="" required>
+                    </div>
                     <div class="form-group col-md-4">
                         <label for="fechIniER">Fecha de inicio</label>
                         <input type="date" class="form-control" id="fechIniER" placeholder=""

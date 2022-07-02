@@ -57,8 +57,9 @@ function validaDatosEscR(datos) {
     colorInput(EXP_REG_NOMBRE.test(datos[5].value), $("#respER"), err, 0);
     colorInput(EXP_REG_NOMBRE.test(datos[6].value), $("#apPatER"), err, 1);
     colorInput(EXP_REG_NOMBRE.test(datos[7].value), $("#apMatER"), err, 1);
-    colorInput(datos[8].value !== "", $("#fechIniER"), err, 21);
-    colorInput(datos[9].value !== "", $("#fechTerER"), err, 22);
+    colorInput(EXP_REG_DIR.test(datos[8].value), $("#cargoER"), err, 31);
+    colorInput(datos[9].value !== "", $("#fechIniER"), err, 21);
+    colorInput(datos[10].value !== "", $("#fechTerER"), err, 22);
     return err;
 }
 //Método que permite colorear los imputs dependiendo de su estatus (correcto o incorrecto)

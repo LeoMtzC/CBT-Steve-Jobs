@@ -7,7 +7,7 @@ const EXP_REG_TEL = /^[0-9]{10}$/;
 const EXP_REG_NSS = /^[0-9]{11}$/;
 const EXP_REG_EMAIL = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const EXP_REG_CURP = /^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{4}[A-Z0-9]{10}$/;
-const EXP_REG_CALLECOL = /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ0-9\,]{2,}(\s[a-záéíóúüñA-ZÁÉÍÓÚÑ0-9\,]{1,})*$/;
+const EXP_REG_CALLECOL = /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ0-9\,\.]{2,}(\s[a-záéíóúüñA-ZÁÉÍÓÚÑ0-9\,\.]{1,})*$/;
 const EXP_REG_DIRCOMP = /^[#.0-9a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s,-]+$/;
 const EXP_REG_CP = /^[0-9]{5}$/;
 const EXP_REG_NUMEX = /^[0-9]{1,4}$/;
@@ -58,4 +58,6 @@ const MSJ_ERROR = [
 
     "Las <b>Horas</b> ingresadas son inválidas, solo numeros, no mayor a 3 cifras", 
     "Las <b>Contraseña</b> no puede estar vacía", //30
+
+    "El <b>Cargo del responsable</b> está vacío o no es válido",
 ];

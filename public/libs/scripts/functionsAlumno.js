@@ -385,9 +385,16 @@ $(document).ready(function() {
             evento.preventDefault();
     });
     //FORMATEO de campos datos escenario real
-    $("#nomER, #dirER").on("keypress", function (evento) {
+    $("#nomER, #dirER, #cargoER").on("keypress", function (evento) {
+        $(this).style.height = 'auto';
+        $(this).style.height = ($(this).scrollHeight) + 'px';
         $(this).attr('maxlength', '150');
         $(this).attr('minlength', '3');
+    });
+    $("#dirER").keyup(function(e) {
+        while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
+            $(this).height($(this).height()+1);
+        };
     });
     $("#telER").on("keypress", function (evento) {
         $(this).attr('maxlength', '10');
