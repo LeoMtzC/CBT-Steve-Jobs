@@ -23,7 +23,7 @@ return new class extends Migration
                     ->onDelete('cascade');
             $table->string('password', 60);
             $table->rememberToken();
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

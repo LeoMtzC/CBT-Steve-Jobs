@@ -4,6 +4,8 @@
 
 @section('contenido')
 
+@include('layouts.partials.messages')
+
     <!-- Subir Guía de observación -->
     <div class="card shadow mb-4">  
         <div class="card-header py-3">
@@ -14,14 +16,33 @@
                 Sube un archivo <b>PDF</b> de tu guía de observación una vez que haya sido completada.
             </p>
             <br>
-            <form>
+            <form action="/subir-guia-observacion" method="POST" enctype="multipart/form-data">
+                @csrf
+                @if($datosHistorialPE->first())
+                <input type="hidden" class="form-control" id="idGuiaObs" name="idGuiaObs"
+                    value="{{ $datosHistorialPE[0] -> id }}">
                 <div class="custom-file">
-                    <input type="file" accept="application/pdf" class="custom-file-input" id="subirGuiaObs" lang="es">
+                    <input type="file" accept="application/pdf" class="custom-file-input" id="subirGuiaObs" name="subirGuiaObs"
+                        value="{{ $datosHistorialPE[0] -> url }}" lang="es">
+                    <label class="custom-file-label" for="subirGuiaObs">{{ $datosHistorialPE[0] -> url }}</label>
+                </div>
+                <div class="mt-3">
+                <button type="submit" class="btn btn-alumno" id="btnSubirGuiaObs"><i class="fas fa-file-upload"></i> Actualizar</button>
+                <a href="{{ route('VerPDF', ['ruta' => $datosHistorialPE[0] -> url])}}" target="_blank"
+                    type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                </div>
+                @else
+                <input type="hidden" class="form-control" id="idGuiaObs" name="idGuiaObs"
+                        value="">
+                <div class="custom-file">
+                    <input type="file" accept="application/pdf" class="custom-file-input" id="subirGuiaObs" name="subirGuiaObs"
+                        value="" lang="es">
                     <label class="custom-file-label" for="subirGuiaObs">Seleccionar Archivo</label>
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-alumno" id="btnSubirGuiaObs"><i class="fas fa-file-upload"></i> Subir</button>
                 </div>
+                @endif
             </form>
         </div>
     </div>

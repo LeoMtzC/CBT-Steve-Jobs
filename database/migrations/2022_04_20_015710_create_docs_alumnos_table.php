@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ine',255)->default('SR');
             $table->string('acta_nac',255)->default('SR');
             $table->string('carta_aut',255)->default('SR');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

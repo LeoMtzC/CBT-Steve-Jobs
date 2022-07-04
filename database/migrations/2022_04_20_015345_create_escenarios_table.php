@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('nombreResp', 90);
             $table->string('apPatResp', 90);
             $table->string('apMatResp', 90);
+            $table->string('cargoResp', 90);
             $table->string('telefono', 10);
             $table->date('fecha_ini');
             $table->date('fecha_term');
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

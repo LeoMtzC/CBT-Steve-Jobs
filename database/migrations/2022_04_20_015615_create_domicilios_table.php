@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('cp', 5);
             $table->string('no_ext', 7);
             $table->string('no_int', 7)->nullable();
-            $table->unsignedTinyInteger('estado');
+            $table->unsignedTinyInteger('estado')->default('1');
             $table->timestamps();
         });
     }

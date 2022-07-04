@@ -10,8 +10,8 @@ class AlumnoHomeController extends Controller
     public function show()
     {
         $semestre = DB::table('alumnos')->join('users', function($join){
-            $join->on('alumnos.id','=','users.id')
-            ->where('alumnos.id','=',Auth::user()->id);
+            $join->on('alumnos.id_usuario','=','users.id')
+            ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
         

@@ -28,6 +28,5 @@ class checkDocente
         }else{
             return redirect('/login')->with('message', 'Inicia sesión para acceder a esta página.');
         }
-        return $next($request);
     }
 }

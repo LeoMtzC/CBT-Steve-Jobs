@@ -134,7 +134,7 @@ class DocumentosSeeder extends Seeder
         $doc7->estado = 1;
         $doc7->save();
         
-        $doc8 = new Documento();//15
+        $doc8 = new Documento();
         $doc8->nombre = "Informe de Servicio Social";
         $doc8->descripcion = "Informe de servicio social";
         $doc8->semestrereq = 5;
@@ -142,7 +142,7 @@ class DocumentosSeeder extends Seeder
         $doc8->estado = 1;
         $doc8->save();
         
-        $doc9 = new Documento();//15
+        $doc9 = new Documento();
         $doc9->nombre = "Informe de estadías";
         $doc9->descripcion = "Informe de estadías";
         $doc9->semestrereq = 6;
@@ -166,7 +166,7 @@ class DocumentosSeeder extends Seeder
         $doc11->estado = 1;
         $doc11->save();
         
-        $doc12 = new Documento();
+        $doc12 = new Documento();//20
         $doc12->nombre = "Bitácora de Estadías";
         $doc12->descripcion = "Bitácora de estadías";
         $doc12->semestrereq = 6;
@@ -175,12 +175,44 @@ class DocumentosSeeder extends Seeder
         $doc12->save();
 
         $doc13 = new Documento();
-        $doc13->nombre = "Memoria de Trabajo Profesional";
+        $doc13->nombre = "Avance 1 de Memoria de Trabajo Profesional";
         $doc13->descripcion = "Memoria de trabajo";
-        $doc13->semestrereq = 6;
+        $doc13->semestrereq = 2;
         $doc13->horasreq = 0;
         $doc13->estado = 1;
         $doc13->save();
+
+        $doc14 = new Documento();
+        $doc14->nombre = "Avance 2 de Memoria de Trabajo Profesional";
+        $doc14->descripcion = "Memoria de trabajo";
+        $doc14->semestrereq = 3;
+        $doc14->horasreq = 0;
+        $doc14->estado = 1;
+        $doc14->save();
+
+        $doc15 = new Documento();
+        $doc15->nombre = "Avance 3 de Memoria de Trabajo Profesional";
+        $doc15->descripcion = "Memoria de trabajo";
+        $doc15->semestrereq = 4;
+        $doc15->horasreq = 0;
+        $doc15->estado = 1;
+        $doc15->save();
+
+        $doc16 = new Documento();
+        $doc16->nombre = "Avance 4 de Memoria de Trabajo Profesional";
+        $doc16->descripcion = "Memoria de trabajo";
+        $doc16->semestrereq = 5;
+        $doc16->horasreq = 0;
+        $doc16->estado = 1;
+        $doc16->save();
+
+        $doc17 = new Documento();//25
+        $doc17->nombre = "Memoria de Trabajo Profesional";
+        $doc17->descripcion = "Memoria de trabajo";
+        $doc17->semestrereq = 6;
+        $doc17->horasreq = 0;
+        $doc17->estado = 1;
+        $doc17->save();
 
     }
 }

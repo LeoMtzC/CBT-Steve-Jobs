@@ -4,18 +4,21 @@
 
 @section('contenido')
 
+@include('layouts.partials.messages')
+
+
     <!-- Generar bitácora -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-alumno">Bitácora</h6>
+            <h6 class="m-0 font-weight-bold text-alumno">Bitácoras</h6>
         </div>
         <div class="card-body">
             <p>
-                La bitácora permite que...
+                Las bitácoras permite que...
             </p>
             <br>
             <p>
-                Una vez que generes tu bitácora recuerda que...
+                Una vez que generes tus bitácoras recuerda que...
             </p>
             <br>
             <p>
@@ -23,7 +26,7 @@
             </p>
             <br>
             <div class="text-left">
-                <a href="{{ route('Descargar', ['archivo' => 'FORMATO_BITACORA.pdf', 'nombre' => 'Formato bitácoras.pdf'])}}" type="button" class="btn btn-alumno" id="genBitacora"><i class="fas fa-file-download"></i> Generar</a>
+                <a href="{{ route('GBitacoraTodos') }}" type="button" class="btn btn-alumno" id="genCartaAut"><i class="fas fa-file-download"></i> Generar</a>
             </div>
         </div>
     </div>

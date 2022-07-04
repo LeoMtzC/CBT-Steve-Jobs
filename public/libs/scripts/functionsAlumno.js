@@ -78,8 +78,8 @@ $(document).ready(function() {
     });
     //Validación - subir Permiso
     $("#btnSubirPermiso").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirPermiso").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "Tu <i><b>Permiso</b></i> debe ser un archivo válido.");
         }
@@ -105,8 +105,8 @@ $(document).ready(function() {
     });
     //Validación - subir Guía de observación
     $("#btnSubirGuiaObs").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirGuiaObs").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "Tu <i><b>Guía de observación</b></i> debe ser un archivo válido.");
         }
@@ -132,8 +132,8 @@ $(document).ready(function() {
     });
     //Validación - subir INE
     $("#btnSubirINE").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirINE").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "La copia de tu <i><b>INE</b></i> debe ser un archivo válido.");
         }
@@ -159,8 +159,8 @@ $(document).ready(function() {
     });
     //Validación - subir acta de nacimiento
     $("#btnsubirActNac").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirActNac").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "La copia de tu <i><b>Acta de nacimiento</b></i> debe ser un archivo válido.");
         }
@@ -186,8 +186,8 @@ $(document).ready(function() {
     });
     //Validación - subir carta de autorización
     $("#btnSubirCartAut").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirCartAut").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "La <i><b>carta de autorización</b></i> debe ser un archivo válido.");
         }
@@ -212,9 +212,36 @@ $(document).ready(function() {
         }
     });
     //Validación - subir constancia de termino
+    $("#btnSubirCartPres").on("click", function (e) {
+        if ($("#subirCartPres").val() == "") {
+            e.preventDefault();
+            msgError("<b>Atención</b>",
+                "La <i><b>carta de presentación</b></i> debe ser un archivo válido.");
+        }
+    });
+    $("#subirCartPres").on('change', function () {
+        var ext = $(this).val().split('.').pop();
+        if ($(this).val() != "") {
+            if (ext == "pdf") {
+                if ($(this)[0].files[0].size > 1048576) { //1 MB
+                    $(this).val("");
+                    msgCallback("<b>Atención</b>",
+                    "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
+                        $("#subirCartPres"));
+                }
+            }
+            else {
+                $(this).val("");
+                msgCallbackg("<b>Atención</b>",
+                    "La <i><b>carta de presentación</b></i> debe ser un archivo válido.",
+                    $("#subirCartPres"));
+            }
+        }
+    });
+    //Validación - subir constancia de termino
     $("#btnSubirCartTer").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirCartTer").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "La <i><b>constancia de término</b></i> debe ser un archivo válido.");
         }
@@ -240,8 +267,8 @@ $(document).ready(function() {
     });
     //Validación - subir informe
     $("#btnSubirInforme").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirInforme").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "El <i><b>informe</b></i> debe ser un archivo válido.");
         }
@@ -267,8 +294,8 @@ $(document).ready(function() {
     });
     //Validación - subir MTP
     $("#btnSubirMTP").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirMTP").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "Las <i><b>Memorias de trabajo profesional</b></i> seleccionadas no son un archivo válido.");
         }
@@ -294,8 +321,8 @@ $(document).ready(function() {
     });
     //Validación - subir bitácoras
     $("#btnSubirBitacoras").on("click", function (e) {
-        e.preventDefault();
         if ($("#subirBitacoras").val() == "") {
+            e.preventDefault();
             msgError("<b>Atención</b>",
                 "Las <i><b>bitácoras</b></i> debe ser un archivo válido.");
         }
@@ -385,9 +412,16 @@ $(document).ready(function() {
             evento.preventDefault();
     });
     //FORMATEO de campos datos escenario real
-    $("#nomER, #dirER").on("keypress", function (evento) {
+    $("#nomER, #dirER, #cargoER").on("keypress", function (evento) {
+        $(this).style.height = 'auto';
+        $(this).style.height = ($(this).scrollHeight) + 'px';
         $(this).attr('maxlength', '150');
         $(this).attr('minlength', '3');
+    });
+    $("#dirER").keyup(function(e) {
+        while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
+            $(this).height($(this).height()+1);
+        };
     });
     $("#telER").on("keypress", function (evento) {
         $(this).attr('maxlength', '10');
