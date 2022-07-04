@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class CheckSemestreEstadias
+class CheckSemestresAvanzados
 {
     /**
      * Handle an incoming request.
@@ -27,7 +27,7 @@ class CheckSemestreEstadias
                 ->where('alumnos.id_usuario','=',Auth::user()->id);
             })
             ->first()->semestre;
-            if (Auth::user()->id_rol == 2 &&  $semestre == 6){
+            if (Auth::user()->id_rol == 2 && $semestre >= 2 ){
                     return $next($request);
             }else{
                 return redirect('/no-autorizado')->with('message', 'Acceso denegado.');

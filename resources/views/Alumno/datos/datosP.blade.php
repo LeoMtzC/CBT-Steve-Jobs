@@ -41,10 +41,15 @@
                         <input type="text" class="form-control" id="matrAlu" placeholder="Matrícula" name="matrAlu"
                             required readonly value="{{ $datosAlumno[0] -> matricula }}">
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-2">
                         <label for="semesAlu">Semestre</label>
                         <input type="text" class="form-control" id="semesAlu" placeholder="Semestre" name="semesAlu"
                             required readonly value="{{ $datosAlumno[0] -> semestre }}">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="genAlu">Generación</label>
+                        <input type="text" class="form-control" id="genAlu" placeholder="Generación" name="genAlu"
+                            required readonly value="{{ $datosAlumno[0] -> generacion }}">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="carrAlu">Carrera</label>

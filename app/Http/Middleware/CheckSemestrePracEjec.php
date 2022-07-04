@@ -21,14 +21,13 @@ class CheckSemestrePracEjec
         if(Auth::check()){
             //id_rol = 1 Docente
             //id_rol = 2 Alumno
-            if (Auth::user()->id_rol == 2){
-                //Query para obtener el semestre del alumno logeado
-                $semestre = DB::table('alumnos')->join('users', function($join){
-                    $join->on('alumnos.id_usuario','=','users.id')
-                    ->where('alumnos.id_usuario','=',Auth::user()->id);
-                })
-                ->first()->semestre;
-                if($semestre == 2 || $semestre == 3 || $semestre == 4)
+            //Query para obtener el semestre del alumno logeado
+            $semestre = DB::table('alumnos')->join('users', function($join){
+                $join->on('alumnos.id_usuario','=','users.id')
+                ->where('alumnos.id_usuario','=',Auth::user()->id);
+            })
+            ->first()->semestre;
+            if (Auth::user()->id_rol == 2 && ($semestre == 2 || $semestre == 3 || $semestre == 4)){
                     return $next($request);
             }else{
                 return redirect('/no-autorizado')->with('message', 'Acceso denegado.');
@@ -36,6 +35,5 @@ class CheckSemestrePracEjec
         }else{
             return redirect('/login')->with('message', 'Inicia sesión para acceder a esta página.');
         }
-        return $next($request);
     }
 }
