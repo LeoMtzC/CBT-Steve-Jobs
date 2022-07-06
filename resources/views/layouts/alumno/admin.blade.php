@@ -71,9 +71,36 @@
                         
                             <!-- Dropdown - Messages -->
                             
-
+                        @if($aviso->first())
                         <!-- Nav Item - Alerts -->
-                        
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">1</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Aviso importante
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#" data-toggle="modal" data-target="#mensajeModal">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">{{ $aviso[0] -> updated_at }}</div>
+                                        <p><b>{{ $aviso[0] -> titulo }}</b>:</p>
+                                        <p>{{ $aviso[0] -> cuerpo }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        @endif
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -141,6 +168,29 @@
         </div>
     </div>
 
+    @if($aviso->first())
+    <!-- Mensaje Modal-->
+    <div class="modal fade" id="mensajeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b>{{ $aviso[0] -> titulo }}</b></h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align: right;"><small>Actualizado el: {{ $aviso[0] -> updated_at }}</small></p>
+                    <p>{{ $aviso[0] -> cuerpo }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-alumno" type="button" data-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('libs/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

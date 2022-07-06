@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('docs_alumnos', function (Blueprint $table) {
+        Schema::create('avisos', function (Blueprint $table) {
             $table->id();
-            $table->string('ine',255)->default('Seleccionar archivo');
-            $table->string('acta_nac',255)->default('Seleccionar archivo');
-            $table->unsignedTinyInteger('estado')->default('1');
+            $table->string('titulo',240)->default('');
+            $table->string('cuerpo',5000)->default('');
+            $table->string('leyenda',300)->default('');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('docs_alumnos');
+        Schema::dropIfExists('avisos');
     }
 };

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Doctrine\DBAL\Schema\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $aviso = DB::table('avisos')->where('id', 1)->get();
+        view()->share('aviso', $aviso);
     }
 }

@@ -4,6 +4,8 @@
 
 @section('contenido')
 
+@include('layouts.partials.messages')
+
     <!-- Generar carta de termino -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

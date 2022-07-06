@@ -704,6 +704,11 @@ class AlumnoController extends Controller
     //Función para actualizar datos personales alumno
     public function actualizarDatosPersonales(Request $request)
     {
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         DB::table('alumnos')
             //->where('id_usuario', Auth::user()->id)
             ->updateOrInsert(
@@ -713,15 +718,21 @@ class AlumnoController extends Controller
                   'telefono' => $request->telAlu,
                   'fecha_nac' => $request->fechNacAlu,
                   'nss' => $request->nssAlu,
-                  'seguro_med' => $request->segMedAlu
+                  'seguro_med' => $request->segMedAlu,
+                  'updated_at' => $fecha
                 ]
         );
-        return redirect()->back()->with('success','Datos actualizados correctamente');
+        return redirect()->back()->with('success','Datos personales actualizados correctamente');
     }
 
     //Función para actualizar datos domiciliarios alumno
     public function actualizarDatosDomicilio(Request $request)
     {
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Si es una actualización se obtiene el ID
         if($request->idDomicilio){
             DB::table('domicilios')
@@ -735,9 +746,10 @@ class AlumnoController extends Controller
                         'cp' => $request->cpAlu,
                         'no_ext' => $request->numExAlu,
                         'no_int' => $request->numInAlu,
+                        'updated_at' => $fecha,
                     ]
                 );
-            return redirect()->back()->with('success','Datos actualizados correctamente');
+            return redirect()->back()->with('success','Datos domiciliarios actualizados correctamente');
         }
         //Si es una creación se obtiene el autoincrement ID del insert
         $id = DB::table('domicilios')->insertGetId([
@@ -747,7 +759,9 @@ class AlumnoController extends Controller
             'colonia' => $request->coloniaAlu,
             'cp' => $request->cpAlu,
             'no_ext' => $request->numExAlu,
-            'no_int' => $request->numInAlu
+            'no_int' => $request->numInAlu,
+            'created_at' => $fecha,
+            'updated_at' => $fecha,
         ]);
         //Se actualiza la tabla alumnos con el id del insert
         DB::table('alumnos')
@@ -763,6 +777,11 @@ class AlumnoController extends Controller
     //Función para actualizar datos domiciliarios alumno
     public function actualizarDatosTutor(Request $request)
     {
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Si es una actualización se obtiene el ID
         if($request->idTutor){
             DB::table('datos_tutores')
@@ -776,7 +795,8 @@ class AlumnoController extends Controller
                     'curp' => $request->curpTut,
                     'telf_movil' => $request->celTut,
                     'telf_fijo' => $request->telTut,
-                    'id_parentesco' => $request->parentTut
+                    'id_parentesco' => $request->parentTut,
+                    'updated_at' => $fecha,
                 ]
             );
             return redirect()->back()->with('success','Datos actualizados correctamente');
@@ -790,7 +810,9 @@ class AlumnoController extends Controller
             'curp' => $request->curpTut,
             'telf_movil' => $request->celTut,
             'telf_fijo' => $request->telTut,
-            'id_parentesco' => $request->parentTut
+            'id_parentesco' => $request->parentTut,
+            'created_at' => $fecha,
+            'updated_at' => $fecha,
         ]);
         //Se actualiza la tabla alumnos con el id del insert
         DB::table('alumnos')
@@ -806,6 +828,11 @@ class AlumnoController extends Controller
     //Función para actualizar datos del escenario real del alumno
     public function actualizarDatosEscenario(Request $request)
     {
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Si es una actualización se obtiene el ID
         if($request->idER){
             DB::table('escenarios')
@@ -820,7 +847,8 @@ class AlumnoController extends Controller
                     'apMatResp' => $request->apMatER,
                     'cargoResp' => $request->cargoER,
                     'fecha_ini' => $request->fechIniER,
-                    'fecha_term' => $request->fechTerER
+                    'fecha_term' => $request->fechTerER,
+                    'updated_at' => $fecha,
                 ]
             );
             return redirect()->back()->with('success','Datos actualizados correctamente');
@@ -835,7 +863,9 @@ class AlumnoController extends Controller
             'apMatResp' => $request->apMatER,
             'cargoResp' => $request->cargoER,
             'fecha_ini' => $request->fechIniER,
-            'fecha_term' => $request->fechTerER
+            'fecha_term' => $request->fechTerER,
+            'created_at' => $fecha,
+            'updated_at' => $fecha
         ]);
         //Se actualiza la tabla alumnos con el id del insert
         DB::table('alumnos')
@@ -953,23 +983,23 @@ class AlumnoController extends Controller
 
         //determinando el ciclo escolar
         $anioActual = Carbon::now()->year;
-        $anioActualmenosUno = Carbon::now()->subYear()->year();
-        $anioActualmasUno = Carbon::now()->addYear()->year();
+        $anioActualmenosUno = Carbon::now()->subYear()->format('Y');
+        $anioActualmasUno = Carbon::now()->addYear()->format('Y');
         //Si la fecha actual está entre la fecha 1 de Enero y
         //1 de Junio de cualquier año, entonces el ciclo escolar es
         //el (año actual menos 1 año) - (año actual), si no se cumple
         //esta condición, entonces el ciclo escolar es
         //(año actual) - (año actual)
-        $startDate1 = \Carbon\Carbon::createFromFormat('m-d','01-08');
+        $startDate1 = \Carbon\Carbon::createFromFormat('m-d','08-01');
         $endDate1 = \Carbon\Carbon::createFromFormat('m-d','31-12');
         $startDate2 = \Carbon\Carbon::createFromFormat('m-d','01-01');
         $endDate2 = \Carbon\Carbon::createFromFormat('m-d','31-07');
         $check1 = \Carbon\Carbon::now()->between($startDate1,$endDate1);
         $check2 = \Carbon\Carbon::now()->between($startDate2,$endDate2);
         if($check1){
-            $cicloEscolar = (string)"$anioActual - $anioActualmasUno";
+            $cicloEscolar = (string)$anioActual.' - '.(string)$anioActualmasUno;
         }elseif($check2){
-            $cicloEscolar = (string)"$anioActualmenosUno - $anioActual";
+            $cicloEscolar = (string)$anioActualmenosUno.' - '.(string)$anioActual;
         }
 
         //Asignación de carreras de acuerdo al ID de carrera
@@ -1058,6 +1088,8 @@ class AlumnoController extends Controller
             ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->semestre;
+
+        $leyenda = DB::table('avisos')->where('id', 2)->first()->leyenda;
 
         switch($numSemestre){
             case 2 :
@@ -1149,6 +1181,7 @@ class AlumnoController extends Controller
             break;
         }
 
+        $plantilla->setValue('leyenda', $leyenda);
         $plantilla->setValue('fechaActual', $fechaActual);
         $plantilla->setValue('nombreResponsable', mb_strtoupper($datosEscenario[0]->nombreResp));
         $plantilla->setValue('apPatResponsable', mb_strtoupper($datosEscenario[0]->apPatResp));
@@ -1346,18 +1379,6 @@ class AlumnoController extends Controller
             return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu escenario real?');
         }
 
-        //formato fecha inicial del escenario
-        $fechaIni = $datosEscenario[0]->fecha_ini;
-        $fechaIni = str_replace("/", "-", $fechaIni); 
-        $newfechaIni = date("d-m-Y", strtotime($fechaIni)); 
-        $fechaInicial = strftime("%d de %B de %Y", strtotime($newfechaIni));
-
-        //formato fecha de termino del escenario
-        $fechaTerm = $datosEscenario[0]->fecha_term;
-        $fechaTerm = str_replace("/", "-", $fechaTerm); 
-        $newfechaTerm = date("d-m-Y", strtotime($fechaTerm)); 
-        $fechaTermino = strftime("%d de %B de %Y", strtotime($newfechaTerm));
-
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1370,6 +1391,8 @@ class AlumnoController extends Controller
         $plantilla->setValue('apPatAlumno', mb_strtoupper($datosAlumno[0]->apPat));
         $plantilla->setValue('apMatAlumno', mb_strtoupper($datosAlumno[0]->apMat));
         $plantilla->setValue('nombreAlumno', mb_strtoupper($datosAlumno[0]->nombre));
+        $plantilla->setValue('practicas', mb_strtoupper($practicas));
+        $plantilla->setValue('nombreEscenario', mb_strtoupper($datosEscenario[0]->nombreEsc));
 
         try{
             $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
@@ -1424,6 +1447,10 @@ class AlumnoController extends Controller
     }
 
     public function subirINE(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
         
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
@@ -1442,14 +1469,17 @@ class AlumnoController extends Controller
                     ->where('id', $request->idINE)
                     ->update(
                         [
-                            'ine' => $ruta
+                            'ine' => $ruta,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','INE del tutor actualizada correctamente');
             }
             //Si es una creación se obtiene el autoincrement ID del insert
             $id = DB::table('docs_alumnos')->insertGetId([
-                'ine' => $ruta
+                'ine' => $ruta,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             //Se actualiza la tabla alumnos con el id del insert
             DB::table('alumnos')
@@ -1465,6 +1495,11 @@ class AlumnoController extends Controller
     }
 
     public function subirActa(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1482,7 +1517,8 @@ class AlumnoController extends Controller
                     ->where('id', $request->idActaNac)
                     ->update(
                         [
-                            'acta_nac' => $ruta
+                            'acta_nac' => $ruta,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Acta de nacimiento actualizada correctamente');
@@ -1497,6 +1533,8 @@ class AlumnoController extends Controller
             ->update(
                 [
                     'id_docs' => $id,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
                 ]
             );
             return redirect()->back()->with('success','Acta de nacimiento guardada correctamente');
@@ -1505,6 +1543,11 @@ class AlumnoController extends Controller
     }
 
     public function subirPermiso(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1517,18 +1560,6 @@ class AlumnoController extends Controller
             ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->id;
-
-        //Query para obtener los datos del escenario del alumno logeado
-        $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
-            $join->on('alumnos.id_escenario','=','escenarios.id')
-            ->where('alumnos.id_escenario','=',
-                DB::table('alumnos')->join('users', function($join){
-                    $join->on('alumnos.id_usuario','=','users.id')
-                    ->where('alumnos.id_usuario','=',Auth::user()->id);
-                })->first()->id_escenario
-            );// Se utiliza un subquery para obtener el id_escenario del usuario logeado
-        })
-        ->get();
 
         //Obtener fecha actual
         date_default_timezone_set('America/Mexico_City');
@@ -1553,10 +1584,10 @@ class AlumnoController extends Controller
                             'id_alumno' => $id_alu,
                             'id_docu' => $id_documento,
                             'url' => $ruta,
-                            'id_escenario' => $datosEscenario[0]->id,
-                            'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                            'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_ini' => $fechaActual,
+                            'fecha_term' => $fechaActual,
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Permiso actualizado correctamente');
@@ -1566,10 +1597,11 @@ class AlumnoController extends Controller
                 'id_alumno' => $id_alu,
                 'id_docu' => $id_documento,
                 'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_ini' => $fechaActual,
+                'fecha_term' => $fechaActual,
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Permiso guardado correctamente');
         }
@@ -1577,6 +1609,11 @@ class AlumnoController extends Controller
     }
 
     public function subirGuiaObs(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1589,18 +1626,6 @@ class AlumnoController extends Controller
             ->where('alumnos.id_usuario','=',Auth::user()->id);
         })
         ->first()->id;
-
-        //Query para obtener los datos del escenario del alumno logeado
-        $datosEscenario = DB::table('alumnos')->join('escenarios', function($join){
-            $join->on('alumnos.id_escenario','=','escenarios.id')
-            ->where('alumnos.id_escenario','=',
-                DB::table('alumnos')->join('users', function($join){
-                    $join->on('alumnos.id_usuario','=','users.id')
-                    ->where('alumnos.id_usuario','=',Auth::user()->id);
-                })->first()->id_escenario
-            );// Se utiliza un subquery para obtener el id_escenario del usuario logeado
-        })
-        ->get();
 
         //Obtener fecha actual
         date_default_timezone_set('America/Mexico_City');
@@ -1625,10 +1650,10 @@ class AlumnoController extends Controller
                             'id_alumno' => $id_alu,
                             'id_docu' => $id_documento,
                             'url' => $ruta,
-                            'id_escenario' => $datosEscenario[0]->id,
-                            'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                            'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_ini' => $fechaActual,
+                            'fecha_term' => $fechaActual,
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Guía de observación actualizada correctamente');
@@ -1638,10 +1663,11 @@ class AlumnoController extends Controller
                 'id_alumno' => $id_alu,
                 'id_docu' => $id_documento,
                 'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_ini' => $fechaActual,
+                'fecha_term' => $fechaActual,
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Guía de observación guardada correctamente');
         }
@@ -1649,6 +1675,11 @@ class AlumnoController extends Controller
     }
 
     public function subirCartaAut(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1706,7 +1737,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Carta de autorización actualizada correctamente');
@@ -1719,7 +1751,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Carta de autorización guardada correctamente');
         }
@@ -1727,6 +1761,11 @@ class AlumnoController extends Controller
     }
 
     public function subirCartaPres(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1785,7 +1824,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Carta de presentación actualizada correctamente');
@@ -1798,7 +1838,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Carta de presentación guardada correctamente');
         }
@@ -1806,6 +1848,11 @@ class AlumnoController extends Controller
     }
 
     public function subirCartaAcep(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1864,7 +1911,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Carta de aceptación actualizada correctamente');
@@ -1877,7 +1925,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Carta de aceptación guardada correctamente');
         }
@@ -1885,6 +1935,11 @@ class AlumnoController extends Controller
     }
 
     public function subirConsTer(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -1943,7 +1998,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Constancia de termino actualizada correctamente');
@@ -1956,7 +2012,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Constancia de termino guardada correctamente');
         }
@@ -1964,6 +2022,11 @@ class AlumnoController extends Controller
     }
 
     public function subirInforme(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -2023,7 +2086,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Informe actualizado correctamente');
@@ -2036,7 +2100,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Informe guardado correctamente');
         }
@@ -2044,6 +2110,11 @@ class AlumnoController extends Controller
     }
 
     public function subirBitacoras(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -2103,7 +2174,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','Informe actualizado correctamente');
@@ -2116,7 +2188,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','Informe guardado correctamente');
         }
@@ -2124,6 +2198,11 @@ class AlumnoController extends Controller
     }
 
     public function subirMTP(Request $request){
+        //Obtener la fecha actual
+        date_default_timezone_set('America/Mexico_City');
+        setlocale(LC_TIME, 'es_mx');
+        $fecha  = now();
+
         //Query para obtener todos los datos del alumno
         $datosAlumno = DB::table('alumnos')->join('users', function($join){
             $join->on('alumnos.id_usuario','=','users.id')
@@ -2189,7 +2268,8 @@ class AlumnoController extends Controller
                             'id_escenario' => $datosEscenario[0]->id,
                             'fecha_ini' => $datosEscenario[0]->fecha_ini,
                             'fecha_term' => $datosEscenario[0]->fecha_term,
-                            'fecha_exp' => $fechaActual
+                            'fecha_exp' => $fechaActual,
+                            'updated_at' => $fecha
                         ]
                     );
                 return redirect()->back()->with('success','MTP actualizado correctamente');
@@ -2202,7 +2282,9 @@ class AlumnoController extends Controller
                 'id_escenario' => $datosEscenario[0]->id,
                 'fecha_ini' => $datosEscenario[0]->fecha_ini,
                 'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual
+                'fecha_exp' => $fechaActual,
+                'created_at' => $fecha,
+                'updated_at' => $fecha
             ]);
             return redirect()->back()->with('success','MTP guardado correctamente');
         }

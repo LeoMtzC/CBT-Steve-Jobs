@@ -27,9 +27,13 @@
                     <label class="custom-file-label" for="subirINE">{{ $datosArchivos[0] -> ine }}</label>
                 </div>
                 <div class="mt-3">
+                @if($datosArchivos[0] -> ine != 'Seleccionar archivo')
                 <button type="submit" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosArchivos[0] -> ine])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-eye"></i> Ver</a>
+                @else
+                <button type="submit" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-file-upload"></i> Subir</button>
+                @endif
                 </div>
                 @else
                 <input type="hidden" class="form-control" id="idER" name="idER"
@@ -68,9 +72,13 @@
                     <label class="custom-file-label" for="subirActNac">{{ $datosArchivos[0] -> acta_nac }}</label>
                 </div>
                 <div class="mt-3">
+                @if($datosArchivos[0] -> acta_nac != 'Seleccionar archivo')
                 <button type="submit" class="btn btn-alumno" id="btnsubirActNac"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosArchivos[0] -> acta_nac])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirActa"><i class="fas fa-eye"></i> Ver</a>
+                @else
+                <button type="submit" class="btn btn-alumno" id="btnsubirActNac"><i class="fas fa-file-upload"></i> Subir</button>
+                @endif
                 </div>
                 @else
                 <input type="hidden" class="form-control" id="idActaNac" name="idActaNac"

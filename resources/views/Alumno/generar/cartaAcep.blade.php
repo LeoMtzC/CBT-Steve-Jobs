@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-@section('contenido')
+@include('layouts.partials.messages')
 
     <!-- Generar carta de presentación -->
     <div class="card shadow mb-4">

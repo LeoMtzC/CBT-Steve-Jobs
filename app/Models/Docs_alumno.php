@@ -31,11 +31,4 @@ class Docs_alumno extends Model
             set: fn ($value) => trim($value)
         );
     }
-
-    protected function carta_aut(): Attribute
-    {
-        return new Attribute(
-            set: fn ($value) => trim($value)
-        );
-    }
 }

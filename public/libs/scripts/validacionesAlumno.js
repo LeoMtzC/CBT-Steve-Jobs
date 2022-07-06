@@ -10,12 +10,12 @@ function validaDatosPer(datos) {
     //colorInput(EXP_REG_MATRICULA.test(datos[3].value), $("#matrAlu"), err, 3);
     //colorInput(EXP_REG_SEMESTRE.test(datos[4].value), $("#semesAlu"), err, 4);
     //colorInput(EXP_REG_NOMBRE.test(datos[5].value), $("#carrAlu"), err, 5);
-    colorInput(EXP_REG_CURP.test(datos[7].value), $("#curpAlu"), err, 6);
-    colorInput(EXP_REG_EMAIL.test(datos[8].value), $("#emailAlu"), err, 7);
-    colorInput(EXP_REG_TEL.test(datos[9].value), $("#telAlu"), err, 8);
-    colorInput(datos[10].value !== "", $("#fechNacAlu"), err, 9);
-    colorInput(EXP_REG_NSS.test(datos[11].value), $("#nssAlu"), err, 10);
-    colorInput(datos[12].value !== '', $("#segMedAlu"), err, 11);
+    colorInput(EXP_REG_CURP.test(datos[8].value), $("#curpAlu"), err, 6);
+    colorInput(EXP_REG_EMAIL.test(datos[9].value), $("#emailAlu"), err, 7);
+    colorInput(EXP_REG_TEL.test(datos[10].value), $("#telAlu"), err, 8);
+    colorInput(datos[11].value !== "", $("#fechNacAlu"), err, 9);
+    colorInput(EXP_REG_NSS.test(datos[12].value), $("#nssAlu"), err, 10);
+    colorInput(datos[13].value !== '', $("#segMedAlu"), err, 14);
     return err;
 }
 //Formulario de datos domiciliarios
