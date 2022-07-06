@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             DocAlumnosSeeder::class,
             GrupoSeeder::class,
             AlumnoSeeder::class,
+            AvisosSeeder::class,
         ]);
     }
 }

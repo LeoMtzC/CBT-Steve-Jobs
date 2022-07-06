@@ -5,7 +5,7 @@
             <br>
             <span>CBT Steve Jobs, Joquicingo - Algunos derechos reservados &copy; 2022</span>
             <hr>
-            <span>Via Alfredo de Mazo S/N, Colonia Cuarto Barrio.</span>
+            <span>Via Alfredo del Mazo S/N, Colonia Cuarto Barrio.</span>
             <br>
             <span>Joquicingo, Estado de México C.P. 52370</span>
             <br>

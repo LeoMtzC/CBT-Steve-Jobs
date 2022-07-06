@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-12 p-0">
                 <div class="min-vh-100 text-center m-0 d-flex flex-column justify-content-center">
-                    <div class="error mx-auto" data-text="☹">☹</div>
+                    <div class="error mx-auto" data-text="🦅">🦅</div>
                     <p class="lead text-gray-800 mb-5">¡Vaya!</p>
                     <p class="text-gray-500 mb-0">Parece que no tienes permiso para ver esto...</p>
                     <a href="/login">&larr; Volver</a>
