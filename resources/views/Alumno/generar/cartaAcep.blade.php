@@ -19,15 +19,15 @@
         </div>
         <div class="card-body">
             <p>
-                La carta de aceptación es un documento importante...
+                El escenario real debe remitir una contestación a la carta de presentación que generaste y entregaste en dicho escenario a través del documento denominado Carta de Aceptación, por lo tanto, para facilitar y agilizar el trámite a continuación llena cuidadosamente los siguientes datos para obtener tu documento.
             </p>
             <br>
             <p>
-                Una vez que generes tu carta de aceptación recuerda que...
+                Una vez generado acude con el titular de tu escenario real para que firme y en su caso selle tu documento, a continuación, <b>escanea el documento en formato PDF</b> y súbela en el apartado correspondiente cerciorándote que sea el archivo correcto.
             </p>
             <br>
             <p>
-                Si los datos mostrados no son correctos, asegúrate de haber llenado correctamente tus datos personales en la sección <b>'Mis datos'</b>.
+                Si los datos mostrados no son correctos, revisa y actualiza tus datos personales en la sección <b>'Mis datos'</b>.
             </p>
             <br>
             @if($semestreAlumno == 2 || $semestreAlumno == 3 || $semestreAlumno == 4)

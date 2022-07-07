@@ -13,15 +13,15 @@
         </div>
         <div class="card-body">
             <p>
-                El permiso es aquel documento el cual es necesario para...
+                Para acudir a tus prácticas de observación es necesario que el tutor que te inscribió te de autorización, por ello debes descargar tu permiso y presentárselo a tu tutor.
             </p>
             <br>
             <p>
-                Una vez que generes tu permiso recuerda que...
+                Una vez que tu tutor lo haya firmado recuerda subirlo al portal en el apartado correspondiente.
             </p>
             <br>
             <p>
-                Si los datos mostrados no son correctos, asegúrate de haber llenado correctamente tus datos personales en la sección <b>'Mis datos'</b>.
+                Si los datos mostrados no son correctos, revisa y actualiza tus datos personales en la sección <b>'Mis datos'</b>.
             </p>
             <br>
             <div class="text-left">

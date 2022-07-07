@@ -19,15 +19,15 @@
         </div>
         <div class="card-body">
             <p>
-                El informe es un documento que...
+                El informe es aquel documento en el describes las actividades realizadas en el escenario real, además de los aprendizajes obtenidos. Una vez que lo generes asegúrate de que tus datos sean correctos y llénalo cuidadosamente.
             </p>
             <br>
             <p>
-                Una vez que generes tu informe recuerda que...
+            Enseguida, asegúrate de que los responsables lo revisen y firmen para que posteriormente puedas subirlo al portal <b>en formato PDF</b>.
             </p>
             <br>
             <p>
-                Si los datos mostrados no son correctos, asegúrate de haber llenado correctamente tus datos personales en la sección <b>'Mis datos'</b>.
+                Si los datos mostrados no son correctos, revisa y actualiza tus datos personales en la sección <b>'Mis datos'</b>.
             </p>
             <br>
             <div class="text-left">
