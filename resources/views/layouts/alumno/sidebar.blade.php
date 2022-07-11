@@ -41,7 +41,10 @@
             <a class="collapse-item" href="{{route('DatosPAlumno')}}">Datos personales</a>
             <a class="collapse-item" href="{{route('DatosTAlumno')}}">Datos del tutor</a>
             <a class="collapse-item" href="{{route('subirDocsAlu')}}">Subir documentos</a>
+            @if ($semestreAlumno == 1) <!-- Semestre 1 -->
+            @else <!-- Semestre 2,3,4,5,6-->
             <a class="collapse-item" href="{{route('EscenarioR')}}">Escenario real</a>
+            @endif
         </div>
     </div>
 </li>

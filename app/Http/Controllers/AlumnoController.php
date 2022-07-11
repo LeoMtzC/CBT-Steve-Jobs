@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PDF;
 use Illuminate\Support\Facades\File;
+use Throwable;
 
 class AlumnoController extends Controller
 {
@@ -1592,18 +1593,22 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Permiso actualizado correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'fecha_ini' => $fechaActual,
-                'fecha_term' => $fechaActual,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Permiso guardado correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'fecha_ini' => $fechaActual,
+                    'fecha_term' => $fechaActual,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Permiso guardado correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para generar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');        
     }
@@ -1658,18 +1663,22 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Guía de observación actualizada correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'fecha_ini' => $fechaActual,
-                'fecha_term' => $fechaActual,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Guía de observación guardada correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'fecha_ini' => $fechaActual,
+                    'fecha_term' => $fechaActual,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Guía de observación guardada correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Algo salió mal');  
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');        
     }
@@ -1743,19 +1752,24 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Carta de autorización actualizada correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Carta de autorización guardada correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Carta de autorización guardada correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
+            
         }
         return redirect()->back()->with('error','Algo salió mal');        
     }
@@ -1830,19 +1844,23 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Carta de presentación actualizada correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Carta de presentación guardada correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Carta de presentación guardada correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');
     }
@@ -1917,19 +1935,23 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Carta de aceptación actualizada correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Carta de aceptación guardada correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Carta de aceptación guardada correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');
     }
@@ -2004,19 +2026,23 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Constancia de termino actualizada correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Constancia de termino guardada correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Constancia de termino guardada correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');
     }
@@ -2092,19 +2118,23 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Informe actualizado correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Informe guardado correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Informe guardado correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');
     }
@@ -2180,19 +2210,23 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','Informe actualizado correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','Informe guardado correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','Informe guardado correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');
     }
@@ -2274,19 +2308,23 @@ class AlumnoController extends Controller
                     );
                 return redirect()->back()->with('success','MTP actualizado correctamente');
             }
-            //Si es una creación se obtiene el autoincrement ID del insert
-            $id = DB::table('hist_ac_lab')->insertGetId([
-                'id_alumno' => $id_alu,
-                'id_docu' => $id_documento,
-                'url' => $ruta,
-                'id_escenario' => $datosEscenario[0]->id,
-                'fecha_ini' => $datosEscenario[0]->fecha_ini,
-                'fecha_term' => $datosEscenario[0]->fecha_term,
-                'fecha_exp' => $fechaActual,
-                'created_at' => $fecha,
-                'updated_at' => $fecha
-            ]);
-            return redirect()->back()->with('success','MTP guardado correctamente');
+            try {
+                //Si es una creación se obtiene el autoincrement ID del insert
+                $id = DB::table('hist_ac_lab')->insertGetId([
+                    'id_alumno' => $id_alu,
+                    'id_docu' => $id_documento,
+                    'url' => $ruta,
+                    'id_escenario' => $datosEscenario[0]->id,
+                    'fecha_ini' => $datosEscenario[0]->fecha_ini,
+                    'fecha_term' => $datosEscenario[0]->fecha_term,
+                    'fecha_exp' => $fechaActual,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+                return redirect()->back()->with('success','MTP guardado correctamente');
+            } catch (Throwable $th) {
+                return redirect()->back()->with('error','Datos faltantes para procesar documento. ¿Actualizaste los datos de tu escenario real?');
+            }
         }
         return redirect()->back()->with('error','Algo salió mal');
     }

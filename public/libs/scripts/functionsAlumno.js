@@ -211,6 +211,33 @@ $(document).ready(function() {
             }
         }
     });
+    //Validación - subir carta de aceptación
+    $("#btnSubirCartAcep").on("click", function (e) {
+        if ($("#subirCartAcep").val() == "") {
+            e.preventDefault();
+            msgError("<b>Atención</b>",
+                "La <i><b>carta de aceptación</b></i> debe ser un archivo válido.");
+        }
+    });
+    $("#subirCartAcep").on('change', function () {
+        var ext = $(this).val().split('.').pop();
+        if ($(this).val() != "") {
+            if (ext == "pdf") {
+                if ($(this)[0].files[0].size > 1048576) { //1 MB
+                    $(this).val("");
+                    msgCallback("<b>Atención</b>",
+                        "El archivo <i><b>es demasiado pesado</b></i>, no debe sobrepasar 1MB.",
+                        $("#subirCartAcep"));
+                }
+            }
+            else {
+                $(this).val("");
+                msgCallback("<b>Atención</b>",
+                    "La <i><b>carta de aceptación</b></i> debe ser un archivo válido.",
+                    $("#subirCartAcep"));
+            }
+        }
+    });
     //Validación - subir constancia de termino
     $("#btnSubirCartPres").on("click", function (e) {
         if ($("#subirCartPres").val() == "") {
