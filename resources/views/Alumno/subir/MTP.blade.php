@@ -40,6 +40,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirMTP"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialAv1[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialAv1[0] -> fecha_exp)) }}</b></p>
                 </div>
                 @elseif($datosHistorialAv2->first() && $semestreAlumno == 3)
                 <div class="custom-file">
@@ -53,6 +54,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirMTP"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialAv2[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialAv2[0] -> fecha_exp)) }}</b></p>
                 </div>
                 @elseif($datosHistorialAv3->first() && $semestreAlumno == 4)
                 <div class="custom-file">
@@ -66,6 +68,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirMTP"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialAv3[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialAv3[0] -> fecha_exp)) }}</b></p>
                 </div>
                 @elseif($datosHistorialAv4->first() && $semestreAlumno == 5)
                 <div class="custom-file">
@@ -79,6 +82,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirMTP"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialAv4[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialAv4[0] -> fecha_exp)) }}</b></p>
                 </div>
                 @elseif($datosHistorialMTP->first() && $semestreAlumno == 6)
                 <div class="custom-file">
@@ -92,6 +96,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirMTP"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialMTP[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialMTP[0] -> fecha_exp)) }}</b></p>
                 </div>
                 @else
                 <div class="custom-file">
@@ -103,6 +108,7 @@
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-alumno" id="btnSubirMTP"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 </div>
                 @endif
             </form>

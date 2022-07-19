@@ -36,6 +36,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialPE[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirActa"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialPE[0] -> fecha_exp)) }}</b></p>
                 @elseif($datosHistorialSS->first() && $semestreAlumno == 5)
                 <div class="custom-file">
                     <input type="hidden" class="form-control" id="idCartaAut" name="idCartaAut"
@@ -48,6 +49,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialSS[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirActa"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialSS[0] -> fecha_exp)) }}</b></p>
                 @elseif($datosHistorialEP->first() && $semestreAlumno == 6)
                 <div class="custom-file">
                     <input type="hidden" class="form-control" id="idCartaAut" name="idCartaAut"
@@ -60,6 +62,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialEP[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirActa"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialEP[0] -> fecha_exp)) }}</b></p>
                 @else
                 <div class="custom-file">
                     <input type="hidden" class="form-control" id="idCartaAut" name="idCartaAut"
@@ -69,8 +72,8 @@
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-alumno" id="btnSubirCartAut"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 @endif
-                
                 </div>
             </form>
         </div>

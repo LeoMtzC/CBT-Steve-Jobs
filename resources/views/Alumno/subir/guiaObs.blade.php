@@ -30,6 +30,7 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirGuiaObs"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosHistorialPE[0] -> url])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirCartAcep"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y", strtotime($datosHistorialPE[0] -> fecha_exp)) }}</b></p>
                 </div>
                 @else
                 <input type="hidden" class="form-control" id="idGuiaObs" name="idGuiaObs"
@@ -41,6 +42,7 @@
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-alumno" id="btnSubirGuiaObs"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 </div>
                 @endif
             </form>
