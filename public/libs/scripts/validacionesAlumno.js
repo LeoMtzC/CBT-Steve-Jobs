@@ -15,7 +15,7 @@ function validaDatosPer(datos) {
     colorInput(EXP_REG_TEL.test(datos[10].value), $("#telAlu"), err, 8);
     colorInput(datos[11].value !== "", $("#fechNacAlu"), err, 9);
     colorInput(EXP_REG_NSS.test(datos[12].value), $("#nssAlu"), err, 10);
-    colorInput(datos[13].value !== '', $("#segMedAlu"), err, 14);
+    colorInput(datos[13].value !== '', $("#segMedAlu"), err, 11);
     return err;
 }
 //Formulario de datos domiciliarios

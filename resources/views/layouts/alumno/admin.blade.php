@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">{{ date( "m/d/Y H:i", strtotime($aviso[0] -> updated_at)) }}</div>
+                                        <div class="small text-gray-500">{{ date( "d/m/Y H:i", strtotime($aviso[0] -> updated_at)) }}</div>
                                         <p><b>{{ $aviso[0] -> titulo }}</b>:</p>
                                         <p>{{ $aviso[0] -> cuerpo }}</p>
                                     </div>
@@ -181,7 +181,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style="text-align: right;"><small>Actualizado el: {{ date( "m/d/Y H:i", strtotime($aviso[0] -> updated_at)) }}</small></p>
+                    <p style="text-align: right;"><small>Actualizado el: {{ date( "d/m/Y H:i", strtotime($aviso[0] -> updated_at)) }}</small></p>
                     <p>{{ $aviso[0] -> cuerpo }}</p>
                 </div>
                 <div class="modal-footer">

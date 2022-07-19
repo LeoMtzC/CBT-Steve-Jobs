@@ -31,8 +31,10 @@
                 <button type="submit" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosArchivos[0] -> ine])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "d/m/Y \a \l\a\s H:i", strtotime($datosArchivos[0] -> updated_at)) }}</b></p>
                 @else
                 <button type="submit" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 @endif
                 </div>
                 @else
@@ -45,6 +47,7 @@
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-alumno" id="btnSubirINE"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 </div>
                 @endif
             </form>
@@ -76,8 +79,10 @@
                 <button type="submit" class="btn btn-alumno" id="btnsubirActNac"><i class="fas fa-file-upload"></i> Actualizar</button>
                 <a href="{{ route('VerPDF', ['ruta' => $datosArchivos[0] -> acta_nac])}}" target="_blank"
                     type="button" class="btn btn-alumno" id="btnSubirActa"><i class="fas fa-eye"></i> Ver</a>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>{{ date( "m/d/Y \a \l\a\s H:i", strtotime($datosArchivos[0] -> updated_at)) }}</b></p>
                 @else
                 <button type="submit" class="btn btn-alumno" id="btnsubirActNac"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 @endif
                 </div>
                 @else
@@ -90,6 +95,7 @@
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-alumno" id="btnsubirActNac"><i class="fas fa-file-upload"></i> Subir</button>
+                <p style="text-align: right;"></i>Modificado por última vez el: <b>Nunca</b> </p>
                 </div>
                 @endif
             </form>
